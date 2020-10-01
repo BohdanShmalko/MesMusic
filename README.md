@@ -1,8 +1,8 @@
 # MessMusic
 
-###Description
+### Description
 ...
-####Dependence
+#### Dependence
 1. create-react-app
 2. react-router-dom
 3. redux
@@ -11,9 +11,9 @@
 6. redux-thunk
 7. redux-form
 ...
-##Frontend
+## Frontend
 ...
-##Backend
+## Backend
 ...
-##Database
+## Database
 ...
