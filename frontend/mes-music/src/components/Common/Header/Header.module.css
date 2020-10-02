@@ -1,0 +1,18 @@
+.header {
+    background-color: coral;
+    display: grid;
+    grid-template-columns: 15fr 2fr;
+}
+
+.authButton {
+    margin-top: 30%;
+}
+
+.authButton button {
+    width: 60%;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
