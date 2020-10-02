@@ -4,7 +4,7 @@ import Logo from "../Logo/Logo";
 
 const Footer = ({siteName}) => {
     return <footer className={stl.footer}>
-        <Logo/>
+        <Logo widthLogo = '10'/>
     </footer>
 }
 

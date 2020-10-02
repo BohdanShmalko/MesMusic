@@ -6,7 +6,7 @@ import Logo from "../Logo/Logo";
 const Header = ({isAuthorize, changeAuthorizeStatus}) =>{
     const onLogOut = () => changeAuthorizeStatus(false)
     return <header className={stl.header}>
-        <Logo/>
+        <Logo widthLogo = '10'/>
         <div className={stl.authButton}>
             {isAuthorize
                 ? <NavLink to = "/home"><button onClick={onLogOut}>Log out</button></NavLink>
