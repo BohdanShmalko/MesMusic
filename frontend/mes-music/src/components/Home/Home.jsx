@@ -10,9 +10,13 @@ const Home = ({}) => {
         return (
             <form onSubmit={handleSubmit}>
                 {FieldCreator(null, 'email', 'input', null, null, 'Email or phone number')}
-                {FieldCreator(null, 'password', 'input', null, null, 'Password')}
-                <div className = {stl.submitButton}><button>Log In</button></div>
-                <div className={stl.forgetPassword}><NavLink to="/registration" >Forget password</NavLink></div>
+                {FieldCreator(null, 'password', 'input', null, 'password', 'Password')}
+                <div className = {stl.submitButton}>
+                    {/*!!!CHANGE IN FUTURE*/}<NavLink to="/profile" >
+                        <button>Log In</button>
+                    {/*!!!CHANGE IN FUTURE*/}</NavLink>
+                    </div>
+                <div className={stl.forgetPassword}><NavLink to="/forgetPassword" >Forget password</NavLink></div>
             </form>
         )
     }
