@@ -1,24 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Route} from "react-router-dom";
+import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Common/Header/HeaderContainer";
+import HomeContainer from "./components/Home/HomeContainer";
+import MessagesContainer from "./components/Messages/MessagesContainer";
+import PeoplesContainer from "./components/Peoples/PeoplesContainer";
+import RegistrationContainer from "./components/Registration/RegistrationContainer";
+import MusicContainer from "./components/Music/MusicContainer";
+import NewsContainer from "./components/News/NewsContainer";
+import TrainingContainer from "./components/Training/TrainingContainer";
+import FooterContainer from "./components/Common/Footer/FooterContainer";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <HeaderContainer/>
+      <div className = "wrapper">
+        <Route path = '/home' render = {() => <HomeContainer/>} />
+        <Route path = '/profile/:id?' render = {() => <ProfileContainer/>} />
+        <Route path = '/messages' render = {() => <MessagesContainer/>} />
+        {/*групи+друзі+фільтр */} <Route path = '/peoples' render = {() => <PeoplesContainer/>} />
+        <Route path = '/registration' render = {() => <RegistrationContainer/>} />
+        <Route path = '/music' render = {() => <MusicContainer/>} />
+        <Route path = '/news' render = {() => <NewsContainer/>} />
+        <Route path = '/training' render = {() => <TrainingContainer/>} />
+      </div>
+      <FooterContainer/>
     </div>
   );
 }
