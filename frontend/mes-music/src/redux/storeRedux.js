@@ -2,10 +2,12 @@ import {applyMiddleware, createStore, combineReducers, compose} from "redux"
 import {profileActionCreator, profileReducer} from "./profileReducer";
 import thunkMiddleware from "redux-thunk"
 import {authorizeAC, authorizeReducer} from "./authorizeReducer";
+import {reducer as formReducer} from "redux-form";
 
 let reducers = combineReducers({
     profilePage : profileReducer,
-    authorize : authorizeReducer
+    authorize : authorizeReducer,
+    form : formReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -1,0 +1,40 @@
+.dropDown *{
+    margin: 0;
+    padding: 1%;
+
+}
+
+.dropDown ul {
+    list-style: none;
+}
+
+.dropDown > ul {
+    display: flex;
+    justify-content: center;
+}
+
+.dropDown > ul li a{
+    display: block;
+    font-size: 80%;
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-bottom: 1px solid black;
+}
+
+.dropDown li ul {
+    display: none;
+    margin-left: -2.5%;
+}
+
+.dropDown li:hover > ul {
+    display: block;
+    position: absolute;
+}
+
+
+.dropDown ul li a:hover{
+    color: blue;
+    border: 1px solid blue;
+}
+

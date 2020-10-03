@@ -4,13 +4,15 @@ import Logo from "../Common/Logo/Logo";
 import {FieldCreator} from "../Common/FieldCreator";
 import {reduxForm} from "redux-form";
 import {NavLink} from "react-router-dom";
+import {empty} from "../../validate/validate";
+import {CheckInput} from "../Common/Checker/Checker";
 
 const Home = ({}) => {
     const LogInForm = ({handleSubmit}) => {
         return (
             <form onSubmit={handleSubmit}>
-                {FieldCreator(null, 'email', 'input', null, null, 'Email or phone number')}
-                {FieldCreator(null, 'password', 'input', null, 'password', 'Password')}
+                {FieldCreator(null, 'email', CheckInput, [empty], null, 'Email or phone number')}
+                {FieldCreator(null, 'password', CheckInput, [empty], 'password', 'Password')}
                 <div className = {stl.submitButton}>
                     {/*!!!CHANGE IN FUTURE*/}<NavLink to="/profile" >
                         <button>Log In</button>
