@@ -1,38 +1,47 @@
 .profile {
-    background-color: #61dafb;
+    margin-top: 2%;
+    width: 100%;
     display: grid;
     grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-area: nothing;
     grid-template-areas:
-    "photo nickName"
+    "nothing nickName"
     "photo status"
-    "addPost info"
+    "photo info"
+    "addPost addPost"
     "posts posts";
 }
 
 .photo {
+    text-align: right;
+    margin-right: 15%;
     grid-area: photo;
-    background-color: aliceblue;
+
 }
 .nickName {
     grid-area: nickName;
-    background-color: crimson;
+
 }
 .status {
     grid-area: status;
-    background-color: coral;
+
 }
 .info {
     grid-area: info;
-    background-color: blueviolet;
+    margin-right: 20%;
 }
 .addPost {
     grid-area: addPost;
-    background-color: chartreuse;
+
+    margin-top: 1%;
+    text-align: center;
 }
 .posts {
     grid-area: posts;
-    background-color: cadetblue;
+    text-align: center;
+    margin-right: 30%;
+    margin-left: 30%;
 }
 
 .photo img {
@@ -40,4 +49,8 @@
 }
 .posts img {
     height: 50px;
+}
+
+.headInf {
+    margin-bottom: 1%;
 }
