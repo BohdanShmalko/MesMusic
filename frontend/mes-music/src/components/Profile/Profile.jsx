@@ -15,14 +15,17 @@ export const Profile = (props) => {
         </div>
 
         <div className={s.addPost}>
-            <textarea></textarea>
-            <button>Add post</button>
+            <div className={s.headInf}><input placeholder="head"/></div>
+            <div><textarea></textarea></div>
+            <div><button>Add post</button></div>
         </div>
 
         <div className={s.posts}>
+            <h3>My posts</h3>
             {props.userProfile.posts.map((val, key) => (<div key={key}>
                     <img src={props.userProfile.photo} alt="My Awesome Image" />
-                    <span>{val}</span>
+                    <span><b>{val.header}</b></span>
+                    <div>{val.info}</div>
             </div>
             ))}
         </div>
