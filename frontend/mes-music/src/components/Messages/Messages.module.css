@@ -1,0 +1,30 @@
+.messages {
+    background-color: #61dafb;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.users {
+    background-color: aliceblue;
+}
+
+.messageItems {
+    background-color: crimson;
+}
+
+.messageItem {
+    display: grid;
+    grid-template-columns: 1fr 1fr 10fr 1fr;
+}
+
+.users img {
+    height: 50px;
+}
+
+.messageItems img {
+    height: 25px;
+}
+
+.active {
+    background-color: gold;
+}
