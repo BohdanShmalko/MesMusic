@@ -6,7 +6,7 @@
     grid-template-columns: 1fr 1fr;
     grid-area: nothing;
     grid-template-areas:
-    "photo nickName"
+    "nothing nickName"
     "photo status"
     "photo info"
     "addPost addPost"
