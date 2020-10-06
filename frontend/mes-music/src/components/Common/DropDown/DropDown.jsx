@@ -1,6 +1,6 @@
-import React from "react";
-import stl from "./DropDown.module.css"
-import {NavLink} from "react-router-dom";
+import React from 'react'
+import stl from './DropDown.module.css'
+import {NavLink} from 'react-router-dom'
 
 const DropDown = ({builder}) => {
     let menu = builder.map((wall, index) => (

@@ -1,13 +1,13 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
-import Footer from './Footer'
+import ForgetPassword from './ForgetPassword'
 
 
-class FooterContainer extends React.Component {
+class ForgetPasswordContainer extends React.Component {
     render() {
         return <div>
-            <Footer />
+            <ForgetPassword {...this.props}/>
         </div>
     }
 }
@@ -17,6 +17,6 @@ const stateToProps = state => ({
 })
 
 export default compose(
-    connect(stateToProps, {}))(FooterContainer)
+    connect(stateToProps, {}))(ForgetPasswordContainer)
 
 

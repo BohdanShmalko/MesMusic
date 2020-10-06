@@ -1,6 +1,6 @@
-import React from "react";
-import stl from "./Footer.module.css"
-import Logo from "../Logo/Logo";
+import React from 'react'
+import stl from './Footer.module.css'
+import Logo from '../Logo/Logo'
 
 const Footer = ({siteName}) => {
     return <footer className={stl.footer}>

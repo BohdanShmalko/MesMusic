@@ -1,8 +1,8 @@
-import React from "react";
-import stl from './Header.module.css';
-import {NavLink} from "react-router-dom";
-import Logo from "../Logo/Logo";
-import DropDown from "../DropDown/DropDown";
+import React from 'react'
+import stl from './Header.module.css'
+import {NavLink} from 'react-router-dom'
+import Logo from '../Logo/Logo'
+import DropDown from '../DropDown/DropDown'
 
 const Header = ({isAuthorize, changeAuthorizeStatus}) =>{
     const onLogOut = () => changeAuthorizeStatus(false)
@@ -21,7 +21,7 @@ const Header = ({isAuthorize, changeAuthorizeStatus}) =>{
                 ['news', '/news'],
                 ['music', '/music'],
                 ['friends', '/peoples'],
-                ['goups', '/peoples'],
+                ['groups', '/peoples'],
                 ['chat', '/messages'],
                 ['training', '/training'],
                 ['log out', '/home'],
@@ -34,8 +34,8 @@ const Header = ({isAuthorize, changeAuthorizeStatus}) =>{
         <Logo widthLogo = '10'/>
         <div className={stl.authButton}>
             {isAuthorize
-                ? <NavLink to = "/home"><button onClick={onLogOut}>Log out</button></NavLink>
-                : <NavLink to = "/registration"><button>Registration</button></NavLink>}
+                ? <NavLink to = '/home'><button onClick={onLogOut}>Log out</button></NavLink>
+                : <NavLink to = '/registration'><button>Registration</button></NavLink>}
             <div className={stl.menu}>
                 {isAuthorize
                 ? <DropDown builder={builderAuth}/>

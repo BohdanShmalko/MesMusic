@@ -1,11 +1,14 @@
 import React from 'react'
-import {connect} from "react-redux"
-import {compose} from "redux"
+import {connect} from 'react-redux'
+import {compose} from 'redux'
+import Music from "./Music";
 
 
 class MusicContainer extends React.Component {
     render() {
-        return <div>music</div>
+        return <div>
+            <Music {...this.props} />
+        </div>
     }
 }
 
