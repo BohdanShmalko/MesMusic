@@ -6,7 +6,7 @@
     grid-template-columns: 1fr 1fr;
     grid-area: nothing;
     grid-template-areas:
-    "nothing nickName"
+    "photo nickName"
     "photo status"
     "photo info"
     "addPost addPost"
@@ -53,4 +53,15 @@
 
 .headInf {
     margin-bottom: 1%;
+}
+
+.textarea {
+    width: 50%;
+    resize: vertical;
+}
+
+.otherPhotos {
+    width: 15%;
+    max-height: 80px;
+    padding: 2%;
 }
