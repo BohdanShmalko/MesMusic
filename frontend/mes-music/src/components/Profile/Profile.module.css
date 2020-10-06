@@ -1,0 +1,43 @@
+.profile {
+    background-color: #61dafb;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+    "photo nickName"
+    "photo status"
+    "addPost info"
+    "posts posts";
+}
+
+.photo {
+    grid-area: photo;
+    background-color: aliceblue;
+}
+.nickName {
+    grid-area: nickName;
+    background-color: crimson;
+}
+.status {
+    grid-area: status;
+    background-color: coral;
+}
+.info {
+    grid-area: info;
+    background-color: blueviolet;
+}
+.addPost {
+    grid-area: addPost;
+    background-color: chartreuse;
+}
+.posts {
+    grid-area: posts;
+    background-color: cadetblue;
+}
+
+.photo img {
+    height: 150px;
+}
+.posts img {
+    height: 50px;
+}
