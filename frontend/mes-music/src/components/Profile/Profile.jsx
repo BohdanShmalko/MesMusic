@@ -2,8 +2,19 @@ import React from 'react'
 import s from './Profile.module.css'
 
 export const Profile = (props) => {
+    //delete in future
+    const myId = 0;
+    const currentPage = 0;
+    /////////////////
     return <div className={s.profile}>
-        <div className={s.photo}><img src={props.userProfile.photo} alt="My Awesome Image" /></div>
+        <div className={s.photo}>
+            <img src={props.userProfile.photo} alt="My Awesome Image" />
+            {currentPage == myId && <div><button>Change main photo</button></div>}
+            <img src={props.userProfile.photo} className={s.otherPhotos} />
+            <img src={props.userProfile.photo} className={s.otherPhotos} />
+            <img src={props.userProfile.photo} className={s.otherPhotos} />
+            <span>see more</span>
+        </div>
 
         <div className={s.nickName}><h1>{props.userProfile.nickName}</h1></div>
 
@@ -16,7 +27,8 @@ export const Profile = (props) => {
 
         <div className={s.addPost}>
             <div className={s.headInf}><input placeholder="head"/></div>
-            <div><textarea></textarea></div>
+            <div><textarea className={s.textarea} placeholder="post content"></textarea></div>
+            <div className={s.pin}>pin : <button>music</button><button>photo</button><button>file</button></div>
             <div><button>Add post</button></div>
         </div>
 
