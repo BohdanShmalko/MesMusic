@@ -1,0 +1,15 @@
+.homePage {
+    padding: 10%;
+    width: 80%;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+.loginForm {
+    text-align: center;
+}
+
+.loginForm input {
+    font-size: 150%;
+    margin-bottom: 5%;
+}
