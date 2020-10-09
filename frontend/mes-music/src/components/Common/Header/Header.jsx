@@ -1,5 +1,5 @@
 import React from 'react'
-import stl from './Header.module.css'
+import s from './Header.module.css'
 import {NavLink} from 'react-router-dom'
 import Logo from '../Logo/Logo'
 import DropDown from '../DropDown/DropDown'
@@ -30,13 +30,14 @@ const Header = ({isAuthorize, changeAuthorizeStatus}) =>{
             link : '/profile'
         }
     ]
-    return <header className={stl.header}>
-        <Logo widthLogo = '10'/>
-        <div className={stl.authButton}>
+    return <header className={s.header}>
+        <Logo widthLogo = '80'/>
+        {/*in future*/}<div className={s.content}></div>
+        <div className={s.authButton}>
             {isAuthorize
                 ? <NavLink to = '/home'><button onClick={onLogOut}>Log out</button></NavLink>
                 : <NavLink to = '/registration'><button>Registration</button></NavLink>}
-            <div className={stl.menu}>
+            <div className={s.menu}>
                 {isAuthorize
                 ? <DropDown builder={builderAuth}/>
                 :<DropDown builder={builderNoAuth}/>}

@@ -1,0 +1,73 @@
+.player {
+    margin-top: 1%;
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+    grid-area: nothing;
+    grid-template-areas:
+    "musImg playerMenu";
+}
+
+.playerMenu {
+    background-color: coral;
+    border-radius: 15px;
+    grid-area: playerMenu;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 3fr 8fr 1fr 1fr 1fr;
+    grid-template-areas:
+    "musicname musicname musicname musicname musicname musicname musicname"
+    "badge download time line loop mix delete";
+}
+
+.musicName{
+    grid-area: musicname;
+}
+
+.playerMenu img {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+}
+
+.musImg {
+    grid-area: musImg;
+}
+
+.musImg img{
+    width: 60px;
+    height: 60px;
+}
+
+.badge {
+    grid-area: badge;
+}
+
+.download {
+    grid-area: download;
+}
+
+.time {
+    grid-area: time;
+    font-size: 90%;
+}
+
+.line {
+    cursor: pointer;
+    grid-area: line;
+    background-color: red;
+    height: 5px;
+    border-radius: 10px;
+    margin-top: 8px;
+}
+
+.loop {
+    grid-area: loop;
+}
+
+.mix {
+    grid-area: mix;
+}
+
+.delete {
+    grid-area: delete;
+}

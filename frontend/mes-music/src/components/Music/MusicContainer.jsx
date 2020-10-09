@@ -3,6 +3,10 @@ import {connect} from 'react-redux'
 import {compose} from 'redux'
 import Music from "./Music";
 
+const audio = {
+    user : [],
+    other : []
+}
 
 class MusicContainer extends React.Component {
     render() {
