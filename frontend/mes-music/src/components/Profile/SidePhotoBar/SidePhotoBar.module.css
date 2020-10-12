@@ -1,0 +1,27 @@
+.sidePhotoBar {
+    background-color: cadetblue;
+    grid-area: SPB;
+    display: grid;
+    grid-template-rows: 1fr 10fr 1fr;
+    max-height: 500px;
+}
+
+.button {
+    max-height: 100px;
+}
+
+.photos {
+    margin: 10px;
+    background-color: darkcyan;
+    display: grid;
+    max-height: 100px;
+    max-width: 100%;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.photos img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 100px;
+}

@@ -1,28 +1,23 @@
 import React from 'react'
 import s from './Profile.module.css'
+import {SidePhotoBar} from './SidePhotoBar/SidePhotoBar'
 
-export const Profile = (props) => {
-    //delete in future
-    const myId = 0;
-    const currentPage = 0;
-    /////////////////
+export const Profile = ({mainPhoto, photos, nickName, status, info, posts, isOwn}) => {
     return <div className={s.profile}>
-        <div className={s.photo}>
-            <img src={props.userProfile.photo} alt="My Awesome Image" />
-            {currentPage == myId && <div><button>Change main photo</button></div>}
-            <img src={props.userProfile.photo} className={s.otherPhotos} />
-            <img src={props.userProfile.photo} className={s.otherPhotos} />
-            <img src={props.userProfile.photo} className={s.otherPhotos} />
-            <span>see more</span>
+        <div className={s.mainPhoto}>
+            <img src={mainPhoto} alt="!"/>
+            {isOwn && <div><button>Change main photo</button></div>}
         </div>
 
-        <div className={s.nickName}><h1>{props.userProfile.nickName}</h1></div>
+        <SidePhotoBar photos={photos}/>
 
-        <div className={s.status}><h2>{props.userProfile.status}</h2></div>
+        <div className={s.nickName}><h1>{nickName}</h1></div>
+
+        <div className={s.status}><h2>{status}</h2></div>
 
         <div className={s.info}>
             <h3>About me:</h3>
-            <span>{props.userProfile.info}</span>
+            <span>{info}</span>
         </div>
 
         <div className={s.addPost}>
@@ -34,8 +29,8 @@ export const Profile = (props) => {
 
         <div className={s.posts}>
             <h3>My posts</h3>
-            {props.userProfile.posts.map((val, key) => (<div key={key}>
-                    <img src={props.userProfile.photo} alt="My Awesome Image" />
+            {posts.map((val, key) => (<div key={key}>
+                    <img src={mainPhoto}  alt="!"/>
                     <span><b>{val.header}</b></span>
                     <div>{val.info}</div>
             </div>
