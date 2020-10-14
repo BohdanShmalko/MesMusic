@@ -1,7 +1,13 @@
 .header {
     background-color: coral;
     display: grid;
-    grid-template-columns: 15fr 2fr;
+    grid-template-columns: 2fr 13fr 2fr;
+    margin-bottom: 1%;
+}
+
+.content {
+    text-align: center;
+    margin-top: 3%;
 }
 
 .authButton {

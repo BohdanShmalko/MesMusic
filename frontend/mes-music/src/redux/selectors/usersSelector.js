@@ -1,4 +1,4 @@
-import {createSelector} from "reselect";
+import {createSelector} from 'reselect'
 
 const getUsersPrimitive = state => state.usersPage.users
 

@@ -1,7 +1,7 @@
 import React from 'react'
-import {connect} from "react-redux"
-import {compose} from "redux"
-import Registration from "./Registration";
+import {connect} from 'react-redux'
+import {compose} from 'redux'
+import Registration from './Registration'
 
 
 class RegistrationContainer extends React.Component {

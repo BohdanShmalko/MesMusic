@@ -1,8 +1,8 @@
-import {applyMiddleware, createStore, combineReducers, compose} from "redux"
-import {profileActionCreator, profileReducer} from "./profileReducer";
+import {applyMiddleware, createStore, combineReducers, compose} from 'redux'
+import {profileActionCreator, profileReducer} from './profileReducer'
 import thunkMiddleware from "redux-thunk"
-import {authorizeAC, authorizeReducer} from "./authorizeReducer";
-import {reducer as formReducer} from "redux-form";
+import {authorizeAC, authorizeReducer} from './authorizeReducer'
+import {reducer as formReducer} from 'redux-form'
 
 let reducers = combineReducers({
     profilePage : profileReducer,

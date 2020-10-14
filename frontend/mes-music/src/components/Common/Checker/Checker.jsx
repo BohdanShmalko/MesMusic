@@ -1,12 +1,12 @@
-import React from "react";
-import stl from "./Checker.module.css"
+import React from 'react'
+import s from './Checker.module.css'
 
 const CheckCreator = props => {
     let hasError = props.meta.error && props.meta.touched
     return (
-        <span className={hasError && stl.errorField}>
+        <span className={hasError && s.errorField}>
             {props.children}
-            {hasError && <div className={stl.errorText}>{props.meta.error}</div>}
+            {hasError && <div className={s.errorText}>{props.meta.error}</div>}
         </span>
     )
 }

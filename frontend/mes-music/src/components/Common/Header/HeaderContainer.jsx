@@ -1,8 +1,8 @@
 import React from 'react'
-import {connect} from "react-redux"
-import {compose} from "redux"
-import Header from "./Header";
-import {actionCreator} from "../../../redux/storeRedux";
+import {connect} from 'react-redux'
+import {compose} from 'redux'
+import Header from './Header'
+import {actionCreator} from '../../../redux/storeRedux'
 
 const {changeAuthorizeStatus} = actionCreator.authorize
 

@@ -1,11 +1,14 @@
 import React from 'react'
-import {connect} from "react-redux"
-import {compose} from "redux"
+import {connect} from 'react-redux'
+import {compose} from 'redux'
+import Training from './Training'
 
 
 class TrainingContainer extends React.Component {
     render() {
-        return <div>training</div>
+        return <div>
+            <Training {...this.props}/>
+        </div>
     }
 }
 
