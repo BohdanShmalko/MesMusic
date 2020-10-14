@@ -37,7 +37,7 @@ const Home = ({}) => {
 
     return <div className={stl.homePage}>
         <div className={stl.welcome}>
-            <Logo widthLogo = '40'/>
+            <Logo widthLogo = '50'/>
             <div className={stl.littleInf}>
                 Let's help to learn to feel music and find people with common interests.
             </div>

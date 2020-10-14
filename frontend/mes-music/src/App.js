@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <HeaderContainer/>
-      <div className = "wrapper">
+      <div className = "wrapper body">
         <Route path = '/home' render = {() => <HomeContainer/>} />
         <Route path = '/profile/:id?' render = {() => <ProfileContainer/>} />
         <Route path = '/messages' render = {() => <MessagesContainer/>} />
