@@ -20,6 +20,21 @@ const Music = (props) => {
         <Player/>
         <Player/>
         <Player/>
+
+        <Player/>
+        <Player/>
+        <Player/>
+        <Player/>
+        <Player/>
+        <Player/>
+        <Player/>
+        <Player/>
+        <Player/>
+        <Player/>
+        <Player/>
+        <Player/>
+        <Player/>
+        <Player/>
     </div>
 }
 

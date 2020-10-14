@@ -1,5 +1,4 @@
 .header {
-    background-color: coral;
     display: grid;
     grid-template-columns: 2fr 13fr 2fr;
     margin-bottom: 1%;

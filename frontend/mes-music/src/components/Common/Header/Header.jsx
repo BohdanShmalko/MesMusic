@@ -4,7 +4,7 @@ import {NavLink} from 'react-router-dom'
 import Logo from '../Logo/Logo'
 import DropDown from '../DropDown/DropDown'
 
-const Header = ({isAuthorize, changeAuthorizeStatus}) =>{
+const Header = ({isAuthorize, changeAuthorizeStatus, appColor}) =>{
     const onLogOut = () => changeAuthorizeStatus(false)
     const builderNoAuth = [
         {
@@ -30,7 +30,7 @@ const Header = ({isAuthorize, changeAuthorizeStatus}) =>{
             link : '/profile'
         }
     ]
-    return <header className={s.header}>
+    return <header className={s.header} style={{backgroundColor : appColor}}>
         <Logo widthLogo = '80'/>
         {/*in future*/}<div className={s.content}></div>
         <div className={s.authButton}>
@@ -38,9 +38,9 @@ const Header = ({isAuthorize, changeAuthorizeStatus}) =>{
                 ? <NavLink to = '/home'><button onClick={onLogOut}>Log out</button></NavLink>
                 : <NavLink to = '/registration'><button>Registration</button></NavLink>}
             <div className={s.menu}>
-                {isAuthorize
-                ? <DropDown builder={builderAuth}/>
-                :<DropDown builder={builderNoAuth}/>}
+                {true//isAuthorize
+                ? <DropDown builder={builderAuth} background = {appColor}/>
+                :<DropDown builder={builderNoAuth} background = {appColor}/>}
             </div>
         </div>
     </header>
