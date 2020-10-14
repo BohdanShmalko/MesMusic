@@ -1,43 +1,72 @@
 .profile {
-    background-color: #61dafb;
+    background-color: antiquewhite;
+    margin: 10px;
     display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    /*grid-area: nothing;*/
     grid-template-areas:
-    "photo nickName"
-    "photo status"
-    "addPost info"
-    "posts posts";
+    "MP NN SPB"
+    "MP S SPB"
+    "MP I SPB"
+    "AP AP SPB"
+    "P P P";
 }
 
-.photo {
-    grid-area: photo;
-    background-color: aliceblue;
+.mainPhoto {
+    background-color: brown;
+    /*text-align: right;*/
+    /*margin-right: 15%;*/
+    grid-area: MP;
 }
+
+.mainPhoto img {
+    max-width: 500px;
+    max-height: 500px;
+}
+
 .nickName {
-    grid-area: nickName;
-    background-color: crimson;
-}
-.status {
-    grid-area: status;
-    background-color: coral;
-}
-.info {
-    grid-area: info;
     background-color: blueviolet;
-}
-.addPost {
-    grid-area: addPost;
-    background-color: chartreuse;
-}
-.posts {
-    grid-area: posts;
-    background-color: cadetblue;
+    grid-area: NN;
 }
 
-.photo img {
-    height: 150px;
+.status {
+    background-color: crimson;
+    grid-area: S;
 }
+
+.info {
+    background-color: chartreuse;
+    grid-area: I;
+    /*margin-right: 20%;*/
+}
+
+.addPost {
+    background-color: aqua;
+    grid-area: AP;
+    /*text-align: center;*/
+}
+
+.posts {
+    background-color: chocolate;
+    grid-area: P;
+    /*text-align: center;*/
+}
+
 .posts img {
-    height: 50px;
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.textarea {
+    /*width: 50%;*/
+    /*resize: vertical;*/
+}
+
+.headInf {
+
+}
+
+.pin {
+
 }
