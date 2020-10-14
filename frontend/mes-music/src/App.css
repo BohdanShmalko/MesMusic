@@ -1,3 +1,11 @@
 .App {
+    max-width: 1440px;
+    background-image: url("https://www.publicdomainpictures.net/pictures/250000/velka/colorful-music-background.jpg");
+}
+
+.body{
     background-color: whitesmoke;
+    width: 90%;
+    margin-left: 5%;
+    border-radius: 10px;
 }

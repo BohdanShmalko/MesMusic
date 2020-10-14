@@ -1,7 +1,7 @@
 import React from 'react'
-import {connect} from "react-redux"
-import {compose} from "redux"
-import Footer from "./Footer";
+import {connect} from 'react-redux'
+import {compose} from 'redux'
+import Footer from './Footer'
 
 
 class FooterContainer extends React.Component {
