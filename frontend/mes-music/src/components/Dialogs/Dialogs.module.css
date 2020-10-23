@@ -26,15 +26,31 @@
     background-color: gold;
 }
 
+.message {
+    display: grid;
+    grid-template-columns: 5fr 5fr 1fr;
+    grid-template-areas: "P M T";
+}
+
 .myMessage {
     display: grid;
     grid-template-columns: 1fr 10fr 1fr 1fr;
     padding: 1%;
     text-align: right;
+    grid-area: M;
 }
 .whosMessage {
     display: grid;
     grid-template-columns: 1fr 1fr 10fr 1fr;
     padding: 1%;
     text-align: left;
+    grid-area: P;
+}
+
+.time {
+    grid-area: T;
+}
+
+.addMessage {
+    float: right;
 }

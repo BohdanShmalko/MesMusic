@@ -8,3 +8,6 @@ export const getRegistrationPassword = state => state.form.registration.values.p
 
 export const getIsAuthorize = state => state.authorize.isAuthorize
 
+
+export const getWatchId = state => state.dialogsReducer.watchId
+export const getMessages = state => state.dialogsReducer.messages

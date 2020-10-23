@@ -1,40 +1,53 @@
-import React from 'react'
+import React, {useState} from 'react'
 import s from './Dialogs.module.css'
 
-export const Dialogs = (props) => {
-    //delete in future
-    const myId = 0;
-    /////////////////
+export const Dialogs = ({watchId, userId, messages, onDialogClick, onAddMessageClick}) => {
+    const [messageText, changeMessageText] = useState('')
+
     return <div className={s.messages}>
         <div className={s.users}>
             {(() => {
-                    let array = [];
-                    for (let key in props.messages) {
-                        array.push(<div key={key} className={key == props.watchId ? s.active : 0}>
-                            <div><img src={props.messages[key].main.photo} alt="My Awesome Image"/></div>
-                            <span>{props.messages[key].main.name}</span>
+                let array = [];
+                for (let key in messages) {
+                    array.push(<div onClick={() => onDialogClick(key)} key={key}
+                                    className={key === watchId ? s.active : 0}>
+                            <div><img src={messages[key].main.photo} alt="My Awesome Image"/></div>
+                            <span>{messages[key].main.name}</span>
                         </div>)
-                    }
-                    return array
-                })()}
+                }
+                return array
+            })()}
         </div>
         <div className={s.messageItems}>
-            {props.messages[props.watchId].messages.map((val, key) => (
+            {messages[watchId].messages.map((val, key) => (
                 <div key={key}>
-                    {val.who == myId && <div className={s.myMessage}>
-                            <span>{val.time}</span>
-                            <span><img src={props.messages[props.watchId].peoples[val.who].photo} alt="My Awesome Image"/></span>
-                            <span>{val.message}</span></div>
+                    {val.who === userId && <div className={s.message}>
+                        <div className={s.myMessage}>
+                            <span><img src={messages[watchId].peoples[val.who].photo} alt="My Awesome Image"/></span>
+                            <span>{val.message}</span>
+                        </div>
+                        <span className={s.time}>{val.time}</span>
+                    </div>
                     }
-                    {val.who != myId && <div className={s.whosMessage}>
-                        <span><img src={props.messages[props.watchId].peoples[val.who].photo} alt="My Awesome Image"/></span>
-                        <span>{val.message}</span>
-                        <span></span>
-                        <span>{val.time}</span></div>
+                    {val.who !== userId && <div className={s.message}>
+                        <div className={s.whosMessage}>
+                            <span><img src={messages[watchId].peoples[val.who].photo} alt="My Awesome Image"/></span>
+                            <span>{val.message}</span>
+                        </div>
+                        <span className={s.time}>{val.time}</span>
+                    </div>
                     }
-
                 </div>
             ))}
+        </div>
+        <div>
+            <textarea onChange={(e) => changeMessageText(e.target.value)}
+                      value={messageText}/>
+            <button className={s.addMessage} onClick={() => {
+                onAddMessageClick(messageText)
+                changeMessageText('')
+            }}>Add message
+            </button>
         </div>
     </div>
 }
