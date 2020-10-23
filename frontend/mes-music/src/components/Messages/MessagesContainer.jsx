@@ -54,15 +54,13 @@ const messages = {
     }
 }
 
-class MessagesContainer extends React.Component {
-    render() {
-        return <Messages watchId={watchId} messages={messages}/>
-    }
+function DialogsContainer() {
+    return <Messages watchId={watchId} messages={messages}/>
 }
 
 const stateToProps = state => ({})
 
 export default compose(
-    connect(stateToProps, {}))(MessagesContainer)
+    connect(stateToProps, {}))(DialogsContainer)
 
 

@@ -3,20 +3,19 @@ import {connect} from 'react-redux'
 import {compose} from 'redux'
 import Header from './Header'
 import {actionCreator} from '../../../redux/storeRedux'
-import {constantes} from "../../../static/constantes";
+import {constantes} from "../../../static/constantes"
+import {getIsAuthorize} from '../../../redux/selectors/globalSelectors'
 
 const {changeAuthorizeStatus} = actionCreator.authorize
 
-class HeaderContainer extends React.Component {
-    render() {
-        return <div>
-            <Header {...this.props}/>
-        </div>
-    }
+function HeaderContainer(props) {
+    return <div>
+        <Header {...props}/>
+    </div>
 }
 
 const stateToProps = state => ({
-    isAuthorize : state.authorize.isAuthorize,
+    isAuthorize : getIsAuthorize(state),
     appColor : constantes.appColor
 })
 

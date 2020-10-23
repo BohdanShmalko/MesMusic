@@ -4,12 +4,10 @@ import {compose} from 'redux'
 import Training from './Training'
 
 
-class TrainingContainer extends React.Component {
-    render() {
-        return <div>
-            <Training {...this.props}/>
-        </div>
-    }
+function TrainingContainer(props) {
+    return <div>
+        <Training {...props}/>
+    </div>
 }
 
 const stateToProps = state => ({

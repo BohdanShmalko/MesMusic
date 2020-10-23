@@ -41,10 +41,8 @@ const peoples = [
     }
 ]
 
-class PeoplesContainer extends React.Component {
-    render() {
-        return <Peoples peoples={peoples}/>
-    }
+function PeoplesContainer() {
+    return <Peoples peoples={peoples}/>
 }
 
 const stateToProps = state => ({

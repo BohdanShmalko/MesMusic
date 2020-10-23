@@ -4,12 +4,10 @@ import {compose} from 'redux'
 import Home from './Home'
 
 
-class HomeContainer extends React.Component {
-    render() {
-        return <div>
-            <Home {...this.props}/>
-        </div>
-    }
+function HomeContainer(props) {
+    return <div>
+        <Home {...props}/>
+    </div>
 }
 
 const stateToProps = state => ({
