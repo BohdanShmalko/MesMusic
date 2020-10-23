@@ -1,5 +1,5 @@
 .player {
-    margin-top: 1%;
+    padding: 0.5%;
     display: grid;
     grid-template-columns: 1fr 8fr;
     grid-area: nothing;
@@ -51,15 +51,6 @@
     font-size: 90%;
 }
 
-.line {
-    cursor: pointer;
-    grid-area: line;
-    background-color: red;
-    height: 5px;
-    border-radius: 10px;
-    margin-top: 8px;
-}
-
 .loop {
     grid-area: loop;
 }
@@ -70,4 +61,9 @@
 
 .delete {
     grid-area: delete;
+}
+
+.scroll {
+    cursor: pointer;
+    grid-area: line;
 }

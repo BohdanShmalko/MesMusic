@@ -7,18 +7,20 @@ import download from './download.png'
 import random from './random.png'
 import trash from './trash.png'
 import loop from './loop.png'
+import activeLoop from './activeLoop.png'
 
 export const constantes = {
     appName : 'Mess Music',
     logoImg : logo,
-    appColor : '#99288e',
+    appColor : '#FFFFE0',
     backgroundImage : background,
     defaultMusic : defaultMusic,
-    downloadMusic : download,
-    playMusic : play,
-    stopMusic : stop,
-    trashMusic : trash,
-    loopMusic : loop,
-    randomMusic : random
+    downloadIco : download,
+    playIco : play,
+    stopIco : stop,
+    trashIco : trash,
+    loopIco : loop,
+    activeLoopIco : activeLoop,
+    randomIco : random
 }
 

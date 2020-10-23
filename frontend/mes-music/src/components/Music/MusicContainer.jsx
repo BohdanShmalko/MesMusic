@@ -2,11 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
 import Music from "./Music";
-
-const audio = {
-    user : [],
-    other : []
-}
+import {actionCreator} from "../../redux/storeRedux";
 
 class MusicContainer extends React.Component {
     render() {
@@ -17,10 +13,10 @@ class MusicContainer extends React.Component {
 }
 
 const stateToProps = state => ({
-
+    music : state.music
 })
 
 export default compose(
-    connect(stateToProps, {}))(MusicContainer)
+    connect(stateToProps, {...actionCreator.music}))(MusicContainer)
 
 

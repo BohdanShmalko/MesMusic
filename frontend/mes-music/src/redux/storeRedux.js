@@ -3,11 +3,13 @@ import {profileActionCreator, profileReducer} from './profileReducer'
 import thunkMiddleware from "redux-thunk"
 import {authorizeAC, authorizeReducer} from './authorizeReducer'
 import {reducer as formReducer} from 'redux-form'
+import {musicAC, musicReducer} from "./musicReducer";
 
 let reducers = combineReducers({
     profilePage : profileReducer,
     authorize : authorizeReducer,
-    form : formReducer
+    form : formReducer,
+    music : musicReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -17,5 +19,6 @@ export default store
 
 export const actionCreator = {
     profilePage : profileActionCreator,
-    authorize : authorizeAC
+    authorize : authorizeAC,
+    music : musicAC
 }
