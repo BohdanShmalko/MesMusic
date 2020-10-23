@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from "react-redux"
 import {compose} from "redux"
-import {Messages} from "./Messages";
+import {Dialogs} from "./Dialogs";
 
 const watchId = 0;
 
@@ -55,7 +55,7 @@ const messages = {
 }
 
 function DialogsContainer() {
-    return <Messages watchId={watchId} messages={messages}/>
+    return <Dialogs watchId={watchId} messages={messages}/>
 }
 
 const stateToProps = state => ({})

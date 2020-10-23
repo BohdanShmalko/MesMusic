@@ -22,7 +22,7 @@ const Header = ({isAuthorize, changeAuthorizeStatus, appColor}) =>{
                 ['music', '/music'],
                 ['friends', '/peoples'],
                 ['groups', '/peoples'],
-                ['chat', '/messages'],
+                ['dialogs', '/dialogs'],
                 ['training', '/training'],
                 ['log out', '/home'],
             ],
