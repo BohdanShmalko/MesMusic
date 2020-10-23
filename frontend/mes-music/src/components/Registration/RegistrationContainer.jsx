@@ -2,19 +2,18 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
 import Registration from './Registration'
+import {getIsPassword, getRegistrationPassword} from '../../redux/selectors/globalSelectors'
 
 
-class RegistrationContainer extends React.Component {
-    render() {
-        return <div>
-            <Registration {...this.props}/>
-        </div>
-    }
+function RegistrationContainer(props) {
+    return <div>
+        <Registration {...props}/>
+    </div>
 }
 
 const stateToProps = state => {
-    if(state.form.registration && state.form.registration.values) return{
-        currentPassword : state.form.registration.values.password
+    if(getIsPassword(state)) return{
+        currentPassword : getRegistrationPassword(state)
     }
 }
 

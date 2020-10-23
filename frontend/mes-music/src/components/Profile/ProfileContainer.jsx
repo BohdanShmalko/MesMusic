@@ -32,10 +32,8 @@ const someUser = {
     ]
 }
 
-class ProfileContainer extends React.Component {
-    render() {
-        return <Profile {...someUser}/>
-    }
+function ProfileContainer() {
+    return <Profile {...someUser}/>
 }
 
 const stateToProps = state => ({})

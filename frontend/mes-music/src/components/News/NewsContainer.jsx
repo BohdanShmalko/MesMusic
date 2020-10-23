@@ -3,10 +3,8 @@ import {connect} from "react-redux"
 import {compose} from "redux"
 
 
-class NewsContainer extends React.Component {
-    render() {
-        return <div>news</div>
-    }
+function NewsContainer() {
+    return <div>news</div>
 }
 
 const stateToProps = state => ({

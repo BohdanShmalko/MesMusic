@@ -4,12 +4,10 @@ import {compose} from 'redux'
 import ForgetPassword from './ForgetPassword'
 
 
-class ForgetPasswordContainer extends React.Component {
-    render() {
-        return <div>
-            <ForgetPassword {...this.props}/>
-        </div>
-    }
+function ForgetPasswordContainer(props) {
+    return <div>
+        <ForgetPassword {...props}/>
+    </div>
 }
 
 const stateToProps = state => ({

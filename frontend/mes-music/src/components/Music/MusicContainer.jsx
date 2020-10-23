@@ -4,12 +4,10 @@ import {compose} from 'redux'
 import Music from "./Music";
 import {actionCreator} from "../../redux/storeRedux";
 
-class MusicContainer extends React.Component {
-    render() {
-        return <div>
-            <Music {...this.props} />
-        </div>
-    }
+function MusicContainer(props) {
+    return <div>
+        <Music {...props} />
+    </div>
 }
 
 const stateToProps = state => ({

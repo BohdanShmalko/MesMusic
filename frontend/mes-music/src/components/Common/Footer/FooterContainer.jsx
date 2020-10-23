@@ -5,12 +5,10 @@ import Footer from './Footer'
 import {constantes} from "../../../static/constantes";
 
 
-class FooterContainer extends React.Component {
-    render() {
-        return <div>
-            <Footer {...this.props}/>
-        </div>
-    }
+function FooterContainer(props) {
+    return <div>
+        <Footer {...props}/>
+    </div>
 }
 
 const stateToProps = state => ({

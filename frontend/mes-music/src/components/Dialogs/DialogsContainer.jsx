@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from "react-redux"
 import {compose} from "redux"
-import {Messages} from "./Messages";
+import {Dialogs} from "./Dialogs";
 
 const watchId = 0;
 
@@ -54,15 +54,13 @@ const messages = {
     }
 }
 
-class MessagesContainer extends React.Component {
-    render() {
-        return <Messages watchId={watchId} messages={messages}/>
-    }
+function DialogsContainer() {
+    return <Dialogs watchId={watchId} messages={messages}/>
 }
 
 const stateToProps = state => ({})
 
 export default compose(
-    connect(stateToProps, {}))(MessagesContainer)
+    connect(stateToProps, {}))(DialogsContainer)
 
 

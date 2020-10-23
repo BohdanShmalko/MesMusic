@@ -1,7 +1,7 @@
 import React from 'react'
-import s from './Messages.module.css'
+import s from './Dialogs.module.css'
 
-export const Messages = (props) => {
+export const Dialogs = (props) => {
     //delete in future
     const myId = 0;
     /////////////////
