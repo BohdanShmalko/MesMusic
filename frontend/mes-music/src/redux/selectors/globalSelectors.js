@@ -11,3 +11,7 @@ export const getIsAuthorize = state => state.authorize.isAuthorize
 
 export const getWatchId = state => state.dialogsReducer.watchId
 export const getMessages = state => state.dialogsReducer.messages
+
+
+export const getPeoples = state => state.peoplesReducer.peoples
+export const getGroups = state => state.peoplesReducer.groups
