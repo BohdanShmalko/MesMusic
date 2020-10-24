@@ -1,9 +1,9 @@
 import React from 'react'
-import {connect} from "react-redux"
-import {compose} from "redux"
-import {Dialogs} from "./Dialogs";
-import {getMessages, getWatchId} from "../../redux/selectors/globalSelectors";
-import {onAddMessageClick, onDialogClick} from "../../redux/dialogsReducer";
+import {connect} from 'react-redux'
+import {compose} from 'redux'
+import {Dialogs} from './Dialogs'
+import {getMessages, getWatchId} from '../../redux/selectors/globalSelectors'
+import {onAddMessageClick, onDialogClick} from '../../redux/dialogsReducer'
 
 const userId = 0 //delete in future
 

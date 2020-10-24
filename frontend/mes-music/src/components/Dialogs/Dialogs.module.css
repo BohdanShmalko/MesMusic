@@ -1,54 +1,62 @@
-.messages {
+.messagePage {
     display: grid;
     grid-template-columns: 1fr 2fr;
+    padding: 1%;
 }
 
-.users {
-    text-align: right;
-    margin-right: 5%;
-}
+.usersList {}
 
-.messageItems {
-    padding: 2%;
-}
-
-.users img {
-    height: 50px;
-    border-radius: 100px;
-}
-
-.messageItems img {
-    height: 25px;
-    border-radius: 100px;
+.usersListItem {
+    border: 2px solid darkcyan;
+    margin: 2%;
 }
 
 .active {
-    background-color: gold;
+    background-color: aquamarine;
+}
+
+.messageItems {
+    display: grid;
+    grid-template-rows: 5fr 1fr;
+}
+.messageItems img {
+    height: 25px;
+    border-radius: 100px;
 }
 
 .message {
     display: grid;
     grid-template-columns: 5fr 5fr 1fr;
     grid-template-areas: "P M T";
+    border: 2px solid darkcyan;
+    margin: 1%;
 }
 
 .myMessage {
     display: grid;
-    grid-template-columns: 1fr 10fr 1fr 1fr;
-    padding: 1%;
+    grid-template-columns: 1fr 10fr;
     text-align: right;
     grid-area: M;
 }
-.whosMessage {
+.whoseMessage {
     display: grid;
-    grid-template-columns: 1fr 1fr 10fr 1fr;
-    padding: 1%;
+    grid-template-columns: 1fr 10fr;
     text-align: left;
     grid-area: P;
 }
 
 .time {
     grid-area: T;
+}
+
+.messageList {}
+.usersList img {
+    height: 50px;
+    border-radius: 100px;
+}
+
+.addMessageBox {
+    border: 2px solid darkcyan;
 }
 
 .addMessage {
