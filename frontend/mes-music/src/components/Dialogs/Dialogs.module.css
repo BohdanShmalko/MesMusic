@@ -19,37 +19,7 @@
     display: grid;
     grid-template-rows: 5fr 1fr;
 }
-.messageItems img {
-    height: 25px;
-    border-radius: 100px;
-}
 
-.message {
-    display: grid;
-    grid-template-columns: 5fr 5fr 1fr;
-    grid-template-areas: "P M T";
-    border: 2px solid darkcyan;
-    margin: 1%;
-}
-
-.myMessage {
-    display: grid;
-    grid-template-columns: 1fr 10fr;
-    text-align: right;
-    grid-area: M;
-}
-.whoseMessage {
-    display: grid;
-    grid-template-columns: 1fr 10fr;
-    text-align: left;
-    grid-area: P;
-}
-
-.time {
-    grid-area: T;
-}
-
-.messageList {}
 .usersList img {
     height: 50px;
     border-radius: 100px;
