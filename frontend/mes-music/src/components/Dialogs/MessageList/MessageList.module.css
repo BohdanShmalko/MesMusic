@@ -1,0 +1,44 @@
+.demoInfiniteContainer {
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    padding: 8px 24px;
+    height: 300px;
+    overflow: auto;
+    display: flex; /*???*/
+    flex-direction: column-reverse; /*???*/
+}
+.demoLoadingContainer {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    text-align: center;
+}
+
+
+
+.message {
+    display: grid;
+    grid-template-columns: 5fr 5fr 1fr;
+    grid-template-areas: "P M T";
+    border: 2px solid darkcyan;
+    margin: 1%;
+}
+
+.myMessage {
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+    text-align: right;
+    grid-area: M;
+}
+.whoseMessage {
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+    text-align: left;
+    grid-area: P;
+}
+
+.time {
+    grid-area: T;
+}
+
+.messageList {}

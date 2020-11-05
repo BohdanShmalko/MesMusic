@@ -1,40 +1,34 @@
-.messages {
+.messagePage {
     display: grid;
     grid-template-columns: 1fr 2fr;
+    padding: 1%;
 }
 
-.users {
-    text-align: right;
-    margin-right: 5%;
+.usersList {}
+
+.usersListItem {
+    border: 2px solid darkcyan;
+    margin: 2%;
+}
+
+.active {
+    background-color: aquamarine;
 }
 
 .messageItems {
-    padding: 2%;
+    display: grid;
+    grid-template-rows: 5fr 1fr;
 }
 
-.users img {
+.usersList img {
     height: 50px;
     border-radius: 100px;
 }
 
-.messageItems img {
-    height: 25px;
-    border-radius: 100px;
+.addMessageBox {
+    border: 2px solid darkcyan;
 }
 
-.active {
-    background-color: gold;
-}
-
-.myMessage {
-    display: grid;
-    grid-template-columns: 1fr 10fr 1fr 1fr;
-    padding: 1%;
-    text-align: right;
-}
-.whosMessage {
-    display: grid;
-    grid-template-columns: 1fr 1fr 10fr 1fr;
-    padding: 1%;
-    text-align: left;
+.addMessage {
+    float: right;
 }

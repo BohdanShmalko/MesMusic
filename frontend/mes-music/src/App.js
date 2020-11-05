@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import './App.css'
 import {Route} from 'react-router-dom'
 import ProfileContainer from './components/Profile/ProfileContainer'
@@ -12,13 +12,13 @@ import NewsContainer from './components/News/NewsContainer'
 import TrainingContainer from './components/Training/TrainingContainer'
 import FooterContainer from './components/Common/Footer/FooterContainer'
 import ForgetPasswordContainer from './components/ForgetPassword/ForgetPasswordConteiner'
-import {constantes} from "./static/constantes";
+import {constantes} from './static/constantes'
 
 function App() {
   return (
-    <div className="App" style={{backgroundImage : `url(${constantes.backgroundImage})`}}>
+    <div className='App' style={{backgroundImage : `url(${constantes.backgroundImage})`}}>
       <HeaderContainer/>
-      <div className = "wrapper body">
+      <div className = 'wrapper body'>
         <Route path = '/home' render = {() => <HomeContainer/>} />
         <Route path = '/profile/:id?' render = {() => <ProfileContainer/>} />
         <Route path = '/dialogs' render = {() => <DialogsContainer/>} />
