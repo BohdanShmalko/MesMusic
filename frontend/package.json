@@ -24,8 +24,6 @@
     "reselect": "^4.0.0"
   },
   "scripts": {
-    "worker" : "nodemon ./backend/worker.js",
-    "cluster" : "nodemon ./backend/cluster.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

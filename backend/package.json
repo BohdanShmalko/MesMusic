@@ -1,0 +1,13 @@
+{
+  "name": "server-mes",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.4.2"
+  },
+  "scripts": {
+    "worker": "nodemon ./worker.js",
+    "cluster": "nodemon ./cluster.js"
+  }
+}
