@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 
-const createAppWithSettings = () => {
+const createAppWithSettings = (port = 3001, callback = null, host = 'localhost') => {
   const app = express()
   app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -11,7 +11,7 @@ const createAppWithSettings = () => {
   });
 
   app.use(bodyParser.json());
-
+  app.listen(port, host, callback)
   return app
 }
 
