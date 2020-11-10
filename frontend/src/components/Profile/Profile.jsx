@@ -1,11 +1,25 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import s from './Profile.module.css'
 import {SidePhotoBar} from './SidePhotoBar/SidePhotoBar'
+import {getStatus} from '../../redux/profileReducer'
+import {useDispatch, useSelector} from 'react-redux'
+import {getUserStatus} from '../../redux/selectors/globalSelectors'
 
 export const Profile = ({
-                            mainPhoto, photos, nickName, status, info, posts, isOwn, onStatusChange,
+                            mainPhoto, photos, nickName, info, posts, isOwn, onStatusChange,
                             onAddPost
                         }) => {
+    const dispatch = useDispatch()
+    const status = useSelector(getUserStatus)
+
+    useEffect(() => {
+        dispatch(getStatus(6))
+    }, [])
+
+    useEffect(() => {
+        setTempStatus(status)
+    }, [status])
+
     const [isStatusChangeActive, setIsStatusChangeActive] = useState(false)
     const [tempStatus, setTempStatus] = useState(status)
 

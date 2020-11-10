@@ -1,9 +1,21 @@
+const {query} = require('../functions/DB')
+
+const getUserStatus = (id) => `SELECT status FROM users WHERE id = ${id};`
+
 const profiles =  [
     {
         method : 'get',
-        url : '/testProfile1',
+        url : '/status/:id',
         callback(req,res) {
-            res.send('testProfile1')
+            query(getUserStatus(req.params.id), data => {
+                const response = JSON.stringify({
+                    payload: data.rows[0],
+                    meta: {
+                        resultCode: 0
+                    }
+                })
+                res.send(response)
+            })
         }
     },
     {
