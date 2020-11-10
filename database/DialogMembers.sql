@@ -1,10 +1,9 @@
 DROP TABLE dialogMembers;
 
-
 create table DialogMembers (
 	id BIGSERIAL NOT NULL PRIMARY KEY,
-	users_id BIGSERIAL NOT NULL,
-	dialogs_id BIGSERIAL NOT NULL
+	dialogs_id BIGSERIAL NOT NULL REFERENCES dialogs(id),
+	users_id BIGSERIAL NOT NULL REFERENCES users(id)
 );
 insert into DialogMembers (id, users_id, dialogs_id) values (1, 1, 25);
 insert into DialogMembers (id, users_id, dialogs_id) values (2, 93, 40);
