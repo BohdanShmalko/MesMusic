@@ -1,18 +1,14 @@
-const musics =  [
-    {
-        method : 'get',
-        url : '/testMusic1',
-        callback(req,res) {
-            res.send('testMusic1')
-        }
-    },
-    {
-        method : 'get',
-        url : '/testMusic2',
-        callback(req,res) {
-            res.send('testMusic2')
-        }
-    }
-]
+const reqCreator = require('../functions/requestCreator')
 
-module.exports = musics
+const loadMusic = reqCreator('get', '/loadMusic', (req, res) => {
+    req.session.data.id = 100
+    req.session.data.name = 'Karl'
+    req.session.set(req.session.data)
+    res.send('session save')
+}, true)
+
+const getMusic = reqCreator('get', '/getMusic', (req, res) => {
+    res.send(req.session.data)
+}, true)
+
+module.exports = [loadMusic, getMusic]

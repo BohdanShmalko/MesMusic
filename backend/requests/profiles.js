@@ -1,30 +1,21 @@
 const {query} = require('../functions/DB')
+const reqCreator = require('../functions/requestCreator')
 
 const getUserStatus = (id) => `SELECT status FROM users WHERE id = ${id};`
 
-const profiles =  [
-    {
-        method : 'get',
-        url : '/status/:id',
-        callback(req,res) {
-            query(getUserStatus(req.params.id), data => {
-                const response = JSON.stringify({
-                    payload: data.rows[0],
-                    meta: {
-                        resultCode: 0
-                    }
-                })
-                res.send(response)
-            })
-        }
-    },
-    {
-        method : 'get',
-        url : '/testProfile2',
-        callback(req,res) {
-            res.send('testProfile2')
-        }
-    }
-]
+const getStatus = reqCreator('get', '/status/:id', (req,res) => {
+    query(getUserStatus(req.params.id), data => {
+        res.sendJSON({
+            payload: data.rows[0],
+            meta: {
+                resultCode: 0
+            }
+        })
+    })
+})
 
-module.exports = profiles
+const testPage = reqCreator('get', '/testProfile2', (req, res) => {
+    res.send('testProfile2')
+})
+
+module.exports = [getStatus, testPage]
