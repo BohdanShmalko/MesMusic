@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import s from './Profile.module.css'
 import {SidePhotoBar} from './SidePhotoBar/SidePhotoBar'
-import {getStatus} from '../../redux/profileReducer'
+import {getStatus, setStatus} from '../../redux/profileReducer'
 import {useDispatch, useSelector} from 'react-redux'
 import {getUserStatus} from '../../redux/selectors/globalSelectors'
 
@@ -28,7 +28,7 @@ export const Profile = ({
 
     const onBlur = () => {
         setIsStatusChangeActive(false)
-        onStatusChange(tempStatus)
+        dispatch(setStatus(tempStatus))
     }
 
     const onClick = () => {

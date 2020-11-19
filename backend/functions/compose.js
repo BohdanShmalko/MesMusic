@@ -1,26 +1,19 @@
-const Session = require('./session')
+const {DbWrapper, SessionWrapper} = require('./wrappers')
 
-const compose = (app, requests) => {
+const compose = (composeOptions, requests) => {
+    const {app, DBconnections} = composeOptions
     requests.forEach(page => {
         page.forEach(reqObj => {
             app[reqObj.method](reqObj.url, (req,res) => {
                 res.sendJSON = (obj) => res.send(JSON.stringify(obj))
-                if(reqObj.hasSession) {
-                    const  session = new Session(req, res)
-                     session.get( data => {
-                         data = JSON.parse(data)
-                        req.session = {
-                            token : session.token,
-                            data,
-                            set(obj) {
-                                session.set(obj)
-                            }
-                        }
-                        session.end()                           
-                        reqObj.callback(req, res)
-                    })
+                if(reqObj.config.useDB) {
+                    DbWrapper(req, DBconnections)
+                }
+                if(reqObj.config.useSession) {
+                    SessionWrapper(req, res, reqObj.callback)
                 }
                 else reqObj.callback(req, res)
+
             })
         })
     })

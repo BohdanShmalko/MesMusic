@@ -7,7 +7,7 @@ const TOKEN_LENGTH = 100,
       ALPHA = ALPHA_UPPER + ALPHA_LOWER,
       DIGIT = '0123456789',
       ALPHA_DIGIT = ALPHA + DIGIT,
-      TWO_HOUR = 60 * 60 * 2
+      TWENTY_HOUR = 60 * 60 * 20
 
 const generateToken = () => {
   const base = ALPHA_DIGIT.length;
@@ -29,13 +29,14 @@ class Sesion {
 
     async initial() {
         this.client.parseCookie()
+        //console.log(this.client.cookie)
         if(!this.client.cookie.token) {
             this.token = generateToken()
             await this.redisClient.set(this.token, JSON.stringify({}), err => {
                 if(err) throw err 
             })
             this.client.setCookie('token', this.token)
-            await this.redisClient.expire(this.token, TWO_HOUR)
+            await this.redisClient.expire(this.token, TWENTY_HOUR)
         }else this.token = this.client.cookie.token     
     }
 

@@ -62,3 +62,8 @@ export const getStatus = id => async dispatch => {
     //if(data.status == 200) //dispatch(profileActionCreator.isLoad(true))
 }
 
+export const setStatus = status => async dispatch => {
+    const data = await profileAPI.setStatus(status)
+    dispatch(onStatusChange(status))
+}
+

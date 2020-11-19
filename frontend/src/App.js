@@ -13,8 +13,10 @@ import TrainingContainer from './components/Training/TrainingContainer'
 import FooterContainer from './components/Common/Footer/FooterContainer'
 import ForgetPasswordContainer from './components/ForgetPassword/ForgetPasswordConteiner'
 import {constantes} from './static/constantes'
+import { authorizationAPI } from './DAL/API'
 
 function App() {
+  authorizationAPI.getToken()
   return (
     <div className='App' style={{backgroundImage : `url(${constantes.backgroundImage})`}}>
       <HeaderContainer/>

@@ -1,5 +1,5 @@
-const requestCreator = (method, url, callback, hasSession = false) => ({
-    method, url, callback, hasSession
+const requestCreator = (method, url, callback, config = {}) => ({
+    method, url, callback, config
 })
 
 module.exports = requestCreator
