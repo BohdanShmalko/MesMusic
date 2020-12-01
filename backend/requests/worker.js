@@ -13,8 +13,8 @@ const composeOptions = {
         host : '127.0.0.1',
         port : 5432,
         database : 'mesmusic', 
-        user : 'postgres', 
-        password : '1234'
+        user : 'mesuser',
+        password : '1111'
     })
 }
 

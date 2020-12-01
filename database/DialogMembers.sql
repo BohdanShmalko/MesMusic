@@ -1,5 +1,3 @@
-DROP TABLE dialogMembers;
-
 create table DialogMembers (
 	id BIGSERIAL NOT NULL PRIMARY KEY,
 	dialogs_id BIGSERIAL NOT NULL REFERENCES dialogs(id),

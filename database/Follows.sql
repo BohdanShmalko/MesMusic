@@ -1,5 +1,3 @@
-DROP TABLE follows;
-
 create table Follows (
 	id BIGSERIAL NOT NULL PRIMARY KEY,
 	follower_id BIGSERIAL NOT NULL REFERENCES users(id),

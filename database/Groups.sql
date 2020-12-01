@@ -1,5 +1,3 @@
-DROP TABLE groups;
-
 create table Groups (
 	id BIGSERIAL NOT NULL PRIMARY KEY,
 	groupName VARCHAR(50) NOT NULL,

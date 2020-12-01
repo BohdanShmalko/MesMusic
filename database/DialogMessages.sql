@@ -1,5 +1,3 @@
-DROP TABLE dialogMessages;
-
 create table DialogMessages (
 	id BIGSERIAL NOT NULL PRIMARY KEY,
 	messageContent TEXT NOT NULL,

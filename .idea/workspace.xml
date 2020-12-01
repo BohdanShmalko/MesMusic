@@ -19,13 +19,30 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1157e8df-c624-4f14-b10d-e204b63b11b0" name="Default Changelist" comment="" />
+    <list default="true" id="1157e8df-c624-4f14-b10d-e204b63b11b0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/database/mesDBstart.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/requests/worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/requests/worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/DialogMembers.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/DialogMembers.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/DialogMessages.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/DialogMessages.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/Dialogs.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/Dialogs.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/Follows.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/Follows.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/Groups.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/Groups.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/Posts.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/Posts.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/Select.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/Select.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/Users.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/Users.sql" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1jumRIAVG5WvqjwZ2xNmtVcXmXN" />

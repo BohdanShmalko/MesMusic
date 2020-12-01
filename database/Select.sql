@@ -1,7 +1,7 @@
-psql -U postgres
-CREATE DATABASE mesMusic;
-\c mesmusic
-\dt posts
+--\cd G:/3_cource/Shems/MesMusic/database
+\ir mesDBstart.sql
+
+----------------------------------------
 
 SELECT addtime FROM posts;
 
@@ -20,7 +20,7 @@ INNER JOIN dialogs ON dialogs.id = dialogMembers.dialogs_id
 INNER JOIN users ON users.id = dialogMembers.users_id
 ORDER BY createDate DESC LIMIT 10;
 
-DELETE FROM () WHERE
+--DELETE FROM () WHERE
 
 SELECT dialogName, COUNT(*), isPrivate FROM dialogMembers
 INNER JOIN dialogs ON dialogs.id = dialogMembers.dialogs_id

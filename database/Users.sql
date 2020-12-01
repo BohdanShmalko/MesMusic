@@ -1,5 +1,3 @@
-DROP TABLE users;
-
 create table Users (
 	id BIGSERIAL NOT NULL PRIMARY KEY,
 	nickname VARCHAR(15) NOT NULL,

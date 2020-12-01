@@ -1,5 +1,3 @@
-DROP TABLE posts;
-
 create table Posts (
 	id BIGSERIAL NOT NULL PRIMARY KEY,
 	postHeader VARCHAR(50) NOT NULL,

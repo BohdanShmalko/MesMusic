@@ -1,5 +1,3 @@
-DROP TABLE dialogs;
-
 create table Dialogs (
 	id BIGSERIAL NOT NULL PRIMARY KEY,
 	isPrivate BOOLEAN NOT NULL,
