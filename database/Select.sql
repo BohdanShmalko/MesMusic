@@ -1,4 +1,5 @@
 --\cd G:/3_cource/Shems/MesMusic/database
+--\cd D:/Study/Shems/MesMusic/database
 \ir mesDBstart.sql
 
 ----------------------------------------
