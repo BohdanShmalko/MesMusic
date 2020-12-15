@@ -15,5 +15,5 @@ if(cluster.isMaster) {
   })
 
 } else if(cluster.isWorker){
-  require('./worker.js');
+  require('./requests/worker');
 }

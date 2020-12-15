@@ -1,3 +1,5 @@
+import {profileAPI} from '../DAL/API'
+
 const ON_STATUS_CHANGE = '/profile/ON_STATUS_CHANGE'
 const ON_ADD_POST = '/profile/ON_ADD_POST'
 
@@ -52,4 +54,16 @@ export const profileReducer = (state = initialState, action) => {
 
 export const onStatusChange = (status) => ({type: ON_STATUS_CHANGE, status})
 export const onAddPost = (postHeader, postContent) => ({type: ON_ADD_POST, postHeader, postContent})
+
+export const getStatus = id => async dispatch => {
+    //dispatch(profileActionCreator.isLoad(false))
+    const data = await profileAPI.getStatus(id)
+    dispatch(onStatusChange(data.payload.status))
+    //if(data.status == 200) //dispatch(profileActionCreator.isLoad(true))
+}
+
+export const setStatus = status => async dispatch => {
+    const data = await profileAPI.setStatus(status)
+    dispatch(onStatusChange(status))
+}
 
