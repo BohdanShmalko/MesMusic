@@ -10,6 +10,6 @@
   },
   "scripts": {
     "worker": "nodemon ./worker.js",
-    "cluster": "nodemon ./cluster.js"
+    "start": "nodemon ./cluster.js"
   }
 }

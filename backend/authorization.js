@@ -10,4 +10,15 @@ const test = requestCreator('get', '/user', async (req,res) => {
     // res.sendJSON(dialogs)
 }, {useDB : true})
 
-module.exports = [test]
+const setTestUser = requestCreator('get', '/setTestUser', async (req, res) => {
+    // const id = req.session.data.userId
+    // let data = await req.db.query(getUserStatus(req.params.id))
+    const sesData = await req.session.get()
+    sesData.id = 5
+    await req.session.set(sesData)
+    // let updateData = await req.session.get()
+    console.log(sesData.id)
+    res.send({id: sesData.id})
+}, {useDB: true, useSessions: true})
+
+module.exports = [test, setTestUser]

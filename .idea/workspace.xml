@@ -20,17 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1157e8df-c624-4f14-b10d-e204b63b11b0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/database/mesDBstart.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/requests/worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/requests/worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/DialogMembers.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/DialogMembers.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/DialogMessages.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/DialogMessages.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/Dialogs.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/Dialogs.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/Follows.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/Follows.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/Groups.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/Groups.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/Posts.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/Posts.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/authorization.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/authorization.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/profiles.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/profiles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/worker.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/Select.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/Select.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/Users.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/Users.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/DAL/API.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/DAL/API.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Profile/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Profile/Profile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/redux/profileReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/redux/profileReducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +71,8 @@
       <workItem from="1604662341833" duration="340000" />
       <workItem from="1604924057460" duration="704000" />
       <workItem from="1605209945776" duration="721000" />
+      <workItem from="1608653129535" duration="3022000" />
+      <workItem from="1608714577286" duration="541000" />
     </task>
     <servers />
   </component>

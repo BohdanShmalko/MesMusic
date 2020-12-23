@@ -58,7 +58,7 @@ export const onAddPost = (postHeader, postContent) => ({type: ON_ADD_POST, postH
 export const getStatus = id => async dispatch => {
     //dispatch(profileActionCreator.isLoad(false))
     const data = await profileAPI.getStatus(id)
-    dispatch(onStatusChange(data.payload.status))
+    dispatch(onStatusChange(data.status))
     //if(data.status == 200) //dispatch(profileActionCreator.isLoad(true))
 }
 

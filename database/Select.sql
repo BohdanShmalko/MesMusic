@@ -51,3 +51,8 @@ GROUP BY a.follower, b.followed LIMIT 10;
 SELECT nickname as follower FROM follows
 INNER JOIN users ON users.id = follows.follower_id
 WHERE followed_id = 10 AND follows.isFollowOnGroup = false LIMIT 10;
+
+
+
+SELECT status FROM users WHERE id = 5;
+UPDATE users SET status = '{newStatus}' WHERE id = 5;

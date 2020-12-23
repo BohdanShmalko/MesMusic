@@ -1,5 +1,5 @@
 const {Shvidko} = require('shvidko'),
-      {ShvidkoRedisClient} = require('shvidko-redis')
+      {ShvidkoRedisClient} = require('shvidko-redis'),
       profiles = require('./profiles'),
       musics = require('./musics'),
       authorization = require('./authorization'),
@@ -23,7 +23,7 @@ const options = {
         'Access-Control-Allow-Origin': '*'
     },
     sessions : {
-        time : 100,
+        time : 60*60*3,
         client : ShvidkoRedisClient()
     }
 }
