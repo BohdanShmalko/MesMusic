@@ -13,7 +13,7 @@ export const Profile = ({
     const status = useSelector(getUserStatus)
 
     useEffect(() => {
-        dispatch(getStatus(6))
+        dispatch(getStatus(5))
     }, [])
 
     useEffect(() => {
