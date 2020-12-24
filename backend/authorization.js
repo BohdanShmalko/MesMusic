@@ -17,7 +17,7 @@ const setTestUser = requestCreator('get', '/setTestUser', async (req, res) => {
     sesData.id = 5
     await req.session.set(sesData)
     // let updateData = await req.session.get()
-    console.log(sesData.id)
+    // console.log(sesData.id)
     res.send({id: sesData.id})
 }, {useDB: true, useSessions: true})
 
