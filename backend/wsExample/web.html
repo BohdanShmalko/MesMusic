@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>Some test page</title>
+    </head>
+    <body>
+        <div id = "groupName">Group name : </div>
+        <div id = "status">Status : </div>
+        <hr>
+        <div id = "messageBox"></div>
+        <hr>
+        <div id = "sendBox">
+            <textarea id = "messageArea"></textarea>
+            <button id = "messageButton">Send</button>
+        </div>
+    </body>
+    <script>
+        const socket = new WebSocket("ws://localhost:3001/")
+
+
+        const writeText = text => {
+            const line = document.createElement("div")
+            line.innerHTML = `<p>${text}</p>`
+            messageBox.appendChild(line)
+        }
+
+        socket.onopen = () => writeText("connected")
+        socket.onclose = () => writeText("closed")
+        socket.onmessage = event => writeText(event.data)   
+
+        messageButton.onclick = () => {
+            //writeText(messageArea.value)
+            socket.send(JSON.stringify({ message : messageArea.value, dialogId : 13}))
+            messageArea.value = ""
+        }
+    </script>
+</html>

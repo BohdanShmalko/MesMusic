@@ -6,7 +6,8 @@
     "nodemon": "^2.0.6",
     "pg": "^8.4.2",
     "shvidko": "^1.1.4",
-    "shvidko-redis": "^1.0.0"
+    "shvidko-redis": "^1.0.0",
+    "websocket": "^1.0.33"
   },
   "scripts": {
     "worker": "nodemon ./worker.js",
