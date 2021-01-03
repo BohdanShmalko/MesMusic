@@ -1,10 +1,11 @@
 const {Shvidko} = require('shvidko'),
       {ShvidkoRedisClient} = require('shvidko-redis'),
-      profiles = require('./profiles'),
-      musics = require('./musics'),
-      authorization = require('./authorization'),
+      profiles = require('./requests/profiles'),
+      musics = require('./requests/musics'),
+      authorization = require('./requests/authorization'),
       {Pool} = require('pg'),
-      easyDB = require('./easyDB')
+      ClasicWS = require('./webSocket'),
+      shwidkoOptions = require('./shvidkoOptions')
 
 const db =  new Pool({ 
     host : '127.0.0.1',
@@ -15,22 +16,12 @@ const db =  new Pool({
 })
 
 db.connect()
-const options = {
-    db : easyDB(db),
-    standartHeaders : {
-        'Access-Control-Allow-Methods' : 'GET, POST, DELETE, OPTIONS, PUT',
-        'Access-Control-Allow-Headers': 'Accept, Content-Type',
-        'Access-Control-Allow-Origin': 'http://localhost:3000',
-        'Access-Control-Allow-Credentials': true
-    },
-    sessions : {
-        time : 60*60*3,
-        client : ShvidkoRedisClient()
-    }
-}
+const options = shwidkoOptions(db, ShvidkoRedisClient)
 
-const app = new Shvidko(options) 
-
-app.listen(3001, () => console.log("start server"))
+const app = new Shvidko(options).listen(3001, () => console.log("start server"))
 
 app.compose(...profiles, ...musics, ...authorization)
+
+const ws = new ClasicWS({
+    db, sessionClient : ShvidkoRedisClient(), httpServer : app.server, autoAcceptConnections : false
+})
