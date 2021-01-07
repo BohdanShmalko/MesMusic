@@ -1,8 +1,8 @@
 const {Shvidko} = require('shvidko'),
       {ShvidkoRedisClient} = require('shvidko-redis'),
-      profiles = require('./requests/profiles'),
-      musics = require('./requests/musics'),
-      authorization = require('./requests/authorization'),
+      profiles = require('./requests/profiles/profiles'),
+      musics = require('./requests/musics/musics'),
+      authorization = require('./requests/authorization/authorization'),
       {Pool} = require('pg'),
       ClasicWS = require('./webSocket'),
       shwidkoOptions = require('./shvidkoOptions')
