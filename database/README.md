@@ -31,4 +31,4 @@ ALTER ROLE mesuser createrole createdb;
 
 ## Datalogic model
 
-![datalogic model](./datalogicModel.png)
+![datalogic model](https://github.com/BohdanShmalko/MesMusic/blob/messageBack/database/datalogicModel.PNG)
