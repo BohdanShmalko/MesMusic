@@ -8,7 +8,7 @@
 
 Input body = {login, password}
  
-Output data = {message}
+Output data = {message, error}
 
  * /logout - log out of the account, delete all data from sessions and cookies
 
