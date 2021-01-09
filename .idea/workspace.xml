@@ -21,10 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1157e8df-c624-4f14-b10d-e204b63b11b0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/authorization.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/authorization.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/profiles.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/profiles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Profile/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Profile/Profile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
