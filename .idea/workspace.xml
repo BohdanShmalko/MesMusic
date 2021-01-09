@@ -21,8 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1157e8df-c624-4f14-b10d-e204b63b11b0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/Users.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/Users.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/mesDBstart.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/mesDBstart.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/authorization.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/authorization.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +68,7 @@
       <workItem from="1608714577286" duration="1062000" />
       <workItem from="1608810442081" duration="2310000" />
       <workItem from="1610183529870" duration="2307000" />
-      <workItem from="1610189815282" duration="4780000" />
+      <workItem from="1610189815282" duration="6446000" />
     </task>
     <task id="LOCAL-00001" summary="Prepare for CORS">
       <created>1608715631507</created>
@@ -92,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610194165741</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Prepare database">
+      <created>1610195429067</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1610195429067</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,6 +120,7 @@
     <MESSAGE value="Prepare for CORS" />
     <MESSAGE value="Basic antd design changes" />
     <MESSAGE value="Prepare for authorization, add formik" />
-    <option name="LAST_COMMIT_MESSAGE" value="Prepare for authorization, add formik" />
+    <MESSAGE value="Prepare database" />
+    <option name="LAST_COMMIT_MESSAGE" value="Prepare database" />
   </component>
 </project>

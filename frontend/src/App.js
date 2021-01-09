@@ -22,7 +22,7 @@ const {SubMenu} = Menu
 const {Header, Content, Footer, Sider} = Layout
 
 function App() {
-    authorizationAPI.getToken()
+    //authorizationAPI.getToken()
     return (
         <Layout>
             <Header className="header">
