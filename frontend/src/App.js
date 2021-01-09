@@ -3,7 +3,6 @@ import './App.css'
 import {Link, NavLink, Route} from 'react-router-dom'
 import ProfileContainer from './components/Profile/ProfileContainer'
 import HeaderContainer from './components/Common/Header/HeaderContainer'
-import HomeContainer from './components/Home/HomeContainer'
 import DialogsContainer from './components/Dialogs/DialogsContainer'
 import PeoplesContainer from './components/Peoples/PeoplesContainer'
 import RegistrationContainer from './components/Registration/RegistrationContainer'
@@ -17,6 +16,7 @@ import 'antd/dist/antd.css'
 import {authorizationAPI} from './DAL/API'
 import {Layout, Menu, Breadcrumb} from 'antd'
 import {UserOutlined, CustomerServiceOutlined} from '@ant-design/icons'
+import Home from './components/Home/Home'
 
 const {SubMenu} = Menu
 const {Header, Content, Footer, Sider} = Layout
@@ -61,10 +61,10 @@ function App() {
                         </Menu>
                     </Sider>
                     <Content style={{padding: '0 24px', minHeight: 280}}>
-                        <Route path='/home' render={() => <HomeContainer/>}/>
+                        <Route path='/home' render={() => <Home/>}/>
                         <Route path='/profile/:id?' render={() => <ProfileContainer/>}/>
                         <Route path='/dialogs' render={() => <DialogsContainer/>}/>
-                        {/*групи+друзі+фільтр */} <Route path='/peoples' render={() => <PeoplesContainer/>}/>
+                        <Route path='/peoples' render={() => <PeoplesContainer/>}/>
                         <Route path='/registration' render={() => <RegistrationContainer/>}/>
                         <Route path='/music' render={() => <MusicContainer/>}/>
                         <Route path='/news' render={() => <NewsContainer/>}/>

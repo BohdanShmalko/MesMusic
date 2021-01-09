@@ -21,4 +21,12 @@ const setTestUser = requestCreator('get', '/setTestUser', async (req, res) => {
     res.send({id: sesData.id})
 }, {useDB: true, useSessions: true})
 
-module.exports = [test, setTestUser]
+const authorise = requestCreator('post', '/authorise', async (req, res) => {
+    const email = req.body.email
+    const password = req.body.password
+    const isRemember = !!+req.body.isRemember
+    console.log({email, password, isRemember})
+    res.send({email, password, isRemember})
+}, {useDB: true, useSessions: true})
+
+module.exports = [test, setTestUser, authorise]
