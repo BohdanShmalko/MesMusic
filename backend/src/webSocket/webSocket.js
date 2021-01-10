@@ -1,11 +1,13 @@
-const Websocket = require('websocket').server
+const Websocket = require('websocket').server,
+      dbConnection = require('../database/connection'),
+      {ShvidkoRedisClient} = require('shvidko-redis')
 
 class ClasicWS {
-    constructor({db, sessionClient, httpServer, autoAcceptConnections}){
+    constructor(options){
         this.connections = {}
-        this.ws = new Websocket({httpServer, autoAcceptConnections})
-        this.db = db
-        this.sessionClient = sessionClient
+        this.ws = new Websocket(options)
+        this.db = dbConnection('127.0.0.1', 5432, 'mesmusic', 'mesuser', '1111')
+        this.sessionClient = ShvidkoRedisClient
 
         this.ws.on('request', this.onRequest)
     }

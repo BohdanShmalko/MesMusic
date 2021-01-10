@@ -1,23 +1,23 @@
-const {requestCreator} = require('shvidko'),
-      SQL = require('./SQL'),
-      {withAll} = require('../helpers/settings')
+const { requestCreator } = require('shvidko');
+const SQL = require('../database/musicInterface');
+const { withAll } = require('./helper/settings');
 
 const getUserMusic = requestCreator('get', '/music/:userId', (req, res) => {
-    
-}, withAll)
+  res.send(`You enter ${req.params.userId} user id`);
+}, withAll);
 
 const loadMusic = requestCreator('post', '/loadmusic', (req, res) => {
-}, withAll)
+}, withAll);
 
 const addMusic = requestCreator('post', '/addmusic', (req, res) => {
-}, withAll)
+}, withAll);
 
 const deleteMusic = requestCreator('delete', '/music:/musicId', (req, res) => {
 
-}, withAll)
+}, withAll);
 
 const searchMusic = requestCreator('get', '/searchmusic/:musicName', (req, res) => {
 
-})
+});
 
-module.exports = [getUserMusic, loadMusic, addMusic, deleteMusic, searchMusic]
+module.exports = [getUserMusic, loadMusic, addMusic, deleteMusic, searchMusic];
