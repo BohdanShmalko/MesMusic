@@ -27,21 +27,22 @@ const setTestUser = requestCreator('get', '/setTestUser', async (req, res) => {
 }, withDbSessions)
 
 const authorise = requestCreator('post', '/authorise', async (req, res) => {
-    const email = req.body.email
-    const password = req.body.password
-    const isRemember = !!+req.body.isRemember
-    const truePassword = (await req.db.query(getUserPassword(email)))[0].password
+    const {email, password} = req.body
+    const {db, session} = req
+    
+    const isRemember = !!+req.body.isRemember //!!!!!!
+    const truePassword = (await db.query(getUserPassword(email)))[0].password
     if (truePassword == password) {
-        const id = (await req.db.query(getUserId(email)))[0].id
+        const id = (await db.query(getUserId(email)))[0].id
         // console.log({email, password, isRemember, id})
-        const sesData = await req.session.get()
-        sesData.id = id
-        await req.session.set(sesData)
-        const nickname = (await req.db.query(getUserNickname(id)))[0].nickname
-        res.send({nickname: nickname})
+        const sesData = await session.get()
+        await session.set({...sesData, id})
+        
+        const nickname = (await db.query(getUserNickname(id)))[0].nickname
+        res.send({nickname}, 200)
         // res.send({email, password, isRemember, id})
     } else {
-        res.send({error: 'Incorrect login or password'})
+        res.send({message: 'Incorrect login or password'}, 400)
     }
 }, withDbSessions)
 
