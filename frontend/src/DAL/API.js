@@ -3,7 +3,7 @@ import axios from 'axios'
 // import bogDaxios from "./bogDaxios"
 
 const instance = axios.create({
-    baseURL : 'http://localhost:3001/',
+    baseURL : 'https://localhost:3001/',
     withCredentials: true,
 })
 

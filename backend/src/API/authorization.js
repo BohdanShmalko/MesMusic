@@ -1,46 +1,48 @@
-const { requestCreator } = require('shvidko');
+const {requestCreator} = require('shvidko')
 const SQL = require('../database/authInterface');
-const { withDbSessions, withSessions, withAll } = require('./helper/settings');
+const { withDbSessions, withDb } = require('./helper/settings');
 
-const loginUser = requestCreator('post', '/login', async (req, res) => {
-  const { login, password } = req.body;
-  const { db, session } = req;
-  try {
-    const { rows } = await SQL.getUserId(db, login, password);
+//const getUserStatus = (id) => `SELECT status FROM users WHERE id = ${id};`
+const getUserPassword = (email) => `SELECT password FROM Users WHERE email = '${email}';`
+const getUserId = (email) => `SELECT id FROM Users WHERE email = '${email}';`
+const getUserNickname = (id) => `SELECT nickname FROM Users WHERE id = '${id}';`
 
-    if (!rows.length) return res.send({ message: 'You entered an incorrect password or email', error: true }, 403);
-    await session.set({ userId: rows[0].userId });
-    res.send({ message: 'Welcome to your profile' }, 200);
-  } catch (e) {
-    console.log('\x1b[31m%s\x1b[0m', 'Error in login \n\n\n', e);
-    res.send({ message: 'You enter bad data', error: true }, 400);
-  }
-}, withDbSessions);
+const test = requestCreator('get', '/user', async (req,res) => {
+    // req.session.data.userId = 5
+    // req.session.set(req.session.data)    
+    // res.sendJSON({status: 'ok'})
+    // const dialogs = await req.db.query(`SELECT * FROM dialogs`)
+    // res.sendJSON(dialogs)
+}, withDb)
 
-const logout = requestCreator('post', '/logout', async (req, res) => {
-  try {
-    await req.session.delete();
-    res.send({ message: 'Good Bye' }, 200);
-  } catch (e) {
-    console.log('\x1b[31m%s\x1b[0m', 'Error in logout \n\n\n', e);
-    res.send({ message: 'Problem in server', error: true }, 500);
-  }
-}, withSessions);
+const setTestUser = requestCreator('get', '/setTestUser', async (req, res) => {
+    // const id = req.session.data.userId
+    // let data = await req.db.query(getUserStatus(req.params.id))
+    const sesData = await req.session.get()
+    sesData.id = 5
+    await req.session.set(sesData)
+    // let updateData = await req.session.get()
+    // console.log(sesData.id)
+    res.send({id: sesData.id})
+}, withDbSessions)
 
-// in future add SMS or EMAIL checker
-const createuser = requestCreator('post', '/createuser', async (req, res) => {
-  const {
-    name, lastName, login, password,
-  } = req.body;
-  try {
-    const { dirPath } = req.fs.set('new directory', 'firstFile');
-    await SQL.addUser(req.db, name, lastName, login, password, dirPath);
-  } catch (e) {
-    console.log(e);
-  }
-  // set new user to database
-  // set new user id to session storage
-  // res.send({...}, 201)
-}, withAll);
+const authorise = requestCreator('post', '/authorise', async (req, res) => {
+    const email = req.body.email
+    const password = req.body.password
+    const isRemember = !!+req.body.isRemember
+    const truePassword = (await req.db.query(getUserPassword(email)))[0].password
+    if (truePassword == password) {
+        const id = (await req.db.query(getUserId(email)))[0].id
+        // console.log({email, password, isRemember, id})
+        const sesData = await req.session.get()
+        sesData.id = id
+        await req.session.set(sesData)
+        const nickname = (await req.db.query(getUserNickname(id)))[0].nickname
+        res.send({nickname: nickname})
+        // res.send({email, password, isRemember, id})
+    } else {
+        res.send({error: 'Incorrect login or password'})
+    }
+}, withDbSessions)
 
-module.exports = [loginUser, logout, createuser];
+module.exports = [test, setTestUser, authorise]
