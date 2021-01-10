@@ -4,9 +4,7 @@
 
 ----------------------------------------
 
-SELECT addtime FROM posts;
-
-SELECT nickname, postHeader, addTime FROM users
+SELECT name, postHeader, addTime FROM users
 INNER JOIN posts ON posts.users_id = users.id ORDER BY addTime DESC LIMIT 10;
 
 

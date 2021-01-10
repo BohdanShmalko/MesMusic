@@ -3,13 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "nodemon": "^2.0.6",
-    "pg": "^8.4.2",
-    "shvidko": "^1.1.4",
-    "shvidko-redis": "^1.0.0"
+    "nodemon": "^2.0.7",
+    "pg": "^8.5.1",
+    "shvidko": "^1.4.0",
+    "shvidko-redis": "^1.0.0",
+    "websocket": "^1.0.33"
   },
   "scripts": {
-    "worker": "nodemon ./worker.js",
-    "start": "nodemon ./cluster.js"
+    "start": "nodemon ./src/server/cluster.js"
+  },
+  "devDependencies": {
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
   }
 }

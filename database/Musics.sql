@@ -1,0 +1,5 @@
+CREATE TABLE Musics (
+	id SERIAL NOT NULL PRIMARY KEY,
+    musicPath VARCHAR(255) NOT NULL,
+    photoPath VARCHAR(255) NULL
+);

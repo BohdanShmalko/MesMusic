@@ -7,9 +7,16 @@ CREATE DATABASE mesmusic OWNER mesuser;
 \c mesmusic
 
 \ir Users.sql
-\ir Posts.sql
 \ir Groups.sql
-\ir Follows.sql
 \ir Dialogs.sql
-\ir DialogMessages.sql
+\ir Photos.sql
+\ir Musics.sql
+
+\ir Posts.sql
+\ir UsersFollows.sql
+\ir UsersPhotos.sql
+\ir UsersAuthentication.sql
+\ir UsersMusics.sql
 \ir DialogMembers.sql
+\ir DialogMessages.sql
+\ir GroupsFollows.sql
