@@ -24,5 +24,8 @@ export const authorizationAPI = {
     },
     authorise(data) {
         return instance.post(`authorise`, data).then(response => response.data)
+    },
+    logOut() {
+        return instance.post(`logOut`).then(response => response.data)
     }
 }

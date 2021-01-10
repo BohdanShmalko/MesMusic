@@ -17,12 +17,15 @@ import {authorizationAPI} from './DAL/API'
 import {Layout, Menu, Breadcrumb} from 'antd'
 import {UserOutlined, CustomerServiceOutlined} from '@ant-design/icons'
 import Home from './components/Home/Home'
+import {useDispatch} from 'react-redux'
+import {logOut} from './redux/authorizeReducer'
 
 const {SubMenu} = Menu
 const {Header, Content, Footer, Sider} = Layout
 
 function App() {
     //authorizationAPI.getToken()
+    const dispatch = useDispatch()
     return (
         <Layout>
             <Header className="header">
@@ -30,7 +33,7 @@ function App() {
                 <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
                     <Menu.Item key="1">Username</Menu.Item>
                     <Menu.Item key="2"><Link to = '/home'>Home</Link></Menu.Item>
-                    <Menu.Item key="3"><Link to = '/home'>Log out</Link></Menu.Item>
+                    <Menu.Item key="3"><Link to = '/home' onClick={() => dispatch(logOut())}>Log out</Link></Menu.Item>
                     <Menu.Item key="4"><Link to = '/registration'>Registration</Link></Menu.Item>
                 </Menu>
             </Header>
