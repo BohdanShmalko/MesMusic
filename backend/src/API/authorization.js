@@ -34,14 +34,14 @@ const authorise = requestCreator('post', '/authorise', async (req, res) => {
         const sesData = await session.get()
         await session.set({...sesData, id})
         const [{nickname}] = await database.getUserNickname(id)
-        res.send({nickname}, 200)
+        res.send({nickname, id}, 200)
     } else {
         res.send({message: 'Incorrect login or password'}, 400)
     }
 }, withDbSessions)
 
 const logOut = requestCreator('post', '/logOut', async (req, res) => {
-    req.session.delete()
+    //req.session.delete()
     res.send('ok', 200)
 }, withSessions)
 

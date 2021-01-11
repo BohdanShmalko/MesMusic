@@ -6,16 +6,16 @@ const initialState = {
     messages: {
         0: {
             main: {
-                name: 'Vasy228',
+                name: 'Vasy',
                 photo: 'https://pbs.twimg.com/media/EcZzOJbXgAEpndc.jpg'
             },
             peoples: {
                 0: {
-                    nickName: 'Vova666',
+                    nickName: 'Vova',
                     photo: 'https://dwpdobr8xeaso.cloudfront.net/wgvs-images/avatars/profile_llama@4x.png'
                 },
                 1: {
-                    nickName: 'Vasy228',
+                    nickName: 'Vasy',
                     photo: 'https://pbs.twimg.com/media/EcZzOJbXgAEpndc.jpg'
                 }
             },
@@ -29,22 +29,22 @@ const initialState = {
         },
         1: {
             main: {
-                name: 'Pupkin13',
+                name: 'Dima',
                 photo: 'https://whatsism.com/uploads/posts/2018-05/thumbs/1525374264_7f85e7b.jpeg'
             },
             peoples: {
                 0: {
-                    nickName: 'Vova666',
+                    nickName: 'Vova',
                     photo: 'https://dwpdobr8xeaso.cloudfront.net/wgvs-images/avatars/profile_llama@4x.png'
                 },
                 1: {
-                    nickName: 'Pupkin13',
+                    nickName: 'Dima',
                     photo: 'https://whatsism.com/uploads/posts/2018-05/thumbs/1525374264_7f85e7b.jpeg'
                 }
             },
             messages: [
                 {who: 1, message: 'Hi', time: '12:10'},
-                {who: 1, message: 'My lastname is Pupkin', time: '12:20'},
+                {who: 1, message: 'My name is Dima', time: '12:20'},
                 {who: 0, message: 'Good by!', time: '12:30'},
                 {who: 1, message: 'Hi!', time: '12:40'},
                 {who: 0, message: 'By', time: '12:41'}

@@ -15,7 +15,13 @@ export const profileAPI = {
     },
     setStatus(status) {
         return instance.post(`status`, {status}).then(response => response.data)
-    }
+    },
+    getProfile(id) {
+        return instance.get(`getProfile/:${id}`).then(response => response.data)
+    },
+    getUserPhotos(id) {
+        return instance.get(`getUserPhotos/:${id}`).then(response => response.data)
+    },
 }
 
 export const authorizationAPI = {
@@ -27,5 +33,5 @@ export const authorizationAPI = {
     },
     logOut() {
         return instance.post(`logOut`).then(response => response.data)
-    }
+    },
 }

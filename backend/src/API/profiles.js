@@ -4,7 +4,7 @@ const { withDbSessions, withAll } = require('./helper/settings');
 
 // DELETE IN FUTURE
 const getStatus = requestCreator('get', '/status/:id', async (req, res) => {
-  const data = await req.session.get();
+  const data = await req.params
   const { id } = data;
   const { getUserStatus } = SQL;
   const [status] = await req.db.query(getUserStatus(id))
@@ -13,10 +13,24 @@ const getStatus = requestCreator('get', '/status/:id', async (req, res) => {
 }, withDbSessions);
 
 // learn chank technology
-const getProfile = requestCreator('get', '/getprofile/:userId', (req, res) => {
+const getProfile = requestCreator('get', '/getProfile/:userId', async (req, res) => {
+  const data = await req.params
+  const { userId } = data
+  const { getUserProfile } = SQL
+  const [profile] = await req.db.query(getUserProfile(userId)).then(data => data.rows)
+  res.send(profile)
   // get user inf from db where id = params.userId
   // if userId from session storage = params.userId res.send({full inf}, 202)
   // if userId from session storage != params.userId res.send({not full inf}, 202)
+}, withAll);
+
+const getUserPhotos = requestCreator('get', '/getUserPhotos/:userId', async (req, res) => {
+  const data = await req.params
+  const { userId } = data
+  const { getUserPhotos } = SQL
+  let photos = await req.db.query(getUserPhotos(userId)).then(data => data.rows)
+  photos = photos.map((val) => val.path)
+  res.send(photos)
 }, withAll);
 
 const changeMainPhoto = requestCreator('put', '/mainphoto', (req, res) => {
@@ -75,4 +89,4 @@ const updateStatus = requestCreator('post', '/status', async (req, res) => {
 
 module.exports = [updateStatus, getProfile, changeMainPhoto, deleteMainPhoto,
   deletePhoto, changeName, changeAboutMe, addNewPost, deletePost, addPhoto,
-  getStatus];
+  getStatus, getUserPhotos];
