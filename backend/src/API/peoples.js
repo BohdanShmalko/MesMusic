@@ -10,4 +10,20 @@ const getPeoples = requestCreator('get', '/getPeoples', async (req, res) => {
     res.send(peoples)
 }, withDbSessions)
 
-module.exports = [getPeoples]
+const follow = requestCreator('post', '/follow', async (req, res) => {
+    const {db, session, body} = req
+    const sesData = await session.get()
+    const database = SQL(db)
+    await database.follow(sesData.id, body.followedId)
+    res.send('ok')
+}, withDbSessions)
+
+const disFollow = requestCreator('delete', '/disFollow/:disFollowedId', async (req, res) => {
+    const {db, session, params} = req
+    const sesData = await session.get()
+    const database = SQL(db)
+    await database.disFollow(sesData.id, params.disFollowedId)
+    res.send('ok')
+}, withDbSessions)
+
+module.exports = [getPeoples, follow, disFollow]

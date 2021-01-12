@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import s from './Peoples.module.css'
 import {useDispatch} from "react-redux";
-import {getPeoples} from "../../redux/peoplesReducer";
+import {disFollow, follow, getPeoples} from '../../redux/peoplesReducer'
 import {Link} from "react-router-dom";
 
 export const Peoples = (props) => {
@@ -30,7 +30,9 @@ export const Peoples = (props) => {
                     <span>{val.nickname}</span>
                     <span>{val.aboutMe}</span>
                 </Link>
-                <button>{val.followed ? 'Unfollow' : 'Follow'}</button>
+                <button onClick={val.followed ? () => dispatch(disFollow(val.id)) :
+                    () => dispatch(follow(val.id))}>
+                    {val.followed ? 'Unfollow' : 'Follow'}</button>
             </div>))}
         </div>
     </div>

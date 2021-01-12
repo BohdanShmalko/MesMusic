@@ -40,4 +40,11 @@ export const peoplesAPI = {
     getPeoples() {
         return instance.get(`getPeoples`).then(response => response.data)
     },
+    follow(followedId) {
+        return instance.post(`follow`, {followedId}).then(response => response.data)
+    },
+    disFollow(disFollowedId) {
+        console.log(1)
+        return instance.delete(`disFollow/:${disFollowedId}`).then(response => response.data)
+    },
 }
