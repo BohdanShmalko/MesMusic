@@ -1,9 +1,10 @@
-const { Shvidko } = require('shvidko');
+const shvidko = require('shvidko');
 const ClasicWS = require('../webSocket/webSocket');
 const API = require('../API/API');
 const options = require('./options');
 
-const app = new Shvidko(options).listen(3001, () => console.log('start server'));
+const app = shvidko.createServer(options);
+app.listen(3001, () => console.log('start server'));
 
 app.compose(...API);
 
