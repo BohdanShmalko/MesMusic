@@ -1,20 +1,20 @@
 .peoples {
-    background-color: #61dafb;
+    /*background-color: #61dafb;*/
     display: grid;
     grid-template-rows: 1fr 10fr;
 }
 
 .search {
-    background-color: aliceblue;
+    /*background-color: aliceblue;*/
 }
 
 .objects {
-    background-color: crimson;
+    /*background-color: crimson;*/
 }
 
 .objectItem {
     display: grid;
-    grid-template-columns: 1fr 1fr 10fr 1fr;
+    grid-template-columns: 10fr 1fr;
 }
 
 .objectItem img {

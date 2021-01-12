@@ -35,3 +35,9 @@ export const authorizationAPI = {
         return instance.post(`logOut`).then(response => response.data)
     },
 }
+
+export const peoplesAPI = {
+    getPeoples() {
+        return instance.get(`getPeoples`).then(response => response.data)
+    },
+}
