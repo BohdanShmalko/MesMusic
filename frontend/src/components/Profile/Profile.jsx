@@ -1,20 +1,48 @@
 import React, {useEffect, useState} from 'react'
 import s from './Profile.module.css'
 import {SidePhotoBar} from './SidePhotoBar/SidePhotoBar'
-import {getStatus, setStatus} from '../../redux/profileReducer'
+import {getProfile, getStatus, getUserPhotos, onAddPost, setStatus} from '../../redux/profileReducer'
 import {useDispatch, useSelector} from 'react-redux'
-import {getUserStatus} from '../../redux/selectors/globalSelectors'
+import {
+    getId,
+    getIsAuthorize,
+    getUserInfo,
+    getUserMainPhoto, getUserNickName, getUserPhotosSel, getUserPosts,
+    getUserStatus
+} from '../../redux/selectors/globalSelectors'
+import {Redirect, useHistory} from 'react-router-dom'
+import * as queryString from 'querystring'
 
-export const Profile = ({
-                            mainPhoto, photos, nickName, info, posts, isOwn, onStatusChange,
-                            onAddPost
-                        }) => {
+export const Profile = ({onStatusChange}) => {
     const dispatch = useDispatch()
+    const userId = useSelector(getId)
+    const isAuthorize = useSelector(getIsAuthorize)
+
+    const nickname = useSelector(getUserNickName)
     const status = useSelector(getUserStatus)
+    const mainPhoto = useSelector(getUserMainPhoto)
+    const info = useSelector(getUserInfo)
+    const posts = useSelector(getUserPosts)
+    const photos = useSelector(getUserPhotosSel)
+
+    let {id} = queryString.parse(useHistory().location.search.substr(1))
+    const [hasId, setHasId] = useState(true)
+    const [isOwn, setIsOwn] = useState(false)
 
     useEffect(() => {
-        dispatch(getStatus(5))
-    }, [])
+        if (!id && userId) {
+            id = userId
+            setHasId(false)
+            setIsOwn(true)
+        } else if (!id && !userId) {
+            setHasId(false)
+        }
+        if (id) {
+            dispatch(getStatus(id))
+            dispatch(getProfile(id))
+            dispatch(getUserPhotos(id))
+        }
+    }, [id, userId, mainPhoto])
 
     useEffect(() => {
         setTempStatus(status)
@@ -32,12 +60,11 @@ export const Profile = ({
     }
 
     const onClick = () => {
-        onAddPost(tempPostHead, tempPostContent)
+        dispatch(onAddPost(tempPostHead, tempPostContent))
         setTempPostHead('')
         setTempPostContent('')
     }
-
-    return <div className={s.profile}>
+    return !(isAuthorize || hasId) ? <Redirect to={'/home'}/> : <div className={s.profile}>
         <div className={s.mainPhoto}>
             <img src={mainPhoto} alt="!"/>
             {isOwn && <button>Change main photo</button>}
@@ -45,7 +72,7 @@ export const Profile = ({
 
         <SidePhotoBar photos={photos}/>
 
-        <div className={s.nickName}><h1>{nickName}</h1></div>
+        <div className={s.nickName}><h1>{nickname}</h1></div>
 
         <div className={s.status}>
             {isOwn && isStatusChangeActive ?

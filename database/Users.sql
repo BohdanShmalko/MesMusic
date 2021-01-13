@@ -19,4 +19,4 @@ VALUES ('name2', 'lastName2', 'https://gravatar.com/avatar/b9d1a4a0bd6016e03ada4
         'status2', 'aboutMe2aboutMe2aboutMe2', 'email2@gmail.com', 'password2', '/', 'nickname2');
 INSERT INTO Users (name, lastName, mainPhoto, status, aboutMe, email, password, defaultPath, nickname)
 VALUES ('name3', 'lastName3', 'https://gravatar.com/avatar/a514a95b984e759d00a0d387901be7e7?s=400&d=robohash&r=x',
-        'status3', 'aboutMe3aboutMe3aboutMe3', 'email@gmail.com3', 'password3', '/', 'nickname3');
+        'status3', 'aboutMe3aboutMe3aboutMe3', 'email3@gmail.com', 'password3', '/', 'nickname3');

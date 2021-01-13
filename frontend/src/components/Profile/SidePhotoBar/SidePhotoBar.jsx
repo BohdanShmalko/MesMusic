@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import s from './SidePhotoBar.module.css'
+import {Button} from 'antd'
 
 export const SidePhotoBar = ({photos}) => {
 
@@ -24,7 +25,8 @@ export const SidePhotoBar = ({photos}) => {
     });
 
     return <div className={s.sidePhotoBar}>
-        <button onClick={() => onChangePhoto(-1)} className={s.button}>/////\\\\\</button>
+        <Button type="primary" shape="circle" onClick={() => onChangePhoto(-1)} className={s.button}>/\</Button>
+        {/*<UpCircleTwoTone height='5em'  className={s.button}/>*/}
         <div className={s.photoBlock}>
             {new Array(PHOTO_QUANTITY).fill(0)
                 .map((value, index) => {
@@ -37,6 +39,6 @@ export const SidePhotoBar = ({photos}) => {
                     </div>
                 })}
         </div>
-        <button onClick={() => onChangePhoto(+1)} className={s.button}>\\\\\/////</button>
+        <Button type="primary" shape="circle" onClick={() => onChangePhoto(+1)} className={s.button}>\/</Button>
     </div>
 }

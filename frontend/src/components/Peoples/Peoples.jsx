@@ -1,9 +1,20 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import s from './Peoples.module.css'
+import {useDispatch} from 'react-redux'
+import {disFollow, follow, getPeoples} from '../../redux/peoplesReducer'
+import {Link} from 'react-router-dom'
+import {compose} from 'redux'
+import {withAuthRedirect} from '../../HOC/Auth'
 
-export const Peoples = (props) => {
+export let Peoples = compose(withAuthRedirect)((props) => {
     const [option, setOption] = useState('peoples')
     let array = props[option]
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getPeoples())
+    }, [])
 
     return <div className={s.peoples}>
         <div className={s.search}>
@@ -16,12 +27,15 @@ export const Peoples = (props) => {
         </div>
         <div className={s.objects}>
             {array.map((val, key) => (<div key={key} className={s.objectItem}>
-                    <img src={val.photo} alt="My Awesome Image"/>
-                    <span>{val.nickName}</span>
-                    <span>{val.info}</span>
-                    <button>{val.follow ? 'Unfollow' : 'Follow'}</button>
-                </div>
-            ))}
+                <Link to={`/profile?id=${val.id}`}>
+                    <img src={val.mainphoto} alt="My Awesome Image"/>
+                    <span>{val.nickname}</span>
+                    <span>{val.aboutMe}</span>
+                </Link>
+                <button onClick={val.followed ? () => dispatch(disFollow(val.id)) :
+                    () => dispatch(follow(val.id))}>
+                    {val.followed ? 'Unfollow' : 'Follow'}</button>
+            </div>))}
         </div>
     </div>
-}
+})

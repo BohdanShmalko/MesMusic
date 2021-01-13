@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from "react-redux"
 import {compose} from "redux"
+import {withAuthRedirect} from "../../HOC/Auth";
 
 
 function NewsContainer() {
@@ -11,7 +12,7 @@ const stateToProps = state => ({
 
 })
 
-export default compose(
+export default compose(withAuthRedirect,
     connect(stateToProps, {}))(NewsContainer)
 
 

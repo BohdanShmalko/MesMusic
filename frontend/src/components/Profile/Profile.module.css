@@ -1,5 +1,5 @@
 .profile {
-    background-color: antiquewhite;
+    /*background-color: antiquewhite;*/
     margin: 10px;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
@@ -14,41 +14,41 @@
 }
 
 .mainPhoto {
-    background-color: brown;
+    /*background-color: brown;*/
     /*text-align: right;*/
     /*margin-right: 15%;*/
     grid-area: MP;
 }
 
 .mainPhoto img {
-    max-width: 500px;
-    max-height: 500px;
+    max-width: 400px;
+    max-height: 400px;
 }
 
 .nickName {
-    background-color: blueviolet;
+    /*background-color: blueviolet;*/
     grid-area: NN;
 }
 
 .status {
-    background-color: crimson;
+    /*background-color: crimson;*/
     grid-area: S;
 }
 
 .info {
-    background-color: chartreuse;
+    /*background-color: chartreuse;*/
     grid-area: I;
     /*margin-right: 20%;*/
 }
 
 .addPost {
-    background-color: aqua;
+    /*background-color: aqua;*/
     grid-area: AP;
     /*text-align: center;*/
 }
 
 .posts {
-    background-color: chocolate;
+    /*background-color: chocolate;*/
     grid-area: P;
     /*text-align: center;*/
 }

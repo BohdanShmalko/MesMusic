@@ -1,5 +1,5 @@
 .sidePhotoBar {
-    background-color: cadetblue;
+    /*background-color: cadetblue;*/
     grid-area: SPB;
     display: grid;
     grid-template-rows: 1fr 10fr 1fr;
@@ -11,7 +11,7 @@
 }
 
 .photoBlock {
-    background-color: darkcyan;
+    /*background-color: darkcyan;*/
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 }
