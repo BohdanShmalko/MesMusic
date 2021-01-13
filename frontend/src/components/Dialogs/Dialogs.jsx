@@ -2,8 +2,13 @@ import React, {useState} from 'react'
 import s from './Dialogs.module.css'
 import cn from 'classnames'
 import {MessageList} from './MessageList/MessageList'
+import {compose} from "redux";
+import {withAuthRedirect} from "../../HOC/Auth";
+import {Button} from "antd";
 
-export const Dialogs = ({watchId, userId, messages, onDialogClick, onAddMessageClick}) => {
+export const Dialogs = compose(withAuthRedirect)(({
+                                                      watchId, userId, messages, onDialogClick, onAddMessageClick
+                                                  }) => {
     const [messageText, changeMessageText] = useState('')
 
     const usersList = (() => {
@@ -26,13 +31,13 @@ export const Dialogs = ({watchId, userId, messages, onDialogClick, onAddMessageC
             <MessageList messages={messages} userId={userId} watchId={watchId}/>
             <div className={s.addMessageBox}>
                 <textarea onChange={(e) => changeMessageText(e.target.value)}
-                          value={messageText}/>
-                <button className={s.addMessage} onClick={() => {
+                          value={messageText} style={{width: '80%'}}/>
+                <Button className={s.addMessage} onClick={() => {
                     onAddMessageClick(messageText)
                     changeMessageText('')
-                }}>Add message
-                </button>
+                }} style={{width: '20%'}}>Add message
+                </Button>
             </div>
         </div>
     </div>
-}
+})

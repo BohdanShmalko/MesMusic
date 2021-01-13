@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './App.css'
-import {Link, NavLink, Redirect, Route, useHistory} from 'react-router-dom'
+import {Link, NavLink, Redirect, Route, useHistory, Switch} from 'react-router-dom'
 import HeaderContainer from './components/Common/Header/HeaderContainer'
 import DialogsContainer from './components/Dialogs/DialogsContainer'
 import PeoplesContainer from './components/Peoples/PeoplesContainer'
@@ -17,7 +17,7 @@ import {Layout, Menu, Breadcrumb} from 'antd'
 import {UserOutlined, CustomerServiceOutlined} from '@ant-design/icons'
 import Home from './components/Home/Home'
 import {useDispatch, useSelector} from 'react-redux'
-import {logOut} from './redux/authorizeReducer'
+import {isAuthorised, logOut} from './redux/authorizeReducer'
 import {getIsAuthorize, getNickname} from './redux/selectors/globalSelectors'
 import {Profile} from './components/Profile/Profile'
 
@@ -30,6 +30,7 @@ function App() {
     const isAuthorize = useSelector(getIsAuthorize)
     const nickname = useSelector(getNickname)
     const history = useHistory()
+    useEffect(() => dispatch(isAuthorised()), [])
     return <Layout>
         <Header className="header">
             <div className="logo"/>
@@ -43,11 +44,11 @@ function App() {
             </Menu>
         </Header>
         <Content style={{padding: '0 50px'}}>
-            <Breadcrumb style={{margin: '16px 0'}}>
-                <Breadcrumb.Item>Home</Breadcrumb.Item>
-                <Breadcrumb.Item>List</Breadcrumb.Item>
-                <Breadcrumb.Item>App</Breadcrumb.Item>
-            </Breadcrumb>
+            {/*<Breadcrumb style={{margin: '16px 0'}}>*/}
+            {/*    <Breadcrumb.Item>Home</Breadcrumb.Item>*/}
+            {/*    <Breadcrumb.Item>List</Breadcrumb.Item>*/}
+            {/*    <Breadcrumb.Item>App</Breadcrumb.Item>*/}
+            {/*</Breadcrumb>*/}
             <Layout className="site-layout-background" style={{padding: '24px 0'}}>
                 <Sider className="site-layout-background" width={200}>
                     <Menu
@@ -69,20 +70,23 @@ function App() {
                     </Menu>
                 </Sider>
                 <Content style={{padding: '0 24px', minHeight: 280}}>
-                    {/*isAuthorize ? <Redirect to={'/home'}/> :*/}
-                    <Route path='/home' render={() => <Home/>}/>
-                    <Route path='/profile' render={() => <Profile/>}/>
-                    <Route path='/dialogs' render={() => <DialogsContainer/>}/>
-                    <Route path='/peoples' render={() => <PeoplesContainer/>}/>
-                    <Route path='/registration' render={() => <RegistrationContainer/>}/>
-                    <Route path='/music' render={() => <MusicContainer/>}/>
-                    <Route path='/news' render={() => <NewsContainer/>}/>
-                    <Route path='/training' render={() => <TrainingContainer/>}/>
-                    <Route path='/forgetPassword' render={() => <ForgetPasswordContainer/>}/>
+                    <Switch>
+                        <Route path='/home' render={() => <Home/>}/>
+                        <Route path='/profile' render={() => <Profile/>}/>
+                        <Route path='/dialogs' render={() => <DialogsContainer/>}/>
+                        <Route path='/peoples' render={() => <PeoplesContainer/>}/>
+                        <Route path='/registration' render={() => <RegistrationContainer/>}/>
+                        <Route path='/music' render={() => <MusicContainer/>}/>
+                        <Route path='/news' render={() => <NewsContainer/>}/>
+                        <Route path='/training' render={() => <TrainingContainer/>}/>
+                        <Route path='/forgetPassword' render={() => <ForgetPasswordContainer/>}/>
+                        <Route path='/' render={() => <Redirect to={'/home'}/>}/>
+                        <Route path='*' render={() => '404 Not found'}/>
+                    </Switch>
                 </Content>
             </Layout>
         </Content>
-        <Footer style={{textAlign: 'center'}}>MesMusic ©2019 Created by students</Footer>
+        <Footer style={{textAlign: 'center'}}>MesMusic ©2020 Created by students</Footer>
     </Layout>
     // <div className='App' style={{backgroundImage : `url(${constantes.backgroundImage})`}}>
     // <HeaderContainer/>

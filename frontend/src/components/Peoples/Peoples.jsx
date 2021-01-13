@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import s from './Peoples.module.css'
-import {useDispatch} from "react-redux";
+import {useDispatch} from 'react-redux'
 import {disFollow, follow, getPeoples} from '../../redux/peoplesReducer'
-import {Link} from "react-router-dom";
+import {Link} from 'react-router-dom'
+import {compose} from 'redux'
+import {withAuthRedirect} from '../../HOC/Auth'
 
-export const Peoples = (props) => {
+export let Peoples = compose(withAuthRedirect)((props) => {
     const [option, setOption] = useState('peoples')
     let array = props[option]
 
@@ -36,4 +38,4 @@ export const Peoples = (props) => {
             </div>))}
         </div>
     </div>
-}
+})

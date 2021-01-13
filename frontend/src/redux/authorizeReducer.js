@@ -7,7 +7,7 @@ const SET_NICKNAME = '/authorize/SET_NICKNAME'
 const SET_ID = '/authorize/SET_ID'
 
 const initialState = {
-    isAuthorize : false,
+    isAuthorize: false,
     nickname: null,
     id: null
 }
@@ -15,36 +15,48 @@ const initialState = {
 export const authorizeReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case CHANGE_AUTHORIZE_STATUS : return {
-            ...state,
-            isAuthorize : action.status
-        }
-        case BECOME_AUTHORIZED: return {
-            ...state,
-            isAuthorize: true
-        }
-        case LOG_OUT: return {
-            ...state,
-            isAuthorize: false
-        }
-        case SET_NICKNAME: return {
-            ...state,
-            nickname: action.nickname
-        }
-        case SET_ID: return {
-            ...state,
-            id: action.id
-        }
-        default : return state
+        case CHANGE_AUTHORIZE_STATUS :
+            return {
+                ...state,
+                isAuthorize: action.status
+            }
+        case BECOME_AUTHORIZED:
+            return {
+                ...state,
+                isAuthorize: true
+            }
+        case LOG_OUT:
+            return {
+                ...state,
+                isAuthorize: false
+            }
+        case SET_NICKNAME:
+            return {
+                ...state,
+                nickname: action.nickname
+            }
+        case SET_ID:
+            return {
+                ...state,
+                id: action.id
+            }
+        default :
+            return state
     }
 }
 
 export const authorizeAC = {
-    changeAuthorizeStatus(status) { return {type : CHANGE_AUTHORIZE_STATUS, status} },
+    changeAuthorizeStatus(status) {
+        return {type: CHANGE_AUTHORIZE_STATUS, status}
+    },
     becomeAuthorized: () => ({type: BECOME_AUTHORIZED}),
     logOut: () => ({type: LOG_OUT}),
-    setNickname(nickname) { return {type : SET_NICKNAME, nickname} },
-    setId(id) { return {type : SET_ID, id} }
+    setNickname(nickname) {
+        return {type: SET_NICKNAME, nickname}
+    },
+    setId(id) {
+        return {type: SET_ID, id}
+    }
 }
 
 export const authorise = data => async dispatch => {
@@ -52,6 +64,16 @@ export const authorise = data => async dispatch => {
     dispatch(authorizeAC.becomeAuthorized())
     dispatch(authorizeAC.setNickname(nickname))
     dispatch(authorizeAC.setId(id))
+}
+
+export const isAuthorised = () => async dispatch => {
+    const data = await authorizationAPI.isAuthorised()
+    if (data.id) {
+        const {nickname, id} = data
+        dispatch(authorizeAC.becomeAuthorized())
+        dispatch(authorizeAC.setNickname(nickname))
+        dispatch(authorizeAC.setId(id))
+    }
 }
 
 export const logOut = () => async dispatch => {

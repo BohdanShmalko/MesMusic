@@ -45,4 +45,15 @@ const logOut = requestCreator('post', '/logOut', async (req, res) => {
   res.send('ok', 200);
 });
 
-module.exports = [test, setTestUser, authorise, logOut];
+const isAuthorised = requestCreator('get', '/isAuthorised', async (req, res) => {
+  const { db, session } = req
+  const database = SQL(db)
+  const isAuthorised = session.isExist
+  if (!isAuthorised) return res.send({isAuthorised})
+  const sesData = await session.get()
+  const id = sesData.id
+  const [{ nickname }] = await database.getUserNickname(id)
+  res.send({ nickname, id }, 200)
+});
+
+module.exports = [test, setTestUser, authorise, logOut, isAuthorised];

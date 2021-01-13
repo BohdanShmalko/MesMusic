@@ -25,8 +25,8 @@ export const profileAPI = {
 }
 
 export const authorizationAPI = {
-    getToken() {
-        return instance.get(`setTestUser`).then(response => response.data)
+    isAuthorised() {
+        return instance.get(`isAuthorised`).then(response => response.data)
     },
     authorise(data) {
         return instance.post(`authorise`, data).then(response => response.data)

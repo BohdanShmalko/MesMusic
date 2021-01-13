@@ -7,12 +7,12 @@
 .usersList {}
 
 .usersListItem {
-    border: 2px solid darkcyan;
+    border: 2px solid lightgrey;
     margin: 2%;
 }
 
 .active {
-    background-color: aquamarine;
+    background-color: lightgrey;
 }
 
 .messageItems {
@@ -26,7 +26,7 @@
 }
 
 .addMessageBox {
-    border: 2px solid darkcyan;
+    border: 2px solid lightgrey;
 }
 
 .addMessage {
