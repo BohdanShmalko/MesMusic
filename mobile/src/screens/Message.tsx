@@ -6,16 +6,16 @@ import {MMHader} from "../components/Common/MMHader";
 import {MainContainer} from "../components/Common/MainContainer";
 import {FooterBadge} from "../components/Common/FooterBadge";
 
-const TrainingScreen : FC<{navigation : StackNavigationProp<RootStackParamList, 'Training'>}> = ({navigation}) => {
+const MessageScreen : FC<{navigation : StackNavigationProp<RootStackParamList, 'Likes'>}> = ({navigation}) => {
     return (
         <Container>
-            <MMHader title='Trainings' useLeftBack leftPress={() => navigation.navigate('News')} useRightMessage rightPress={() => navigation.navigate('Dialogs')}/>
+            <MMHader useBodyAvatar = {{uri : 'https://w7.pngwing.com/pngs/980/886/png-transparent-male-portrait-avatar-computer-icons-icon-design-avatar-flat-face-icon-people-head-cartoon-thumbnail.png', title: 'user name'}}
+                     useLeftBack leftPress={() => navigation.navigate('Dialogs')} color={'#808235'}/>
             <MainContainer>
 
             </MainContainer>
-            <FooterBadge navigation={navigation} active={'study'}/>
         </Container>
     )
 }
 
-export default TrainingScreen
+export default MessageScreen

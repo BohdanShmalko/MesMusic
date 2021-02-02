@@ -1,13 +1,20 @@
 import React, {FC} from 'react'
-import {View, Text} from "native-base";
+import {Container} from "native-base";
 import {StackNavigationProp} from "@react-navigation/stack";
 import {RootStackParamList} from "../types/types";
+import {MMHader} from "../components/Common/MMHader";
+import {MainContainer} from "../components/Common/MainContainer";
+import {FooterBadge} from "../components/Common/FooterBadge";
 
-const MusicScreen : FC<{navigation : StackNavigationProp<RootStackParamList, 'Music'>}> = (props) => {
+const MusicScreen : FC<{navigation : StackNavigationProp<RootStackParamList, 'Music'>}> = ({navigation}) => {
     return (
-        <View>
-            <Text>MusicScreen</Text>
-        </View>
+        <Container>
+            <MMHader title='Music' useLeftBack leftPress={() => navigation.navigate('News')} useRightMessage rightPress={() => navigation.navigate('Dialogs')}/>
+            <MainContainer>
+
+            </MainContainer>
+            <FooterBadge navigation={navigation} active={'music'}/>
+        </Container>
     )
 }
 

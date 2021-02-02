@@ -1,13 +1,20 @@
 import React, {FC} from 'react'
-import {View, Text} from "native-base";
+import {Container} from "native-base";
 import {StackNavigationProp} from "@react-navigation/stack";
 import {RootStackParamList} from "../types/types";
+import {MMHader} from "../components/Common/MMHader";
+import {MainContainer} from "../components/Common/MainContainer";
+import {FooterBadge} from "../components/Common/FooterBadge";
 
-const UsersScreen : FC<{navigation : StackNavigationProp<RootStackParamList, 'Users'>}> = (props) => {
+const UsersScreen : FC<{navigation : StackNavigationProp<RootStackParamList, 'Users'>}> = ({navigation}) => {
     return (
-        <View>
-            <Text>UsersScreen</Text>
-        </View>
+        <Container>
+            <MMHader title='Users' useLeftBack leftPress={() => navigation.navigate('News')} useRightMessage rightPress={() => navigation.navigate('Dialogs')}/>
+            <MainContainer>
+
+            </MainContainer>
+            <FooterBadge navigation={navigation} active={'friends'}/>
+        </Container>
     )
 }
 

@@ -9,4 +9,6 @@ export type RootStackParamList = {
     Settings: undefined
     Training: undefined
     Users: undefined
+    Likes : undefined
+    Message : undefined
 };

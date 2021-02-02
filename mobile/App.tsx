@@ -20,6 +20,8 @@ const RegistrationScreen = React.lazy(() => import('./src/screens/Registration')
 const SettingsScreen = React.lazy(() => import('./src/screens/Settings'))
 const TrainingScreen = React.lazy(() => import('./src/screens/Trainings'))
 const UsersScreen = React.lazy(() => import('./src/screens/Users'))
+const LikesScreen = React.lazy(() => import('./src/screens/Likes'))
+const MessageScreen = React.lazy(() => import('./src/screens/Message'))
 
 const Stack = createStackNavigator<RootStackParamList>()
 
@@ -51,6 +53,8 @@ const App : FC<{}> = (props) => {
         <Stack.Screen name = 'Settings' component = {withSuspense(SettingsScreen)}/>
         <Stack.Screen name = 'Training' component = {withSuspense(TrainingScreen)}/>
         <Stack.Screen name = 'Users' component = {withSuspense(UsersScreen)}/>
+        <Stack.Screen name = 'Likes' component = {withSuspense(LikesScreen)}/>
+        <Stack.Screen name = 'Message' component = {withSuspense(MessageScreen)}/>
         </Stack.Navigator>
       </Provider>
     </NavigationContainer>

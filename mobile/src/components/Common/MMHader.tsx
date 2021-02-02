@@ -1,43 +1,60 @@
 import React, {FC} from "react";
-import {Body, Button, Header, Icon, Left, Right, Title} from "native-base";
-import {Image} from "react-native";
+import {Body, Button, Header, Icon, Left, Right, Title, Thumbnail} from "native-base";
+import {Image, Text, View} from "react-native";
 
 type PropType = {
     useLeftBack? : boolean
+    leftPress ?: () => void
 
     useBodyLogo? : boolean
+    useBodyAvatar ?: {
+        uri : string
+        title : string
+    }
     title? : string
 
     useRightMessage? : boolean
+    useRigthSettings? : boolean
+    rightPress ?: () => void
+
+    color ?: string
 }
 
-export const MMHader : FC<PropType> = ({useLeftBack, useBodyLogo, title, useRightMessage}) => {
-    return <Header style={{backgroundColor : '#08003d'}}>
+export const MMHader : FC<PropType> = ({color = '#08003d', useLeftBack, useBodyLogo, title, useRightMessage, leftPress, useRigthSettings, rightPress, useBodyAvatar}) => {
+    return <Header style={{backgroundColor : color}}>
+        <Left>
         {useLeftBack &&
-        <Left style={{flexDirection : 'row'}}>
-            <Button transparent>
-                <Icon name='arrow-back' />
-            </Button>
-        </Left>
+        <Button transparent onPress = {leftPress}>
+            <Icon name='arrow-back' />
+        </Button>
         }
-        {!useLeftBack && <Left />}
-        {useBodyLogo && <Body style={{flexDirection : 'row'}}>
+        </Left>
+        <Body>
+        {useBodyLogo && <View style={{flexDirection : 'row'}}>
             <Image
                 style={{width : 64, height : 64}}
                 source={require('../../../assets/icon.png')}
             />
             <Title style={{fontStyle : 'italic', marginTop : '15%'}}>Mesmusic</Title>
-        </Body>}
+        </View>}
+            {title && <Text style={{color : 'white', fontSize : 20}}>{title}</Text>}
+            {useBodyAvatar && <View style={{flexDirection : 'row'}}>
+                <Thumbnail source={{ uri: useBodyAvatar.uri }} style = {{width : 40, height : 40}}/>
+                <Text style={{padding : '5%', fontSize : 20, color : 'white'}}>{useBodyAvatar.title}</Text>
+            </View>}
+        </Body>
 
-        {!useBodyLogo && <Body><Title>{title}</Title></Body>}
-
+        <Right>
         {useRightMessage &&
-        <Right >
-            <Button transparent>
+            <Button transparent onPress={rightPress}>
                 <Icon name='message1' type = "AntDesign"/>
             </Button>
-        </Right>
         }
-        {!useRightMessage && <Right />}
+            {useRigthSettings &&
+            <Button transparent onPress = {rightPress}>
+                <Icon name='setting' type = "AntDesign"/>
+            </Button>
+            }
+        </Right>
     </Header>
 }

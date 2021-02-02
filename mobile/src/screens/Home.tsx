@@ -1,21 +1,21 @@
 import React, {FC} from 'react'
-import {Container, Header, Left, Body, Right, Title, Button, Icon} from "native-base";
-import {Image, Text} from 'react-native'
+import {Container} from "native-base";
 import {StackNavigationProp} from "@react-navigation/stack";
 import {RootStackParamList} from "../types/types";
 import {MMHader} from "../components/Common/MMHader";
 import {TopText} from "../components/Home/TopText";
 import {LoginForm} from "../components/Home/LoginForm";
+import {MainContainer} from "../components/Common/MainContainer";
 
 const HomeScreen : FC<{navigation : StackNavigationProp<RootStackParamList, 'Home'>}> =
-    (props) => {
+    ({navigation}) => {
     return (
         <Container>
             <MMHader useBodyLogo/>
-            <Container style={{padding : 20, backgroundColor : '#e6e6e6'}}>
+            <MainContainer>
                 <TopText />
-                <LoginForm />
-            </Container>
+                <LoginForm navigation={navigation}/>
+            </MainContainer>
         </Container>
     )
 }
