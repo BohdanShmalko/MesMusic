@@ -14,7 +14,7 @@ export const FooterBadge : FC<PropType> = ({color = '#08003d', active, navigatio
     return <Footer>
         <FooterTab style = {{backgroundColor : color}}>
             <Button badge vertical {...{active: active === 'friends'}} style={{marginTop : -5}} onPress = {() => navigation.navigate('Users')}>
-                <Badge><Text>2</Text></Badge>
+                <Badge style = {{backgroundColor : 'green'}}><Text>2</Text></Badge>
                 <Icon name="man" />
                 <Text></Text>
             </Button>
@@ -23,12 +23,12 @@ export const FooterBadge : FC<PropType> = ({color = '#08003d', active, navigatio
                 <Text></Text>
             </Button>
             <Button  badge vertical {...{active: active === 'study'}} style={{marginTop : -5}} onPress = {() => navigation.navigate('Training')}>
-                <Badge ><Text>51</Text></Badge>
+                <Badge style = {{backgroundColor : 'green'}}><Text>51</Text></Badge>
                 <Icon active name="book" />
                 <Text></Text>
             </Button>
             <Button vertical badge {...{active: active === 'likes'}} style={{marginTop : -5}} onPress = {() => navigation.navigate('Likes')}>
-                <Badge ><Text>51</Text></Badge>
+                <Badge style = {{backgroundColor : 'green'}}><Text>51</Text></Badge>
                 <Icon name="heart" />
                 <Text></Text>
             </Button>

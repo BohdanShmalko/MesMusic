@@ -10,11 +10,11 @@ import {BlueLink} from "../components/Common/BlueLink";
 const DialogsScreen : FC<{navigation : StackNavigationProp<RootStackParamList, 'Dialogs'>}> = ({navigation}) => {
     return (
         <Container>
-            <MMHader title='Dialogs' useLeftBack leftPress={() => navigation.navigate('News')} color='#bd7171'/>
+            <MMHader title='Dialogs' useLeftBack leftPress={() => navigation.navigate('News')}/>
             <MainContainer>
                 <BlueLink navigation={navigation} to={'Message'} title={'test to message'} />
             </MainContainer>
-            <FooterBadge navigation={navigation} color='#bd7171'/>
+            <FooterBadge navigation={navigation}/>
         </Container>
     )
 }

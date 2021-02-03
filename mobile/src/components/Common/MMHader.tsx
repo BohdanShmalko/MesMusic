@@ -16,11 +16,12 @@ type PropType = {
     useRightMessage? : boolean
     useRigthSettings? : boolean
     rightPress ?: () => void
+    rightTitle ?: string
 
     color ?: string
 }
 
-export const MMHader : FC<PropType> = ({color = '#08003d', useLeftBack, useBodyLogo, title, useRightMessage, leftPress, useRigthSettings, rightPress, useBodyAvatar}) => {
+export const MMHader : FC<PropType> = ({rightTitle, color = '#08003d', useLeftBack, useBodyLogo, title, useRightMessage, leftPress, useRigthSettings, rightPress, useBodyAvatar}) => {
     return <Header style={{backgroundColor : color}}>
         <Left>
         {useLeftBack &&
@@ -55,6 +56,7 @@ export const MMHader : FC<PropType> = ({color = '#08003d', useLeftBack, useBodyL
                 <Icon name='setting' type = "AntDesign"/>
             </Button>
             }
+            {rightTitle && <Text style={{color : 'white', textAlign : 'center', fontStyle : 'italic', opacity : 0.7}}>{rightTitle}</Text>}
         </Right>
     </Header>
 }

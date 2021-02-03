@@ -11,7 +11,7 @@ type ErrorType = {
     password ?: string
     repeatPassword ?: string
 }
-
+//TODO norm validate
 export const RegistrationForm : FC<PropType> = ({}) => {
     return <Formik
         initialValues={{ name: '', lastName : '', email: '', password: '', repeatPassword: '' }}
@@ -38,7 +38,7 @@ export const RegistrationForm : FC<PropType> = ({}) => {
                         onBlur={handleBlur('name')}
                         value={values.name}
                         placeholder = 'Name'
-                        style = {{fontSize : 20}}
+                        style = {{fontSize : 20, color : 'white'}}
                     />
                 </Item>
                 {errors.name && <Text style={{color : 'red'}}>{errors.name}</Text>}
@@ -48,7 +48,7 @@ export const RegistrationForm : FC<PropType> = ({}) => {
                         onBlur={handleBlur('lastName')}
                         value={values.lastName}
                         placeholder = 'Lastname'
-                        style = {{fontSize : 20}}
+                        style = {{fontSize : 20, color : 'white'}}
                     />
                 </Item>
                 {errors.lastName && <Text style={{color : 'red'}}>{errors.lastName}</Text>}
@@ -58,7 +58,7 @@ export const RegistrationForm : FC<PropType> = ({}) => {
                         onBlur={handleBlur('email')}
                         value={values.email}
                         placeholder = 'Email'
-                        style = {{fontSize : 20}}
+                        style = {{fontSize : 20, color : 'white'}}
                     />
                 </Item>
                 {errors.email && <Text style={{color : 'red'}}>{errors.email}</Text>}
@@ -68,7 +68,7 @@ export const RegistrationForm : FC<PropType> = ({}) => {
                         onBlur={handleBlur('password')}
                         value={values.password}
                         placeholder = 'Password'
-                        style = {{fontSize : 20}}
+                        style = {{fontSize : 20, color : 'white'}}
                         autoCompleteType = 'password'
                         secureTextEntry
                     />
@@ -80,7 +80,7 @@ export const RegistrationForm : FC<PropType> = ({}) => {
                         onBlur={handleBlur('repeatPassword')}
                         value={values.repeatPassword}
                         placeholder = 'Repeat password'
-                        style = {{fontSize : 20}}
+                        style = {{fontSize : 20, color : 'white'}}
                         secureTextEntry
                     />
                 </Item>

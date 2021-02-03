@@ -14,7 +14,7 @@ type ErrorType = {
     password ?: string
     rememberMe ?: string
 }
-
+//TODO norm validate
 export const LoginForm : FC<PropType> = ({navigation}) => {
     return <View><Formik
         initialValues={{ login: '', password : '', rememberMe : false }}
@@ -36,7 +36,7 @@ export const LoginForm : FC<PropType> = ({navigation}) => {
                         onBlur={handleBlur('login')}
                         value={values.login}
                         placeholder = 'Login'
-                        style = {{fontSize : 20}}
+                        style = {{fontSize : 20, color : 'white'}}
                     />
                 </Item>
                 {errors.login && <Text style={{color : 'red'}}>{errors.login}</Text>}
@@ -46,13 +46,13 @@ export const LoginForm : FC<PropType> = ({navigation}) => {
                         onBlur={handleBlur('password')}
                         value={values.password}
                         placeholder = 'Password'
-                        style = {{fontSize : 20}}
+                        style = {{fontSize : 20, color : 'white'}}
                         secureTextEntry
                     />
                 </Item>
                 {errors.password && <Text style={{color : 'red'}}>{errors.password}</Text>}
                 <View style={{flexDirection : 'row'}}>
-                    <Text>Remember me </Text>
+                    <Text style={{color : 'white'}}>Remember me </Text>
                     <CheckBox checked={values.rememberMe} onPress={() => setFieldValue('rememberMe', !values.rememberMe)} style={{marginBottom : 20}}/>
                 </View>
                 <Text>
