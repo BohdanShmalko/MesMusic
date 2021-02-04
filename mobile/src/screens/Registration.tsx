@@ -10,7 +10,7 @@ const RegistrationScreen : FC<{navigation : StackNavigationProp<RootStackParamLi
     return (
         <Container>
             <MMHader title='Registration' useLeftBack leftPress = {() => navigation.goBack()}/>
-            <MainContainer>
+            <MainContainer >
                 <RegistrationForm />
             </MainContainer>
         </Container>

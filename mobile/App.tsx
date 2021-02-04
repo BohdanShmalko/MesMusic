@@ -9,6 +9,7 @@ import {RootStackParamList} from "./src/types/types";
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import {Text} from "react-native";
+import {Fallback} from "./src/components/Common/Fallback";
 
 const HomeScreen = React.lazy(() => import('./src/screens/Home'))
 const ForgetPasswordScreen = React.lazy(() => import('./src/screens/ForgetPassword'))
@@ -38,7 +39,7 @@ const App : FC<{}> = (props) => {
     })()
   }, [])
 
-  if(!isReady) return <Text>Loading...</Text>
+  if(!isReady) return <Fallback/>
 
   return <NavigationContainer>
       <Provider store = {store} >

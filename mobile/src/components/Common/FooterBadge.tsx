@@ -19,7 +19,7 @@ export const FooterBadge : FC<PropType> = ({color = '#08003d', active, navigatio
                 <Text></Text>
             </Button>
             <Button vertical {...{active: active === 'music'}} style={{marginTop : -5}} onPress = {() => navigation.navigate('Music')}>
-                <Icon name="play" />
+                <Icon name="md-headset" />
                 <Text></Text>
             </Button>
             <Button  badge vertical {...{active: active === 'study'}} style={{marginTop : -5}} onPress = {() => navigation.navigate('Training')}>

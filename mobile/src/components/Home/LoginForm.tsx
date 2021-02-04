@@ -1,7 +1,7 @@
-import React, {FC, useState} from "react";
-import {Text, TextInput, View} from "react-native";
-import {Button, CheckBox, Container, Input, Item } from "native-base";
-import { Formik, Field } from "formik";
+import React, {FC} from "react";
+import {Text, View} from "react-native";
+import {Button, CheckBox, Input, Item} from "native-base";
+import {Formik} from "formik";
 import {BlueLink} from "../Common/BlueLink";
 import {StackNavigationProp} from "@react-navigation/stack";
 import {RootStackParamList} from "../../types/types";
