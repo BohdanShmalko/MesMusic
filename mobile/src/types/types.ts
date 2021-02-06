@@ -1,3 +1,5 @@
+import {StackNavigationProp} from "@react-navigation/stack";
+
 export type RootStackParamList = {
     Home: undefined
     Dialogs: undefined
@@ -25,3 +27,11 @@ export type UserType = {
     about : string
     isFriend : boolean
 }
+
+export type MessageType = {
+    id: string
+    isMyMessage: boolean
+    status : 'in process' | 'sent' | 'revised'
+}
+
+export type navigationType = StackNavigationProp<RootStackParamList, "Home" | "Dialogs" | "ForgetPassword" | "Music" | "News" | "Profile" | "Registration" | "Settings" | "Training" | "Users" | "Likes" | "Message">

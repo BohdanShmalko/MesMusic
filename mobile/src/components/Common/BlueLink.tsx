@@ -1,10 +1,9 @@
 import React, {FC} from "react";
 import {Text} from "react-native";
-import {StackNavigationProp} from "@react-navigation/stack";
-import {RootStackParamList} from "../../types/types";
+import {navigationType} from "../../types/types";
 
 type PropType = {
-    navigation : StackNavigationProp<RootStackParamList, "Home" | "Dialogs" | "ForgetPassword" | "Music" | "News" | "Profile" | "Registration" | "Settings" | "Training" | "Users" | "Likes" | "Message">
+    navigation : navigationType
     to : any
     title : string
 }

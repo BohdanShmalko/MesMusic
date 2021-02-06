@@ -1,11 +1,15 @@
 import React, {FC} from "react";
-import {Dimensions, FlatList} from "react-native";
+import {Dimensions, FlatList, Text, TouchableOpacity, View} from "react-native";
 import {List} from "native-base";
 import {User} from "./User";
+import {Overlay} from "../Common/Overlay";
+import {navigationType} from "../../types/types";
 
-type PropType = {}
+type PropType = {
+    navigation : navigationType
+}
 
-export const UsersList: FC<PropType> = (props) => {
+export const UsersList: FC<PropType> = ({navigation}) => {
     const screenWidth = Dimensions.get('window').width
     return <List style={{
         flex: 1,
@@ -17,11 +21,11 @@ export const UsersList: FC<PropType> = (props) => {
         <FlatList
             data={[
                 {id: '1', name : 'Vaselina', photoUri : 'https://cdn.psychologytoday.com/sites/default/files/styles/article-inline-half-caption/public/field_blog_entry_images/2018-09/shutterstock_648907024.jpg?itok=0hb44OrI',
-                    about : 'some firm from the internet that photo was first', isFriend : true},
+                    about : 'some firm from the internet that photo was first', isFriend : false},
                 {id: '2', name : 'Vaselina', photoUri : 'https://cdn.psychologytoday.com/sites/default/files/styles/article-inline-half-caption/public/field_blog_entry_images/2018-09/shutterstock_648907024.jpg?itok=0hb44OrI',
                     about : 'some firm from the internet that photo was first', isFriend : true},
-                {id: '3', name : 'Vaselina', photoUri : 'https://cdn.psychologytoday.com/sites/default/files/styles/article-inline-half-caption/public/field_blog_entry_images/2018-09/shutterstock_648907024.jpg?itok=0hb44OrI',
-                    about : 'some firm from the internet that photo was first', isFriend : true},
+                {id: '3', name : '?¿infinity. .sadness ¿?', photoUri : 'https://tutby.gcdn.co/n/lady.tut.by/01/3/ubit_zhaby_02.jpg',
+                    about : 'one of my friends', isFriend : true},
                 {id: '4', name : 'Vaselina', photoUri : 'https://miro.medium.com/max/2560/1*gBQxShAkxBp_YPb14CN0Nw.jpeg',
                     about : 'some firm from the internet that photo was first', isFriend : true},
                 {id: '5', name : 'Vaselina', photoUri : 'https://miro.medium.com/max/2560/1*gBQxShAkxBp_YPb14CN0Nw.jpeg',
@@ -32,8 +36,9 @@ export const UsersList: FC<PropType> = (props) => {
                     about : 'some firm from the internet that photo was first', isFriend : true},
                 {id: '8', name : 'Vaselina', photoUri : 'https://cdn.psychologytoday.com/sites/default/files/styles/article-inline-half-caption/public/field_blog_entry_images/2018-09/shutterstock_648907024.jpg?itok=0hb44OrI',
                     about : 'some firm from the internet that photo was first', isFriend : true}]}
-            renderItem={({item}) => <User {...item}/>}
+            renderItem={({item}) => <User {...item} navigation={navigation}/>}
             keyExtractor={item => item.id}
         />
+
     </List>
 }

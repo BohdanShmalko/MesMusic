@@ -8,6 +8,7 @@ import {profileAC, profileReducer} from "./profileReducer";
 import {settingsAC, settingsReducer} from "./settingsReducer";
 import {trainingAC, trainingReducer} from "./trainingReducer";
 import {usersAC, usersReducer} from "./usersReducer";
+import {commonAC, commonReducer} from "./Common";
 
 let rootReducer = combineReducers({
     authScreen : authReducer,
@@ -17,7 +18,8 @@ let rootReducer = combineReducers({
     profileScreen : profileReducer,
     settingsScreen : settingsReducer,
     trainingScreen : trainingReducer,
-    usersScreen : usersReducer
+    usersScreen : usersReducer,
+    common : commonReducer
 })
 
 type RootReducerType = typeof rootReducer
@@ -40,5 +42,6 @@ export const actionCreator = {
     profileScreen : profileAC,
     settingsScreen : settingsAC,
     trainingScreen : trainingAC,
-    usersScreen : usersAC
+    usersScreen : usersAC,
+    common : commonAC
 }

@@ -1,11 +1,10 @@
 import React, {FC} from "react";
 import {Button, Footer, FooterTab, Badge, Icon, Text} from "native-base";
-import {StackNavigationProp} from "@react-navigation/stack";
-import {RootStackParamList} from "../../types/types";
+import {navigationType, } from "../../types/types";
 
 type PropType = {
     active ?: 'friends' | 'music' | 'study' | 'likes' | 'profile'
-    navigation : StackNavigationProp<RootStackParamList, "Home" | "Dialogs" | "ForgetPassword" | "Music" | "News" | "Profile" | "Registration" | "Settings" | "Training" | "Users" | "Likes" | "Message">
+    navigation : navigationType
     color ?: string
 }
 

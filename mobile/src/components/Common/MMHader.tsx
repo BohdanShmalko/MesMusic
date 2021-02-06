@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import {Body, Button, Header, Icon, Left, Right, Title, Thumbnail} from "native-base";
-import {Image, Text, View} from "react-native";
+import {Image, Text, TouchableOpacity, View} from "react-native";
 
 type PropType = {
     useLeftBack? : boolean
@@ -26,9 +26,9 @@ export const MMHader : FC<PropType> = ({rightTitle, color = '#08003d', useLeftBa
     return <Header style={{backgroundColor : color}}>
         <Left>
         {useLeftBack &&
-        <Button transparent onPress = {leftPress}>
-            <Icon name='arrow-back' />
-        </Button>
+        <TouchableOpacity onPress = {leftPress}>
+            <Icon name='arrow-back' style = {{color : 'white'}}/>
+        </TouchableOpacity>
         }
         </Left>
         <Body>
@@ -48,19 +48,19 @@ export const MMHader : FC<PropType> = ({rightTitle, color = '#08003d', useLeftBa
 
         <Right>
         {useRightMessage &&
-            <Button transparent onPress={rightPress}>
-                <Icon name='message1' type = "AntDesign"/>
-            </Button>
+            <TouchableOpacity onPress={rightPress}>
+                <Icon name='message1' type = "AntDesign" style = {{color : 'white'}}/>
+            </TouchableOpacity>
         }
             {useRigthSettings &&
-            <Button transparent onPress = {rightPress}>
-                <Icon name='setting' type = "AntDesign"/>
-            </Button>
+            <TouchableOpacity onPress = {rightPress}>
+                <Icon name='setting' type = "AntDesign" style = {{color : 'white'}}/>
+            </TouchableOpacity>
             }
             {rightTitle && <Text style={{color : 'white', textAlign : 'center', fontStyle : 'italic', opacity : 0.7, fontSize : 10}}>{rightTitle}</Text>}
-            {useRightMenu && <Button transparent onPress = {rightPress}>
-                <Icon name = 'md-menu'/>
-            </Button>}
+            {useRightMenu && <TouchableOpacity onPress = {rightPress}>
+                <Icon name = 'md-menu' style = {{color : 'white'}}/>
+            </TouchableOpacity>}
         </Right>
     </Header>
 }

@@ -13,7 +13,7 @@ const NewsScreen : FC<{navigation : StackNavigationProp<RootStackParamList, 'New
     return (
         <Container>
             <MMHader useBodyLogo useRightMessage rightPress={() => navigation.navigate('Dialogs')}/>
-            <MainContainer minus={80}>
+            <MainContainer minus={80} >
                 <FlatList
                     data={[{id : '1', uris : ['https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg', 'https://image.freepik.com/free-photo/image-human-brain_99433-298.jpg'],
                         name : 'Lincoln', likeCount : 10, description : 'some description ddj dlkfdkl sdds sdsd kj sdjs dkjsdjs bsd bsd sjdsd skdjskd  jskdjsk jskdjk jskjdksdjskdjsk jskdjkd ksjdks kjskdjskd jdkjsdj jskdjskdj kj dksj dsk j',

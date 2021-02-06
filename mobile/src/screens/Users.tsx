@@ -35,7 +35,7 @@ const UsersScreen : FC<{navigation : StackNavigationProp<RootStackParamList, 'Us
             <MMHader title='Users' useLeftBack leftPress={() => navigation.navigate('News')} useRightMessage rightPress={() => navigation.navigate('Dialogs')}/>
             <MainContainer style={{flex : 1}}>
                 <SearchBar chouser={chouser} useChoice={testChoices}/>
-                <UsersList />
+                <UsersList navigation={navigation}/>
             </MainContainer>
             <FooterBadge navigation={navigation} active={'friends'}/>
         </Container>

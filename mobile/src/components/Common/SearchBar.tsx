@@ -12,7 +12,7 @@ export const SearchBar: FC<PropType> = ({useChoice}) => {
     return <View style={{flexDirection: 'row', marginBottom: 5}}>
         <Item style={{flex: 4, backgroundColor: 'rgba(255, 255, 255, 0.5)', borderRadius: 20}}>
             <Icon name="ios-search"/>
-            <Input placeholder="Search"/>
+            <Input placeholder="Search" />
             <Icon name="ios-people"/>
         </Item>
         <TouchableOpacity style={{flex: 1, padding: 5, justifyContent: 'center'}}>
