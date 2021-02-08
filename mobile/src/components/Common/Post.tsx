@@ -1,22 +1,25 @@
 import React, {FC, useState} from "react";
-import {Button, Icon, Text, Thumbnail} from 'native-base';
-import {Dimensions, Image, ScrollView, TouchableOpacity, View} from "react-native";
+import {Icon, Text, Thumbnail} from 'native-base';
+import {Dimensions, FlatList, Image, ScrollView, TouchableOpacity, View} from "react-native";
 import {cutText} from "../../helpers/cutText";
 import {ButtonInOverlay} from "./ButtonInOverlay";
 import {Overlay} from "./Overlay";
+import {navigationType, PostType} from "../../types/types";
 
-type PropType = {
-    uris: Array<string>
-    name: string
-    likeCount: number
-    description: string
-    publicationTime: string
-    isLike: boolean
-    userUri: string
-    isAdded: boolean
-}
+type PropType = PostType & {navigation : navigationType}
 
-export const Post: FC<PropType> = ({isAdded, userUri, uris, name, likeCount, description, publicationTime, isLike}) => {
+export const Post: FC<PropType> = ({
+                                       useMenu,
+                                       isAdded,
+                                       userUri,
+                                       uris,
+                                       name,
+                                       likeCount,
+                                       description,
+                                       publicationTime,
+                                       isLike,
+                                       navigation
+                                   }) => {
     let heartColor, addColor
     isLike ? heartColor = 'red' : heartColor = 'white'
     isAdded ? addColor = 'black' : addColor = 'white'
@@ -50,21 +53,26 @@ export const Post: FC<PropType> = ({isAdded, userUri, uris, name, likeCount, des
                     </View>
                 </View>
                 <View style={{}}>
+                    {useMenu &&
                     <TouchableOpacity style={{padding: 5}} onPress={toggleOverlay}>
                         <Icon name="md-menu" style={{fontSize: 25, color: 'black'}}/>
                     </TouchableOpacity>
+                    }
                 </View>
             </View>
-            <ScrollView horizontal>
-                {uris.map((uri, index) => <Image key={index} source={{uri}} style={{
+            <FlatList
+                horizontal
+                data={uris}
+                renderItem={({item}) => <Image source={{uri: item.uri}} style={{
                     flexDirection: 'row',
                     padding: 10,
                     justifyContent: 'center',
                     flex: 1,
                     minHeight: 400,
                     width: screenWidth
-                }}/>)}
-            </ScrollView>
+                }}/>}
+                keyExtractor={item => item.id}
+            />
             <View style={{flexDirection: 'row', justifyContent: 'center'}}>
                 <View style={{flexDirection: 'row', flex: 1}}>
                     <TouchableOpacity style={{padding: 10}} onPress={() => {
@@ -76,7 +84,7 @@ export const Post: FC<PropType> = ({isAdded, userUri, uris, name, likeCount, des
                         <Icon name="md-send" style={{color: 'white', fontSize: 25}}/>
                     </TouchableOpacity>
                     <TouchableOpacity style={{padding: 10}} onPress={() => {
-                        console.log('to comment screen')
+                        navigation.navigate('Comments')
                     }}>
                         <Icon name="chatbubbles" style={{color: 'white', fontSize: 25}}/>
                     </TouchableOpacity>
@@ -101,18 +109,24 @@ export const Post: FC<PropType> = ({isAdded, userUri, uris, name, likeCount, des
         </View>
 
         <Overlay visible={visible} setVisible={toggleOverlay} transparent>
-            <View style={{alignItems : 'center'}}>
-                <ButtonInOverlay title='Complain' onPress={() => {}}/>
-                <ButtonInOverlay title='Share' onPress={() => {}}/>
-                <ButtonInOverlay title='Unsubscribe' onPress={() => {}}/>
-                <ButtonInOverlay title='Hidden' onPress={() => {}}/>
-                <ButtonInOverlay title='Add yourself' onPress={() => {}}/>
-                <ButtonInOverlay title='Leave a comment' onPress={() => {}}/>
+            <View style={{alignItems: 'center'}}>
+                <ButtonInOverlay title='Complain' onPress={() => {
+                }}/>
+                <ButtonInOverlay title='Share' onPress={() => {
+                }}/>
+                <ButtonInOverlay title='Unsubscribe' onPress={() => {
+                }}/>
+                <ButtonInOverlay title='Hidden' onPress={() => {
+                }}/>
+                <ButtonInOverlay title='Add yourself' onPress={() => {
+                }}/>
+                <ButtonInOverlay title='Leave a comment' onPress={() => {
+                }}/>
             </View>
         </Overlay>
 
         <Overlay isDown visible={shareVisible} setVisible={toggleOverlayShare} transparent>
-            <View style={{alignItems : 'center'}}>
+            <View style={{alignItems: 'center'}}>
                 <Text>In future</Text>
             </View>
         </Overlay>

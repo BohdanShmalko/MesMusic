@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import {Body, Button, Left, ListItem, Right, Text, Thumbnail, Icon, Badge} from 'native-base';
+import {Badge, Body, Left, ListItem, Right, Text, Thumbnail} from 'native-base';
 import {cutText} from "../../helpers/cutText";
 import {TouchableOpacity, View} from "react-native";
 import {navigationType} from "../../types/types";
@@ -29,7 +29,7 @@ export const ListAvatar: FC<PropType> = ({navigation, howManyNotRead, uriAvatar,
                 navigation.navigate('Message')
             }}>
                 <Text style={{color: '#08003d'}}>{name}</Text>
-                <Text note style={{color : '#08003d'}}>{cut30Symbols(lastMessage)}</Text>
+                <Text note style={{color : '#08003d', minHeight : 32}}>{cut30Symbols(lastMessage)}</Text>
             </TouchableOpacity>
         </Body>
         <Right>

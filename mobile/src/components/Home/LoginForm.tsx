@@ -56,7 +56,7 @@ export const LoginForm : FC<PropType> = ({navigation}) => {
                     <CheckBox checked={values.rememberMe} onPress={() => setFieldValue('rememberMe', !values.rememberMe)} style={{marginBottom : 20}}/>
                 </View>
                 <Text>
-                <Button onPress={handleSubmit} style={{backgroundColor : '#d98c27'}}>
+                <Button onPress={handleSubmit} style={{backgroundColor: '#d98c27'}}>
                     <Text style={{padding : 10, textTransform : 'uppercase', fontWeight : 'bold', color : 'white'}}>
                         Submit
                     </Text>

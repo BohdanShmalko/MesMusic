@@ -11,6 +11,6 @@ export const Fallback : FC<PropType> = (props) => {
             style={{width : 128, height : 128}}
             source={require('../../../assets/icon.png')}
         />
-        <Spinner />
+        <Spinner/>
     </MainContainer>
 }

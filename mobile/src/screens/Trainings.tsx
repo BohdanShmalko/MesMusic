@@ -6,10 +6,11 @@ import {MMHader} from "../components/Common/MMHader";
 import {MainContainer} from "../components/Common/MainContainer";
 import {FooterBadge} from "../components/Common/FooterBadge";
 
-const TrainingScreen : FC<{navigation : StackNavigationProp<RootStackParamList, 'Training'>}> = ({navigation}) => {
+const TrainingScreen: FC<{ navigation: StackNavigationProp<RootStackParamList, 'Training'> }> = ({navigation}) => {
     return (
         <Container>
-            <MMHader title='Trainings' useLeftBack leftPress={() => navigation.navigate('News')} useRightMessage rightPress={() => navigation.navigate('Dialogs')}/>
+            <MMHader title='Trainings' useLeftBack leftPress={() => navigation.navigate('News')} useRightMessage
+                     rightPress={() => navigation.navigate('Dialogs')}/>
             <MainContainer>
 
             </MainContainer>

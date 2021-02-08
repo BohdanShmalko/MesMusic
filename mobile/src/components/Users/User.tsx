@@ -1,5 +1,5 @@
 import React, {FC, useState} from "react";
-import {Body, Button, Icon, Left, ListItem, Right, Text, Thumbnail} from 'native-base';
+import {Body, Icon, Left, ListItem, Right, Text, Thumbnail} from 'native-base';
 import {cutText} from "../../helpers/cutText";
 import {TouchableOpacity, View} from "react-native";
 import {Overlay} from "../Common/Overlay";
@@ -12,10 +12,10 @@ type PropType = {
     name: string
     about: string
     isFriend: boolean
-    navigation : navigationType
+    navigation: navigationType
 }
 
-export const User: FC<PropType> = ({navigation,about, id, isFriend, name, photoUri}) => {
+export const User: FC<PropType> = ({navigation, about, id, isFriend, name, photoUri}) => {
     const cut20Symbols = cutText(20)
     const [visible, setVisible] = useState(false);
 
@@ -45,17 +45,22 @@ export const User: FC<PropType> = ({navigation,about, id, isFriend, name, photoU
             </TouchableOpacity>
         </Right>
         <Overlay visible={visible} setVisible={toggleOverlay} transparent>
-            <View style={{alignItems : 'center'}}>
+            <View style={{alignItems: 'center'}}>
                 <ButtonInOverlay title='Go to profile' onPress={() => {
                     toggleOverlay()
-                    navigation.navigate('Profile')}}/>
+                    navigation.navigate('Profile')
+                }}/>
                 {isFriend ?
-                    <ButtonInOverlay title='Unsubscribe' onPress={() => {}}/> :
-                    <ButtonInOverlay title='Subscribe' onPress={() => {}}/>}
+                    <ButtonInOverlay title='Unsubscribe' onPress={() => {
+                    }}/> :
+                    <ButtonInOverlay title='Subscribe' onPress={() => {
+                    }}/>}
                 <ButtonInOverlay title='Write a message' onPress={() => {
                     toggleOverlay()
-                    navigation.navigate('Message')}}/>
-                <ButtonInOverlay title='Block this user' onPress={() => {}}/>
+                    navigation.navigate('Message')
+                }}/>
+                <ButtonInOverlay title='Block this user' onPress={() => {
+                }}/>
             </View>
         </Overlay>
     </ListItem>

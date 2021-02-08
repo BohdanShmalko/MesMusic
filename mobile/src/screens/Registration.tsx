@@ -5,13 +5,16 @@ import {RootStackParamList} from "../types/types";
 import {MMHader} from "../components/Common/MMHader";
 import {MainContainer} from "../components/Common/MainContainer";
 import {RegistrationForm} from "../components/Registration/RegistrationForm";
+import {ScrollView} from "react-native";
 
-const RegistrationScreen : FC<{navigation : StackNavigationProp<RootStackParamList, 'Registration'>}> = ({navigation}) => {
+const RegistrationScreen: FC<{ navigation: StackNavigationProp<RootStackParamList, 'Registration'> }> = ({navigation}) => {
     return (
         <Container>
-            <MMHader title='Registration' useLeftBack leftPress = {() => navigation.goBack()}/>
-            <MainContainer >
-                <RegistrationForm />
+            <MMHader title='Registration' useLeftBack leftPress={() => navigation.goBack()}/>
+            <MainContainer>
+                <ScrollView>
+                    <RegistrationForm/>
+                </ScrollView>
             </MainContainer>
         </Container>
     )

@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import {Body, Button, Header, Icon, Left, Right, Title, Thumbnail} from "native-base";
+import {Body, Header, Icon, Left, Right, Thumbnail, Title} from "native-base";
 import {Image, Text, TouchableOpacity, View} from "react-native";
 
 type PropType = {

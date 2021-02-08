@@ -6,19 +6,19 @@ import {MMHader} from "../components/Common/MMHader";
 import {TopText} from "../components/Home/TopText";
 import {LoginForm} from "../components/Home/LoginForm";
 import {MainContainer} from "../components/Common/MainContainer";
-import {View} from "react-native";
+import {ScrollView} from "react-native";
 
-const HomeScreen : FC<{navigation : StackNavigationProp<RootStackParamList, 'Home'>}> =
+const HomeScreen: FC<{ navigation: StackNavigationProp<RootStackParamList, 'Home'> }> =
     ({navigation}) => {
-    return (
-        <Container>
-            <MMHader useBodyLogo/>
-            <MainContainer containerStyle={{alignItems : 'center', justifyContent : 'center'}}>
-                <TopText />
-                <LoginForm navigation={navigation}/>
-            </MainContainer>
-        </Container>
-    )
-}
+        return (
+            <Container>
+                <MMHader useBodyLogo/>
+                <MainContainer containerStyle={{alignItems: 'center', justifyContent: 'center'}}>
+                    <TopText/>
+                    <LoginForm navigation={navigation}/>
+                </MainContainer>
+            </Container>
+        )
+    }
 
 export default HomeScreen

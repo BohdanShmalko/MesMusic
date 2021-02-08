@@ -1,6 +1,6 @@
 import React, {FC} from "react";
-import {Button, Footer, FooterTab, Badge, Icon, Text} from "native-base";
-import {navigationType, } from "../../types/types";
+import {Badge, Button, Footer, FooterTab, Icon, Text} from "native-base";
+import {navigationType,} from "../../types/types";
 
 type PropType = {
     active ?: 'friends' | 'music' | 'study' | 'likes' | 'profile'

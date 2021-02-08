@@ -9,7 +9,7 @@ type PropType = {
 }
 
 export const AllMessages : FC<PropType> = ({navigation}) => {
-    return <List style={{backgroundColor: 'rgba(255, 255, 255, 0.2)', flex : 1}}>
+    return <List style={{backgroundColor: 'rgba(255, 255, 255, 0.2)', flex: 1}}>
         <FlatList
             data={[
                 {

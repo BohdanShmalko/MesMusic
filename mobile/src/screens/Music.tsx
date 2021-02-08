@@ -6,10 +6,11 @@ import {MMHader} from "../components/Common/MMHader";
 import {MainContainer} from "../components/Common/MainContainer";
 import {FooterBadge} from "../components/Common/FooterBadge";
 
-const MusicScreen : FC<{navigation : StackNavigationProp<RootStackParamList, 'Music'>}> = ({navigation}) => {
+const MusicScreen: FC<{ navigation: StackNavigationProp<RootStackParamList, 'Music'> }> = ({navigation}) => {
     return (
         <Container>
-            <MMHader title='Music' useLeftBack leftPress={() => navigation.navigate('News')} useRightMessage rightPress={() => navigation.navigate('Dialogs')}/>
+            <MMHader title='Music' useLeftBack leftPress={() => navigation.navigate('News')} useRightMessage
+                     rightPress={() => navigation.navigate('Dialogs')}/>
             <MainContainer>
 
             </MainContainer>

@@ -7,10 +7,11 @@ import {MainContainer} from "../components/Common/MainContainer";
 import {FooterBadge} from "../components/Common/FooterBadge";
 import {LikeList} from "../components/Likes/LikeList";
 
-const LikesScreen : FC<{navigation : StackNavigationProp<RootStackParamList, 'Likes'>}> = ({navigation}) => {
+const LikesScreen: FC<{ navigation: StackNavigationProp<RootStackParamList, 'Likes'> }> = ({navigation}) => {
     return (
         <Container>
-            <MMHader title='Likes' useLeftBack leftPress={() => navigation.navigate('News')} useRightMessage rightPress={() => navigation.navigate('Dialogs')}/>
+            <MMHader title='Likes' useLeftBack leftPress={() => navigation.navigate('News')} useRightMessage
+                     rightPress={() => navigation.navigate('Dialogs')}/>
             <MainContainer minus={90} style={{flex: 1}}>
                 <LikeList navigation={navigation}/>
             </MainContainer>
