@@ -8,7 +8,6 @@ import {Account} from "./Account";
 import {LogOut} from "./LogOut";
 
 
-
 type PropType = {}
 
 export const AllSettings: FC<PropType> = (props) => {

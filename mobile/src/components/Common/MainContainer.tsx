@@ -7,10 +7,10 @@ const displayHeight = Dimensions.get('window').height
 type PropType = {
     style?: any
     containerStyle?: any
-    minus?: number
     image?: any
-    color1 ?: string
-    color2 ?: string
+    color1?: string
+    color2?: string
+    useFooter?: boolean
 }
 
 const ImageContainer: FC<{ image: any, containerStyle?: any, style?: any }> = ({
@@ -32,14 +32,22 @@ const GradientContainer: FC<{ color1: string, color2: string, containerStyle?: a
     <LinearGradient colors={[color1, color2]} style={{...containerStyle}}><SafeAreaView
         style={{...style}}>{children}</SafeAreaView></LinearGradient>)
 
-export const MainContainer: FC<PropType> = ({color1 = '#08003d', color2 = '#f55656', image, minus = 0, containerStyle, children, style}) => {
+export const MainContainer: FC<PropType> = ({
+                                                color1 = '#08003d',
+                                                color2 = '#f55656',
+                                                image,
+                                                containerStyle,
+                                                children,
+                                                style,
+                                                useFooter
+                                            }) => {
 
     return <Container>
         {image ?
-            <ImageContainer image={image} style={{...style}}
-                            containerStyle={{minHeight: displayHeight - minus, ...containerStyle}}>{children}</ImageContainer> :
-            <GradientContainer style={{...style}} color1={color1} color2={color2}
-                               containerStyle={{minHeight: displayHeight - minus, ...containerStyle}}>{children}</GradientContainer>
+            <ImageContainer image={image} style={{flex : useFooter ? 1 : undefined, ...style}}
+                            containerStyle={{ minHeight: useFooter ? displayHeight / 10 * 9 : displayHeight, ...containerStyle}}>{children}</ImageContainer> :
+            <GradientContainer style={{flex : useFooter ? 1 : undefined, ...style}} color1={color1} color2={color2}
+                               containerStyle={{ minHeight: useFooter ? displayHeight / 10 * 9 : displayHeight, ...containerStyle}}>{children}</GradientContainer>
         }
     </Container>
 

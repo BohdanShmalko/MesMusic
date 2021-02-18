@@ -5,8 +5,10 @@ import {cutText} from "../../helpers/cutText";
 import {ButtonInOverlay} from "./ButtonInOverlay";
 import {Overlay} from "./Overlay";
 import {navigationType, PostType} from "../../types/types";
+import {useSelector} from "react-redux";
+import {getTheme} from "../../BLL/selectors/settingsSelector";
 
-type PropType = PostType & {navigation : navigationType}
+type PropType = PostType & { navigation: navigationType }
 
 export const Post: FC<PropType> = ({
                                        useMenu,
@@ -18,24 +20,26 @@ export const Post: FC<PropType> = ({
                                        description,
                                        publicationTime,
                                        isLike,
-                                       navigation
+                                       navigation,
+                                       isMy
                                    }) => {
+    const {firstPrimaryFont, secondPrimaryFont, secondMainColor} = useSelector(getTheme)
     let heartColor, addColor
-    isLike ? heartColor = 'red' : heartColor = 'white'
-    isAdded ? addColor = 'black' : addColor = 'white'
+    isLike ? heartColor = secondMainColor : heartColor = firstPrimaryFont
+    isAdded ? addColor = secondPrimaryFont : addColor = firstPrimaryFont
     const screenWidth = Dimensions.get('window').width
     const cut50Symbols = cutText(50)
-    const [visible, setVisible] = useState(false);
 
-    const toggleOverlay: () => void = () => {
-        setVisible(!visible);
-    };
+    const [isAllText, setIsAllText] = useState(false)
+    const toggleAllText = () => setIsAllText(!isAllText);
+
+    const [visible, setVisible] = useState(false);
+    const toggleOverlay = () => setVisible(!visible)
 
     const [shareVisible, setShareVisible] = useState(false);
+    const toggleOverlayShare = () => setShareVisible(!shareVisible);
 
-    const toggleOverlayShare: () => void = () => {
-        setShareVisible(!shareVisible);
-    };
+
     return <View style={{marginBottom: 20, flexDirection: 'column', backgroundColor: 'rgba(255, 255, 255, 0.3)'}}>
         <View>
             <View style={{flexDirection: 'row', padding: 10, justifyContent: 'center'}}>
@@ -48,14 +52,14 @@ export const Post: FC<PropType> = ({
                         </TouchableOpacity>
                     </View>
                     <View>
-                        <Text>{name}</Text>
-                        <Text style={{fontSize: 10}}>{publicationTime}</Text>
+                        <Text style={{color: secondPrimaryFont}}>{name}</Text>
+                        <Text style={{fontSize: 10, color: secondPrimaryFont}}>{publicationTime}</Text>
                     </View>
                 </View>
                 <View style={{}}>
                     {useMenu &&
                     <TouchableOpacity style={{padding: 5}} onPress={toggleOverlay}>
-                        <Icon name="md-menu" style={{fontSize: 25, color: 'black'}}/>
+                        <Icon name="md-menu" style={{fontSize: 25, color: secondPrimaryFont}}/>
                     </TouchableOpacity>
                     }
                 </View>
@@ -81,12 +85,12 @@ export const Post: FC<PropType> = ({
                         <Icon name="heart" style={{color: heartColor, fontSize: 25}}/>
                     </TouchableOpacity>
                     <TouchableOpacity style={{padding: 10}} onPress={toggleOverlayShare}>
-                        <Icon name="md-send" style={{color: 'white', fontSize: 25}}/>
+                        <Icon name="md-send" style={{color: firstPrimaryFont, fontSize: 25}}/>
                     </TouchableOpacity>
                     <TouchableOpacity style={{padding: 10}} onPress={() => {
                         navigation.navigate('Comments')
                     }}>
-                        <Icon name="chatbubbles" style={{color: 'white', fontSize: 25}}/>
+                        <Icon name="chatbubbles" style={{color: firstPrimaryFont, fontSize: 25}}/>
                     </TouchableOpacity>
                 </View>
                 <View style={{}}>
@@ -99,35 +103,61 @@ export const Post: FC<PropType> = ({
             </View>
             <View style={{paddingHorizontal: 10, paddingBottom: 10}}>
                 <View style={{flexDirection: 'row'}}>
-                    <Text style={{fontWeight: 'bold', flex: 1}}>Like : {likeCount}</Text>
-                    <Text style={{fontWeight: 'bold'}}>Publications : {uris.length}</Text>
+                    <Text style={{fontWeight: 'bold', flex: 1, color: secondPrimaryFont}}>Like : {likeCount}</Text>
+                    <Text style={{fontWeight: 'bold', color: secondPrimaryFont}}>Publications : {uris.length}</Text>
                 </View>
                 <View>
-                    <Text><Text style={{fontWeight: 'bold'}}>{name} : </Text>{cut50Symbols(description)}</Text>
+                    <TouchableOpacity onPress={toggleAllText}>
+                        {isAllText ?
+                            <Text style={{color: secondPrimaryFont}}><Text
+                                style={{fontWeight: 'bold', color: secondPrimaryFont}}>{name} : </Text>{description}
+                            </Text> :
+                            <Text style={{color: secondPrimaryFont}}><Text style={{
+                                fontWeight: 'bold',
+                                color: secondPrimaryFont
+                            }}>{name} : </Text>{cut50Symbols(description)}</Text>
+                        }
+                    </TouchableOpacity>
                 </View>
             </View>
         </View>
 
         <Overlay visible={visible} setVisible={toggleOverlay} transparent>
             <View style={{alignItems: 'center'}}>
-                <ButtonInOverlay title='Complain' onPress={() => {
+                {isMy ?
+                    <ButtonInOverlay style={{borderBottomColor: secondPrimaryFont}}
+                                     textStyle={{color: secondPrimaryFont}}
+                                     title='Complain' onPress={() => {
+                    }}/> :
+                    <ButtonInOverlay style={{borderBottomColor: secondPrimaryFont}}
+                                     textStyle={{color: secondPrimaryFont}}
+                                     title='Delete' onPress={() => {
+                    }}/>}
+
+                <ButtonInOverlay style={{borderBottomColor: secondPrimaryFont}} textStyle={{color: secondPrimaryFont}}
+                                 title='Share' onPress={() => {
                 }}/>
-                <ButtonInOverlay title='Share' onPress={() => {
-                }}/>
-                <ButtonInOverlay title='Unsubscribe' onPress={() => {
-                }}/>
-                <ButtonInOverlay title='Hidden' onPress={() => {
-                }}/>
-                <ButtonInOverlay title='Add yourself' onPress={() => {
-                }}/>
-                <ButtonInOverlay title='Leave a comment' onPress={() => {
-                }}/>
+                {!isMy &&
+                <ButtonInOverlay style={{borderBottomColor: secondPrimaryFont}} textStyle={{color: secondPrimaryFont}}
+                                 title='Unsubscribe' onPress={() => {
+                }}/>}
+                {isMy &&
+                <ButtonInOverlay style={{borderBottomColor: secondPrimaryFont}} textStyle={{color: secondPrimaryFont}}
+                                 title='Hidden' onPress={() => {
+                }}/>}
+                {!isMy &&
+                <ButtonInOverlay style={{borderBottomColor: secondPrimaryFont}} textStyle={{color: secondPrimaryFont}}
+                                 title='Add yourself' onPress={() => {
+                }}/>}
+
+                <ButtonInOverlay style={{borderBottomColor: secondPrimaryFont}} textStyle={{color: secondPrimaryFont}}
+                                 title='Leave a comment' onPress={() => { toggleOverlay(); navigation.navigate('Comments')}}/>
             </View>
         </Overlay>
 
         <Overlay isDown visible={shareVisible} setVisible={toggleOverlayShare} transparent>
             <View style={{alignItems: 'center'}}>
-                <Text>In future</Text>
+                <Text style={{color: secondPrimaryFont}}>In future</Text>
             </View>
         </Overlay>
     </View>

@@ -1,4 +1,4 @@
-import React, {FC} from 'react'
+import React, {FC, useState} from 'react'
 import {Container} from "native-base";
 import {StackNavigationProp} from "@react-navigation/stack";
 import {RootStackParamList} from "../types/types";
@@ -6,26 +6,53 @@ import {MMHader} from "../components/Common/MMHader";
 import {MainContainer} from "../components/Common/MainContainer";
 import {MessageTextArea} from "../components/Message/MessageTextArea";
 import {MessageList} from "../components/Message/MessageList";
-import {KeyboardAvoidingView, Platform} from "react-native";
+import {KeyboardAvoidingView, Platform, TextInput, View} from "react-native";
+import {useSelector} from "react-redux";
+import {getMessageData, getMessageStatus, getMessageTitle, getMessageUri} from "../BLL/selectors/messageSelector";
+import {getBackgroundObject, getTheme} from "../BLL/selectors/settingsSelector";
+import {ButtonInOverlay} from "../components/Common/ButtonInOverlay";
+import {Overlay} from "../components/Common/Overlay";
 
 const MessageScreen: FC<{ navigation: StackNavigationProp<RootStackParamList, 'Likes'> }> = ({navigation}) => {
+    const messageUri = useSelector(getMessageUri)
+    const messageTitle = useSelector(getMessageTitle)
+    const messageStatus = useSelector(getMessageStatus)
+    const data = useSelector(getMessageData)
+    const background = useSelector(getBackgroundObject('messagePicture'))
+    const {firstMainColor, secondPrimaryFont} = useSelector(getTheme)
+
+    const [visible, setVisible] = useState(false);
+    const toggleOverlay = () => setVisible(!visible)
     return (
         <Container>
             <MMHader useBodyAvatar={{
-                uri: 'https://w7.pngwing.com/pngs/980/886/png-transparent-male-portrait-avatar-computer-icons-icon-design-avatar-flat-face-icon-people-head-cartoon-thumbnail.png',
-                title: 'user name'
+                uri: messageUri,
+                title: messageTitle
             }}
                      useLeftBack leftPress={() => navigation.navigate('Dialogs')}
-                     rightTitle='status : was online at 22:00' useRightMenu
-                     rightPress={() => {
-                         console.log('window menu')
-                     }}/>
-            <MainContainer style={{flex: 1}} image={require('../../assets/background.jpg')}>
+                     rightTitle={`status : ${messageStatus}`} useRightMenu
+                     rightPress={toggleOverlay} color={firstMainColor}/>
+            <MainContainer style={{flex: 1}} image={require('../../assets/background.jpg')} {...background}>
                 <KeyboardAvoidingView behavior={Platform.OS ? 'padding' : undefined}>
-                <MessageList/>
+                    <MessageList data={data}/>
                 </KeyboardAvoidingView>
             </MainContainer>
             <MessageTextArea/>
+
+            <Overlay visible={visible} setVisible={toggleOverlay} transparent>
+                <View style={{alignItems: 'center'}}>
+                    <TextInput placeholder='change chat name'/>
+                    <ButtonInOverlay style={{borderBottomColor: secondPrimaryFont}} textStyle={{color: secondPrimaryFont}}
+                                     title='Change name' onPress={() => {
+                    }}/>
+                    <ButtonInOverlay style={{borderBottomColor: secondPrimaryFont}} textStyle={{color: secondPrimaryFont}}
+                                     title='Change photo' onPress={() => {
+                    }}/>
+                    <ButtonInOverlay style={{borderBottomColor: secondPrimaryFont}} textStyle={{color: secondPrimaryFont}}
+                                     title='Leave chat' onPress={() => {
+                    }}/>
+                </View>
+            </Overlay>
         </Container>
     )
 }

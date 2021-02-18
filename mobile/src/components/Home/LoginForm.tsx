@@ -5,6 +5,9 @@ import {Formik} from "formik";
 import {BlueLink} from "../Common/BlueLink";
 import {StackNavigationProp} from "@react-navigation/stack";
 import {RootStackParamList} from "../../types/types";
+import {useDispatch, useSelector} from "react-redux";
+import {actionCreator} from "../../BLL/storeRedux";
+import {getIsAuth} from "../../BLL/selectors/authSelector";
 
 type PropType = {
     navigation : StackNavigationProp<RootStackParamList, 'Home'>
@@ -16,9 +19,16 @@ type ErrorType = {
 }
 //TODO norm validate
 export const LoginForm : FC<PropType> = ({navigation}) => {
+    const dispatch = useDispatch()
+    const LogIn = () => dispatch(actionCreator.authScreen.setAuth(true))
+    const isAuth = useSelector(getIsAuth)
     return <View><Formik
         initialValues={{ login: '', password : '', rememberMe : false }}
-        onSubmit={values => console.log(values)}
+        onSubmit={values => {
+            LogIn()
+            console.log(isAuth)
+            console.log(values)
+        }}
         validate={values => {
 
             const errors : ErrorType = {};

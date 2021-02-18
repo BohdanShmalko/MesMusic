@@ -7,23 +7,26 @@ import {MainContainer} from "../components/Common/MainContainer";
 import {FooterBadge} from "../components/Common/FooterBadge";
 import {MainProfile} from "../components/Profile/MainProfile";
 import {KeyboardAvoidingView, Platform} from "react-native";
+import {useSelector} from "react-redux";
+import {getBackgroundObject, getTheme} from "../BLL/selectors/settingsSelector";
 
 const ProfileScreen: FC<{ navigation: StackNavigationProp<RootStackParamList, 'Profile'> }> = ({navigation}) => {
     const isMyProfile: boolean = true
     let navigateTo: 'Settings' | 'Dialogs'
     isMyProfile ? navigateTo = 'Settings' : navigateTo = 'Dialogs'
+    const background = useSelector(getBackgroundObject('profilePicture'))
+    const {firstMainColor, secondMainColor} = useSelector(getTheme)
     return (
         <Container>
-            <MMHader title='Profile' useLeftBack leftPress={() => navigation.navigate('News')}
-                     useRigthSettings={isMyProfile} useRightMessage={!isMyProfile}
-                     rightPress={() => navigation.navigate(navigateTo)}/>
-
-            <MainContainer>
+            <MainContainer {...background} useFooter>
+                <MMHader title='Profile' useLeftBack leftPress={() => navigation.navigate('News')}
+                         useRigthSettings={isMyProfile} useRightMessage={!isMyProfile}
+                         rightPress={() => navigation.navigate(navigateTo)} color={firstMainColor}/>
                 <KeyboardAvoidingView behavior={Platform.OS ? 'padding' : undefined}>
-                <MainProfile/>
+                <MainProfile navigation={navigation}/>
                 </KeyboardAvoidingView>
             </MainContainer>
-            <FooterBadge navigation={navigation} active={'profile'}/>
+            <FooterBadge navigation={navigation} active={'profile'} color={firstMainColor} activeColor={secondMainColor}/>
         </Container>
     )
 }

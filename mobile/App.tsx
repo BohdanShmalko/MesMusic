@@ -6,9 +6,11 @@ import {RootStackParamList} from "./src/types/types";
 import * as Font from 'expo-font';
 import {Ionicons} from '@expo/vector-icons';
 import {Fallback} from "./src/components/Common/Fallback";
-import {Provider} from "react-redux";
+import {Provider, useSelector} from "react-redux";
 import {NavigationContainer} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack";
+import {getIsAuth} from "./src/BLL/selectors/authSelector";
+import {View, Text} from "react-native";
 
 const HomeScreen = React.lazy(() => import('./src/screens/Home'))
 const ForgetPasswordScreen = React.lazy(() => import('./src/screens/ForgetPassword'))
@@ -39,24 +41,29 @@ const App: FC<{}> = (props) => {
         })()
     }, [])
 
-    if (!isReady) return <Fallback/>
+    if (!isReady) return <View style={{justifyContent: 'center', alignItems: 'center'}}>
+        <Text>Loading...</Text>
+    </View>
 
     return <NavigationContainer>
         <Provider store={store}>
-            <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName='Home'>
+            <Stack.Navigator screenOptions={{headerShown: false}}>
+                {/*{!useSelector(getIsAuth) ? <>*/}
                 <Stack.Screen name='Home' component={withSuspense(HomeScreen)}/>
-                <Stack.Screen name='Dialogs' component={withSuspense(DialogsScreen)}/>
                 <Stack.Screen name='ForgetPassword' component={withSuspense(ForgetPasswordScreen)}/>
-                <Stack.Screen name='Music' component={withSuspense(MusicScreen)}/>
-                <Stack.Screen name='News' component={withSuspense(NewsScreen)}/>
-                <Stack.Screen name='Profile' component={withSuspense(ProfileScreen)}/>
                 <Stack.Screen name='Registration' component={withSuspense(RegistrationScreen)}/>
+                {/*</> : <>*/}
+                <Stack.Screen name='News' component={withSuspense(NewsScreen)}/>
+                <Stack.Screen name='Dialogs' component={withSuspense(DialogsScreen)}/>
+                <Stack.Screen name='Music' component={withSuspense(MusicScreen)}/>
+                <Stack.Screen name='Profile' component={withSuspense(ProfileScreen)}/>
                 <Stack.Screen name='Settings' component={withSuspense(SettingsScreen)}/>
                 <Stack.Screen name='Training' component={withSuspense(TrainingScreen)}/>
                 <Stack.Screen name='Users' component={withSuspense(UsersScreen)}/>
                 <Stack.Screen name='Likes' component={withSuspense(LikesScreen)}/>
                 <Stack.Screen name='Message' component={withSuspense(MessageScreen)}/>
                 <Stack.Screen name='Comments' component={withSuspense(CommentsScreen)}/>
+                {/*</>}*/}
             </Stack.Navigator>
         </Provider>
     </NavigationContainer>

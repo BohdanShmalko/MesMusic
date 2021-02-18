@@ -5,16 +5,19 @@ import {RootStackParamList} from "../types/types";
 import {MMHader} from "../components/Common/MMHader";
 import {MainContainer} from "../components/Common/MainContainer";
 import {FooterBadge} from "../components/Common/FooterBadge";
+import {useSelector} from "react-redux";
+import {getBackgroundObject, getTheme} from "../BLL/selectors/settingsSelector";
 
 const TrainingScreen: FC<{ navigation: StackNavigationProp<RootStackParamList, 'Training'> }> = ({navigation}) => {
+    const background = useSelector(getBackgroundObject('trainingPicture'))
+    const {firstMainColor, secondMainColor} = useSelector(getTheme)
     return (
         <Container>
-            <MMHader title='Trainings' useLeftBack leftPress={() => navigation.navigate('News')} useRightMessage
-                     rightPress={() => navigation.navigate('Dialogs')}/>
-            <MainContainer>
-
+            <MainContainer {...background} useFooter>
+                <MMHader title='Trainings' useLeftBack leftPress={() => navigation.navigate('News')} useRightMessage
+                         rightPress={() => navigation.navigate('Dialogs')} color={firstMainColor}/>
             </MainContainer>
-            <FooterBadge navigation={navigation} active={'study'}/>
+            <FooterBadge navigation={navigation} active={'study'} color={firstMainColor} activeColor={secondMainColor}/>
         </Container>
     )
 }

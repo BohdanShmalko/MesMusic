@@ -8,9 +8,8 @@ import {MainContainer} from "../components/Common/MainContainer";
 const ForgetPasswordScreen: FC<{ navigation: StackNavigationProp<RootStackParamList, 'ForgetPassword'> }> = ({navigation}) => {
     return (
         <Container>
-            <MMHader title='Forget password' useLeftBack leftPress={() => navigation.goBack()}/>
             <MainContainer>
-
+                <MMHader title='Forget password' useLeftBack leftPress={() => navigation.goBack()}/>
             </MainContainer>
         </Container>
     )

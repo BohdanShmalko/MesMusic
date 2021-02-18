@@ -10,6 +10,9 @@ import {AllMessages} from "../components/Dialogs/AllMessages";
 import {Text, View} from "react-native";
 import {Overlay} from "../components/Common/Overlay";
 import {RightDownButton} from "../components/Common/RightDownButton";
+import {useSelector} from "react-redux";
+import {getDialogs} from "../BLL/selectors/dialogsSelector";
+import {getBackgroundObject, getTheme} from "../BLL/selectors/settingsSelector";
 
 const DialogsScreen: FC<{ navigation: StackNavigationProp<RootStackParamList, 'Dialogs'> }> = ({navigation}) => {
     const [visible, setVisible] = useState(false);
@@ -17,20 +20,23 @@ const DialogsScreen: FC<{ navigation: StackNavigationProp<RootStackParamList, 'D
     const toggleOverlay: () => void = () => {
         setVisible(!visible);
     };
+
+    const dialogs = useSelector(getDialogs)
+    const background = useSelector(getBackgroundObject('dialogsPicture'))
+    const {firstMainColor, secondMainColor, secondPrimaryFont} = useSelector(getTheme)
     return (
         <Container>
-            <MMHader title='Dialogs' useLeftBack leftPress={() => navigation.navigate('News')}/>
-            <MainContainer minus={90} style={{flex: 1}}
-                           image={{uri: 'https://i.pinimg.com/originals/ee/93/2c/ee932c96b927bbcedb7accb2ec617472.jpg'}}>
+            <MainContainer useFooter {...background}>
+                <MMHader title='Dialogs' useLeftBack leftPress={() => navigation.navigate('News')}
+                         color={firstMainColor}/>
                 <SearchBar/>
-                <AllMessages navigation={navigation}/>
+                <AllMessages navigation={navigation} data={dialogs}/>
             </MainContainer>
             <RightDownButton iconName='add' onPress={toggleOverlay}/>
-            <FooterBadge navigation={navigation}/>
-
+            <FooterBadge navigation={navigation} color={firstMainColor} activeColor={secondMainColor}/>
             <Overlay isDown visible={visible} setVisible={toggleOverlay} transparent>
                 <View style={{alignItems: 'center'}}>
-                    <Text>In future</Text>
+                    <Text style={{color: secondPrimaryFont}}>In future</Text>
                 </View>
             </Overlay>
         </Container>

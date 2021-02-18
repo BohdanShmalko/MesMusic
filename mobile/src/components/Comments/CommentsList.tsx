@@ -1,13 +1,16 @@
 import React, {FC} from "react";
 import {FlatList, View} from "react-native";
 import {Comment} from "./Comment";
+import {CommentType, navigationType} from "../../types/types";
 
-type PropType = {}
+type PropType = {
+    navigation : navigationType
+    data : Array<CommentType>}
 
-export const CommentsList: FC<PropType> = (props) => {
+export const CommentsList: FC<PropType> = ({data, navigation}) => {
     return <View>
-        <FlatList data={[{id: '1'}, {id: '2'}]}
-                  renderItem={({item}) => <Comment {...item}/>}
+        <FlatList data={data}
+                  renderItem={({item}) => <Comment navigation={navigation} {...item}/>}
                   keyExtractor={item => item.id}
                   ListFooterComponent={<View style={{height: 180}}></View>}
         />

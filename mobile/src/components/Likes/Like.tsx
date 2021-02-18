@@ -1,29 +1,27 @@
 import React, {FC, useState} from "react";
 import {Dimensions, TouchableOpacity, View} from "react-native";
-import {navigationType, PostType} from "../../types/types";
+import {LikeType, navigationType} from "../../types/types";
 import {Text, Thumbnail} from "native-base";
 import {Overlay} from "../Common/Overlay";
 import {Post} from "../Common/Post";
+import {useSelector} from "react-redux";
+import {getTheme} from "../../BLL/selectors/settingsSelector";
 
 type PropType = {
-    id: string
     navigation: navigationType
-    isLike: boolean
-    whoLiked: {
-        name: string
-        photo: string
-    }
-    whatLiked: PostType
-    date: string
+    data: LikeType
 }
 const screenHeight = Dimensions.get('window').height
 
-export const Like: FC<PropType> = ({date, whatLiked, whoLiked, isLike, id, navigation}) => {
+export const Like: FC<PropType> = ({data, navigation}) => {
+    const {date, id, whatLiked, whoLiked, type} = data
+    const {id: whoLikeId, name: whoLikeName, photo: whoLikePhoto} = whoLiked
+
     const [visible, setVisible] = useState(false);
 
-    const toggleOverlay: () => void = () => {
-        setVisible(!visible);
-    };
+    const toggleOverlay = () => setVisible(!visible)
+
+    const {secondPrimaryFont, secondMainColor} = useSelector(getTheme)
 
     return <View style={{
         flex: 1,
@@ -33,35 +31,49 @@ export const Like: FC<PropType> = ({date, whatLiked, whoLiked, isLike, id, navig
         borderRadius: 10,
         margin: 5
     }}>
+        <TouchableOpacity style={{flex : 1, flexDirection: 'row'}} onLongPress={() => {
+            console.log('delete like')
+        }}>
         <View style={{flex: 1}}>
             <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
                 <Thumbnail
-                    source={{uri: whoLiked.photo}}/>
+                    source={{uri: whoLikePhoto}}/>
             </TouchableOpacity>
         </View>
         <View style={{flex: 3}}>
-            {isLike ?
-                //TODO navigation
-                <TouchableOpacity onPress={toggleOverlay}>
-                    <Text><Text style={{fontWeight: 'bold'}}>{whoLiked.name} </Text>liked your post</Text>
-                </TouchableOpacity> :
-                <TouchableOpacity onPress={() => navigation.navigate('Registration')}>
-                    <Text><Text style={{fontWeight: 'bold'}}>{whoLiked.name} </Text>has commented on your
-                        post</Text>
-                </TouchableOpacity>
-            }
+            {type === 'like' &&
+            <TouchableOpacity onPress={toggleOverlay}>
+                <Text style={{color: secondPrimaryFont}}><Text
+                    style={{fontWeight: 'bold', color: secondPrimaryFont}}>{whoLikeName} </Text>liked your
+                    post</Text>
+            </TouchableOpacity>}
+            {type === 'comment' &&
+            <TouchableOpacity onPress={() => navigation.navigate('Comments')}>
+                <Text style={{color: secondPrimaryFont}}><Text
+                    style={{fontWeight: 'bold', color: secondPrimaryFont}}>{whoLikeName} </Text>has commented on
+                    your
+                    post</Text>
+            </TouchableOpacity>}
+            {type === 'complain' &&
+            <TouchableOpacity onPress={() => navigation.navigate('Comments')}
+                              style={{backgroundColor: secondMainColor, padding: 5, borderRadius: 5}}>
+                <Text style={{color: secondPrimaryFont}}><Text
+                    style={{fontWeight: 'bold', color: secondPrimaryFont}}>{whoLikeName} </Text>Complained about one of
+                    the comments</Text>
+            </TouchableOpacity>}
         </View>
         <View style={{paddingLeft: 5, alignItems: 'center', flex: 1}}>
             <TouchableOpacity style={{alignItems: 'center'}} onPress={toggleOverlay}>
                 <Thumbnail square
                            source={{uri: whatLiked.uris[0].uri}}/>
-                <Text style={{fontSize: 10, textAlign: 'center'}}>{date}</Text>
+                <Text style={{fontSize: 10, textAlign: 'center', color: secondPrimaryFont}}>{date}</Text>
             </TouchableOpacity>
         </View>
+        </TouchableOpacity>
         <Overlay visible={visible} setVisible={toggleOverlay} transparent backStyle={{}}
                  style={{backgroundColor: 'rgba(0,0,0,0)', maxHeight: screenHeight / 1.3}}>
             <View style={{alignItems: 'center'}}>
-                <Post {...whatLiked}/>
+                <Post navigation={navigation} {...whatLiked}/>
             </View>
         </Overlay>
 

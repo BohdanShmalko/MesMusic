@@ -1,14 +1,16 @@
-import React, {FC} from "react";
+import React, {FC, useState} from "react";
 import {Icon, Spinner, Text, Thumbnail} from 'native-base';
 import {TouchableOpacity, View} from "react-native";
+import {MessageType} from "../../types/types";
+import {useSelector} from "react-redux";
+import {getUserUri} from "../../BLL/selectors/messageSelector";
+import {getTheme} from "../../BLL/selectors/settingsSelector";
+import {ButtonInOverlay} from "../Common/ButtonInOverlay";
+import {Overlay} from "../Common/Overlay";
 
-type PropType = {
-    id?: string
-    isMyMessage: boolean
-    status: 'in process' | 'sent' | 'revised'
-}
-
-export const Message: FC<PropType> = ({isMyMessage, status}) => {
+export const Message: FC<MessageType> = ({id, status, isMyMessage, message,userId}) => {
+    const uri = useSelector(getUserUri(userId))
+    const {secondPrimaryFont} = useSelector(getTheme)
     let leftComponent, rightComponent
     const emptyComponent = <View style={{flex: 2}}></View>
     const avatarComponent = <View style={{flex: 1, justifyContent: 'flex-end'}}>
@@ -16,7 +18,7 @@ export const Message: FC<PropType> = ({isMyMessage, status}) => {
             console.log('to profile')
         }}>
             <Thumbnail style={{width: 32, height: 32}}
-                       source={{uri: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29ufGVufDB8fDB8&ixlib=rb-1.2.1&w=1000&q=80'}}/>
+                       source={{uri}}/>
         </TouchableOpacity>
     </View>
 
@@ -41,23 +43,19 @@ export const Message: FC<PropType> = ({isMyMessage, status}) => {
             <TouchableOpacity onLongPress={() => {
                 console.log('window menu')
             }}>
-                <Text>skk kdkdk dkkdk kdkdk kdkdk ssc skk kdkdk dkkdk kdkdk kdkdk ssc skk kdkdk dkkdk kdkdk kdkdk ssc
-                    skk
-                    kdkdk dkkdk kdkdk kdkdk ssc skk kdkdk dkkdk kdkdk kdkdk ssc skk kdkdk dkkdk kdkdk kdkdk ssc skk
-                    kdkdk
-                    dkkdk kdkdk kdkdk ssc skk kdkdk dkkdk kdkdk kdkdk ssc skk kdkdk dkkdk kdkdk kdkdk ssc </Text>
+                <Text style={{color : secondPrimaryFont}}>{message}</Text>
 
                 <View style={{flexDirection: 'row'}}>
                     <View style={{flex: 1}}></View>
                     <View style={{flexDirection: 'row'}}>
-                        <Text style={{fontSize: 12}}>mon 22:00</Text>
+                        <Text style={{fontSize: 12, color : secondPrimaryFont}}>mon 22:00</Text>
                         {status === 'in process' &&
                         // Icon name = 'alert'
-                        <Spinner color='black' size={12} style={{marginTop: -32, marginBottom: -32, paddingLeft: 5}}/>}
+                        <Spinner color={secondPrimaryFont} size={12} style={{marginTop: -32, marginBottom: -32, paddingLeft: 5}}/>}
                         {status === 'revised' &&
-                        <Icon name='md-mail-open' style={{fontSize: 12, paddingLeft: 5}}/>}
+                        <Icon name='md-mail-open' style={{fontSize: 12, paddingLeft: 5, color : secondPrimaryFont}}/>}
                         {status === 'sent' &&
-                        <Icon name='md-checkmark-circle' style={{fontSize: 12, paddingLeft: 5}}/>}
+                        <Icon name='md-checkmark-circle' style={{fontSize: 12, paddingLeft: 5, color : secondPrimaryFont}}/>}
                     </View>
                 </View>
             </TouchableOpacity>

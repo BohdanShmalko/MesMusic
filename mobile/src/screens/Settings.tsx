@@ -6,15 +6,19 @@ import {MMHader} from "../components/Common/MMHader";
 import {MainContainer} from "../components/Common/MainContainer";
 import {FooterBadge} from "../components/Common/FooterBadge";
 import {AllSettings} from "../components/Settings/AllSettings";
+import {useSelector} from "react-redux";
+import {getBackgroundObject, getTheme} from "../BLL/selectors/settingsSelector";
 
 const SettingsScreen: FC<{ navigation: StackNavigationProp<RootStackParamList, 'Settings'> }> = ({navigation}) => {
+    const background = useSelector(getBackgroundObject('settingsPicture'))
+    const {firstMainColor, secondMainColor} = useSelector(getTheme)
     return (
         <Container>
-            <MMHader title='Settings' useLeftBack leftPress={() => navigation.navigate('Profile')}/>
-            <MainContainer minus={90}>
+            <MainContainer {...background} useFooter>
+                <MMHader title='Settings' useLeftBack leftPress={() => navigation.navigate('Profile')} color={firstMainColor}/>
                 <AllSettings/>
             </MainContainer>
-            <FooterBadge navigation={navigation}/>
+            <FooterBadge navigation={navigation} color={firstMainColor} activeColor={secondMainColor}/>
         </Container>
     )
 }

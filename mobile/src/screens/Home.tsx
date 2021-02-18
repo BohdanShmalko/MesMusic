@@ -6,7 +6,6 @@ import {MMHader} from "../components/Common/MMHader";
 import {TopText} from "../components/Home/TopText";
 import {LoginForm} from "../components/Home/LoginForm";
 import {MainContainer} from "../components/Common/MainContainer";
-import {ScrollView} from "react-native";
 
 const HomeScreen: FC<{ navigation: StackNavigationProp<RootStackParamList, 'Home'> }> =
     ({navigation}) => {

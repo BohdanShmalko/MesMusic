@@ -8,10 +8,12 @@ const initialState = {
 export type InitialStateType = typeof initialState
 
 export const trainingReducer = (state = initialState, action : ActionType) : InitialStateType => {
-    // case SOME : return {...state
-    //
-    // }
-    return state
+    switch (action.type){
+        // case SOME : return {...state
+        //
+        // }
+        default : return state
+    }
 }
 
 type ActionType = ActionsType<typeof trainingAC>
