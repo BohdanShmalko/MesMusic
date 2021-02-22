@@ -5,12 +5,10 @@ import {withSuspense} from "./src/HOC/withSuspense";
 import {RootStackParamList} from "./src/types/types";
 import * as Font from 'expo-font';
 import {Ionicons} from '@expo/vector-icons';
-import {Fallback} from "./src/components/Common/Fallback";
-import {Provider, useSelector} from "react-redux";
+import {Provider} from "react-redux";
 import {NavigationContainer} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack";
-import {getIsAuth} from "./src/BLL/selectors/authSelector";
-import {View, Text} from "react-native";
+import {Text, View} from "react-native";
 
 const HomeScreen = React.lazy(() => import('./src/screens/Home'))
 const ForgetPasswordScreen = React.lazy(() => import('./src/screens/ForgetPassword'))
@@ -25,6 +23,7 @@ const UsersScreen = React.lazy(() => import('./src/screens/Users'))
 const LikesScreen = React.lazy(() => import('./src/screens/Likes'))
 const MessageScreen = React.lazy(() => import('./src/screens/Message'))
 const CommentsScreen = React.lazy(() => import('./src/screens/Comments'))
+const TestScreen = React.lazy(() => import('./src/screens/TestScreen'))
 
 const Stack = createStackNavigator<RootStackParamList>()
 
@@ -52,6 +51,7 @@ const App: FC<{}> = (props) => {
                 <Stack.Screen name='Home' component={withSuspense(HomeScreen)}/>
                 <Stack.Screen name='ForgetPassword' component={withSuspense(ForgetPasswordScreen)}/>
                 <Stack.Screen name='Registration' component={withSuspense(RegistrationScreen)}/>
+                <Stack.Screen name='Test' component={withSuspense(TestScreen)}/>
                 {/*</> : <>*/}
                 <Stack.Screen name='News' component={withSuspense(NewsScreen)}/>
                 <Stack.Screen name='Dialogs' component={withSuspense(DialogsScreen)}/>

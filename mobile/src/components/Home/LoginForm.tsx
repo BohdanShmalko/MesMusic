@@ -78,5 +78,6 @@ export const LoginForm : FC<PropType> = ({navigation}) => {
         <BlueLink to = 'ForgetPassword' title='Forget password' navigation={navigation}/>
         <BlueLink to = 'Registration' title='Registration' navigation={navigation}/>
         <BlueLink to = 'News' title='Test to News' navigation={navigation}/>
+        <BlueLink to = 'Test' title='Labs screen' navigation={navigation}/>
     </View>
 }

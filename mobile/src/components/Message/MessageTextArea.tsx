@@ -18,7 +18,7 @@ export const MessageTextArea: FC<PropType> = (props) => {
         maxHeight: 120
     }}>
         <View style={{flex: 7, padding: 5}}>
-            <Textarea rowSpan={3} placeholder="Enter the message" style={{color : secondPrimaryFont}}/>
+            <Textarea keyboardType={'decimal-pad'} rowSpan={3} placeholder="Enter the message" style={{color : secondPrimaryFont}}/>
         </View>
         <View style={{flex: 1}}>
             <TouchableOpacity style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>

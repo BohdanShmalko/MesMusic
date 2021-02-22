@@ -1,6 +1,6 @@
 import React, {FC, useState} from "react";
 import {Icon, Text, Thumbnail} from 'native-base';
-import {Dimensions, FlatList, Image, ScrollView, TouchableOpacity, View} from "react-native";
+import {Dimensions, FlatList, Image, TouchableOpacity, View} from "react-native";
 import {cutText} from "../../helpers/cutText";
 import {ButtonInOverlay} from "./ButtonInOverlay";
 import {Overlay} from "./Overlay";

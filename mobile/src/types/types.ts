@@ -14,6 +14,7 @@ export type RootStackParamList = {
     Likes: undefined
     Message: undefined
     Comments: undefined
+    Test : undefined
 };
 
 export type DialogType = {
@@ -158,4 +159,4 @@ export type SettingsType = {
 }
 
 
-export type navigationType = StackNavigationProp<RootStackParamList, "Home" | "Dialogs" | "ForgetPassword" | "Music" | "News" | "Profile" | "Registration" | "Settings" | "Training" | "Users" | "Likes" | "Message" | "Comments">
+export type navigationType = StackNavigationProp<RootStackParamList, "Home" | "Dialogs" | "ForgetPassword" | "Music" | "News" | "Profile" | "Registration" | "Settings" | "Training" | "Users" | "Likes" | "Message" | "Comments" | "Test">
