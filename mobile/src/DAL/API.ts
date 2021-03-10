@@ -1,7 +1,9 @@
 import axios from 'axios'
+import {CreateUserResponseType, SimpleUserInfType} from "./apiTypes";
 
 const instance = axios.create({
-    baseURL : 'https://localhost:3001/'
+    baseURL : 'https://192.168.0.105:3001/',
+    withCredentials: true
 })
 
 // export enum CheckAuthStatusEnum {
@@ -29,6 +31,11 @@ export const API = {
 }
 
 export const authAPI = {
+    createUser(userInf : SimpleUserInfType, setError : React.Dispatch<React.SetStateAction<string>>) {
+        const resData = {...userInf}
+        delete resData.repeatPassword
+        return instance.post('users', resData).then(response => console.log(response)).catch(err => console.log(err))
+    }
     // checkAuth() {
     //     return instance.get<CheckAuthResponceType>(`login`).then(responce => responce.data)
     // },

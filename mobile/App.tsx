@@ -49,9 +49,9 @@ const App: FC<{}> = (props) => {
             <Stack.Navigator screenOptions={{headerShown: false}}>
                 {/*{!useSelector(getIsAuth) ? <>*/}
                 <Stack.Screen name='Home' component={withSuspense(HomeScreen)}/>
+                <Stack.Screen name='Test' component={withSuspense(TestScreen)}/>
                 <Stack.Screen name='ForgetPassword' component={withSuspense(ForgetPasswordScreen)}/>
                 <Stack.Screen name='Registration' component={withSuspense(RegistrationScreen)}/>
-                <Stack.Screen name='Test' component={withSuspense(TestScreen)}/>
                 {/*</> : <>*/}
                 <Stack.Screen name='News' component={withSuspense(NewsScreen)}/>
                 <Stack.Screen name='Dialogs' component={withSuspense(DialogsScreen)}/>

@@ -72,9 +72,9 @@ const initialState : InitialStateType = {
 
 export const usersReducer = (state = initialState, action : ActionType) : InitialStateType => {
     switch (action.type){
-        // case SOME : return {...state
-        //
-        // }
+        case UNSUBSCRIBE : return {...state,
+            users : state.users.filter(user => user.id != action.id)
+        }
         default : return state
     }
 }
@@ -83,5 +83,5 @@ type ActionType = ActionsType<typeof usersAC>
 type DispatchType = ThunkAction<Promise<void>, StateType, unknown, ActionType>
 
 export const usersAC = {
-
+    unsubscribeUser : (id : string) => ({type : UNSUBSCRIBE, id} as const)
 }

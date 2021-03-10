@@ -5,8 +5,9 @@ import {TouchableOpacity, View} from "react-native";
 import {Overlay} from "../Common/Overlay";
 import {ButtonInOverlay} from "../Common/ButtonInOverlay";
 import {navigationType} from "../../types/types";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {getTheme} from "../../BLL/selectors/settingsSelector";
+import {actionCreator} from "../../BLL/storeRedux";
 
 type PropType = {
     id: string
@@ -22,6 +23,7 @@ export const User: FC<PropType> = ({navigation, about, id, isFriend, name, photo
     const [visible, setVisible] = useState(false);
 
     const toggleOverlay = () => setVisible(!visible)
+    const dispatch = useDispatch()
 
     const {firstPrimaryFont, secondPrimaryFont} = useSelector(getTheme)
 
@@ -48,12 +50,14 @@ export const User: FC<PropType> = ({navigation, about, id, isFriend, name, photo
         </Right>
         <Overlay visible={visible} setVisible={toggleOverlay} transparent>
             <View style={{alignItems: 'center'}}>
+                <Text>{name}</Text>
                 <ButtonInOverlay textStyle={{color: secondPrimaryFont}} title='Go to profile' onPress={() => {
                     toggleOverlay()
                     navigation.navigate('Profile')
                 }}/>
                 {isFriend ?
                     <ButtonInOverlay textStyle={{color: secondPrimaryFont}} title='Unsubscribe' onPress={() => {
+                        dispatch(actionCreator.usersScreen.unsubscribeUser(id))
                     }}/> :
                     <ButtonInOverlay textStyle={{color: secondPrimaryFont}} title='Subscribe' onPress={() => {
                     }}/>}
