@@ -9,6 +9,7 @@ export type SimpleUserInfType = {
     error?: string
 }
 
-export type ErrorType = {error : string}
-
-export type CreateUserResponseType = SimpleUserInfType | ErrorType
+export type AuthType = {
+    email : string
+    password : string
+}

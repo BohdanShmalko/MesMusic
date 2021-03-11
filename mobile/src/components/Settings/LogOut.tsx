@@ -5,9 +5,11 @@ import {SettingsItem} from "./SettingsItem";
 import {useSelector} from "react-redux";
 import {getTheme} from "../../BLL/selectors/settingsSelector";
 
-type PropType = {}
+type PropType = {
+    signOut : () => Promise<void>
+}
 
-export const LogOut: FC<PropType> = (props) => {
+export const LogOut: FC<PropType> = ({signOut}) => {
     const {firstPrimaryFont} = useSelector(getTheme)
     return <View>
         <View style={{flexDirection: 'row', justifyContent: 'center'}}>
@@ -16,7 +18,7 @@ export const LogOut: FC<PropType> = (props) => {
         </View>
         <View style={{backgroundColor: 'rgba(255,255,255,0.2)'}}>
             <SettingsItem icon='md-log-out' title={'Exit'} colorWord={firstPrimaryFont} colorButton={'rgba(0,0,0,0)'}
-                          useButton buttonTitle='Log out'/>
+                          useButton buttonTitle='Log out' onPress={signOut}/>
         </View>
     </View>
 }

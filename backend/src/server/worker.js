@@ -4,7 +4,7 @@ const API = require('../API/API');
 const options = require('./options');
 
 const app = shvidko.createServer(options);
-app.listen(3001, () => console.log('start server'));
+app.listen(3001, () => console.log('start server'), '192.168.0.105');
 
 app.compose(...API);
 

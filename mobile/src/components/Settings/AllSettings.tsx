@@ -8,13 +8,15 @@ import {Account} from "./Account";
 import {LogOut} from "./LogOut";
 
 
-type PropType = {}
+type PropType = {
+    signOut : () => Promise<void>
+}
 
-export const AllSettings: FC<PropType> = (props) => {
+export const AllSettings: FC<PropType> = ({signOut}) => {
     return <ScrollView>
         <Theme/>
         <Confidentiality/>
         <Account/>
-        <LogOut/>
+        <LogOut signOut={signOut}/>
     </ScrollView>
 }

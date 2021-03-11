@@ -1,6 +1,5 @@
 import {applyMiddleware, createStore, combineReducers, compose} from "redux"
 import thunkMiddleware from "redux-thunk"
-import {authAC, authReducer} from "./authReducer";
 import {dialogsAC, dialogsReducer} from "./dialogsReducer";
 import {musicAC, musicReducer} from "./musicReducer";
 import {newsAC, newsReducer} from "./newsReducer";
@@ -13,7 +12,6 @@ import {likeAC, likeReducer} from "./likeReducer";
 import {commentAC, commentReducer} from "./commentReducer";
 
 let rootReducer = combineReducers({
-    authScreen : authReducer,
     dialogsScreen : dialogsReducer,
     musicScreen : musicReducer,
     newsScreen : newsReducer,
@@ -39,7 +37,6 @@ type PropertiesTypes<T> = T extends {[key : string]: infer U} ? U : never
 export type ActionsType<T extends {[key : string]: (...args : any[]) => any}> = ReturnType<PropertiesTypes<T>>
 
 export const actionCreator = {
-    authScreen : authAC,
     dialogsScreen : dialogsAC,
     musicScreen : musicAC,
     newsScreen : newsAC,

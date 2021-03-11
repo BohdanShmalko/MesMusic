@@ -5,7 +5,7 @@ module.exports = (db) => ({
   //   [login, password],
   // ).then(data => data.rows),
   getUserPassword: (email) => db.query(
-    `SELECT password AS "truePassword" FROM Users WHERE email = $1::VARCHAR(50)`,
+    `SELECT password AS "truePassword", id FROM Users WHERE email = $1::VARCHAR(50)`,
     [email],
   ).then(data => data.rows),
   getUserId: (email) => db.query(
@@ -18,12 +18,11 @@ module.exports = (db) => ({
   ).then(data => data.rows),
 
 
-  addUser: async (name, lastName, login, password, defaultPath) => {
-    const insertRes = await db.query(
-      `INSET INTO Users (name, lastName, defaultPath) 
-      VALUES ($1::varchar(50), $2::varchar(50), $3::varchar(255))`,
-      [name, lastName, defaultPath],
+  addUser: async ({name, lastName, nickname, password, defaultPath = '/', email}) => {
+    await db.query(
+      `INSERT INTO Users (name, lastName, defaultPath, email, password, nickname) 
+      VALUES ($1::varchar(50), $2::varchar(50), $3::varchar(255), $4::varchar(50), $5::varchar(50), $6::varchar(50)) RETURNING id`,
+      [name, lastName, defaultPath, email, password, nickname],
     ).then(data => data.rows);
-    console.log(insertRes);
   },
 });

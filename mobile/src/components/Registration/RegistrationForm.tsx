@@ -2,11 +2,12 @@ import React, {FC, useState} from "react";
 import {ScrollView, Text, View} from "react-native";
 import {Button, Input, Item} from "native-base";
 import {Formik} from "formik";
-import {registrationThunk} from "../../BLL/authReducer";
-import {useDispatch} from "react-redux";
 import {SimpleUserInfType} from "../../DAL/apiTypes";
 
-type PropType = {}
+type PropType = {
+    signUp: (data: SimpleUserInfType, setUser: React.Dispatch<React.SetStateAction<string>>) => Promise<void>
+}
+
 type ErrorType = {
     name?: string
     lastName?: string
@@ -26,14 +27,13 @@ const initialData: SimpleUserInfType = {
 }
 
 //TODO norm validate
-export const RegistrationForm: FC<PropType> = ({}) => {
-    const dispatch = useDispatch()
+export const RegistrationForm: FC<PropType> = ({signUp}) => {
     const [networkError, setNetworkError] = useState<string>("")
     return <ScrollView>
         <Formik
             initialValues={initialData}
             onSubmit={values => {
-                dispatch(registrationThunk(values, setNetworkError))
+                signUp(values, setNetworkError)
             }}
             validate={values => {
 

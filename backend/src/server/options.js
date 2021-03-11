@@ -9,7 +9,7 @@ module.exports = {
   standartHeaders: {
     'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS, PUT',
     'Access-Control-Allow-Headers': 'Accept, Content-Type',
-    'Access-Control-Allow-Origin': 'http://localhost:3000',
+    'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Credentials': true,
   },
   sessions: {
@@ -19,8 +19,8 @@ module.exports = {
   fileStorage: {
     deffaultPath: `${__dirname}/../../fileStorrage`,
   },
-  secure: {
-    key: fs.readFileSync(`${__dirname}/cert/key.pem`),
-    cert: fs.readFileSync(`${__dirname}/cert/cert.pem`),
-  },
+  // secure: {
+  //   key: fs.readFileSync(`${__dirname}/cert/key.pem`),
+  //   cert: fs.readFileSync(`${__dirname}/cert/cert.pem`),
+  // },
 };

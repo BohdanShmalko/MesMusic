@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "crypto-js": "^4.0.0",
     "nodemon": "^2.0.7",
     "pg": "^8.5.1",
+    "redis": "^3.0.2",
     "shvidko": "^2.1.2",
     "shvidko-redis": "^1.0.0",
     "websocket": "^1.0.33"
