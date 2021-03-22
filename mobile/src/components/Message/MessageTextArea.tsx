@@ -2,11 +2,13 @@ import React, {FC} from "react";
 import {TouchableOpacity, View} from "react-native";
 import {Icon, Textarea} from "native-base"
 import {useSelector} from "react-redux";
-import {getTheme} from "../../BLL/selectors/settingsSelector";
+import {getLanguage, getTheme} from "../../BLL/selectors/settingsSelector";
+import vocabulary from "../../vocabulary/vocabulary";
 
 type PropType = {}
 
 export const MessageTextArea: FC<PropType> = (props) => {
+    const language = useSelector(getLanguage)
     const {firstPrimaryFont, secondPrimaryFont, secondMainColor} = useSelector(getTheme)
     return <View style={{
         flexDirection: 'row',
@@ -18,7 +20,7 @@ export const MessageTextArea: FC<PropType> = (props) => {
         maxHeight: 120
     }}>
         <View style={{flex: 7, padding: 5}}>
-            <Textarea keyboardType={'decimal-pad'} rowSpan={3} placeholder="Enter the message" style={{color : secondPrimaryFont}}/>
+            <Textarea keyboardType={'decimal-pad'} rowSpan={3} placeholder={vocabulary["enter something"][language]} style={{color : secondPrimaryFont}}/>
         </View>
         <View style={{flex: 1}}>
             <TouchableOpacity style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>

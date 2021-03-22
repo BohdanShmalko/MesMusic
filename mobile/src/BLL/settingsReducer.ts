@@ -34,6 +34,7 @@ const CHANGE_LANGUAGE = '/settings/CHANGE_LANGUAGE'
 export type InitialStateType = SettingsType
 
 const initialState : InitialStateType = {
+    language : 'ua',
     confidentiality : {
         blockForUnsigned : false,
         blockUsers : [],

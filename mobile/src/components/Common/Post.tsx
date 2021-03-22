@@ -6,7 +6,8 @@ import {ButtonInOverlay} from "./ButtonInOverlay";
 import {Overlay} from "./Overlay";
 import {navigationType, PostType} from "../../types/types";
 import {useSelector} from "react-redux";
-import {getTheme} from "../../BLL/selectors/settingsSelector";
+import {getLanguage, getTheme} from "../../BLL/selectors/settingsSelector";
+import vocabulary from "../../vocabulary/vocabulary";
 
 type PropType = PostType & { navigation: navigationType }
 
@@ -23,6 +24,7 @@ export const Post: FC<PropType> = ({
                                        navigation,
                                        isMy
                                    }) => {
+    const language = useSelector(getLanguage)
     const {firstPrimaryFont, secondPrimaryFont, secondMainColor} = useSelector(getTheme)
     let heartColor, addColor
     isLike ? heartColor = secondMainColor : heartColor = firstPrimaryFont
@@ -103,8 +105,8 @@ export const Post: FC<PropType> = ({
             </View>
             <View style={{paddingHorizontal: 10, paddingBottom: 10}}>
                 <View style={{flexDirection: 'row'}}>
-                    <Text style={{fontWeight: 'bold', flex: 1, color: secondPrimaryFont}}>Like : {likeCount}</Text>
-                    <Text style={{fontWeight: 'bold', color: secondPrimaryFont}}>Publications : {uris.length}</Text>
+                    <Text style={{fontWeight: 'bold', flex: 1, color: secondPrimaryFont}}>{vocabulary["like"][language]} : {likeCount}</Text>
+                    <Text style={{fontWeight: 'bold', color: secondPrimaryFont}}>{vocabulary["publications"][language]} : {uris.length}</Text>
                 </View>
                 <View>
                     <TouchableOpacity onPress={toggleAllText}>
@@ -121,37 +123,36 @@ export const Post: FC<PropType> = ({
                 </View>
             </View>
         </View>
-
         <Overlay visible={visible} setVisible={toggleOverlay} transparent>
             <View style={{alignItems: 'center'}}>
-                {isMy ?
+                {!isMy ?
                     <ButtonInOverlay style={{borderBottomColor: secondPrimaryFont}}
                                      textStyle={{color: secondPrimaryFont}}
-                                     title='Complain' onPress={() => {
+                                     title={vocabulary["complain"][language]} onPress={() => {
                     }}/> :
                     <ButtonInOverlay style={{borderBottomColor: secondPrimaryFont}}
                                      textStyle={{color: secondPrimaryFont}}
-                                     title='Delete' onPress={() => {
+                                     title={vocabulary["delete"][language]} onPress={() => {
                     }}/>}
 
                 <ButtonInOverlay style={{borderBottomColor: secondPrimaryFont}} textStyle={{color: secondPrimaryFont}}
-                                 title='Share' onPress={() => {
+                                 title={vocabulary["share"][language]} onPress={() => {
                 }}/>
                 {!isMy &&
                 <ButtonInOverlay style={{borderBottomColor: secondPrimaryFont}} textStyle={{color: secondPrimaryFont}}
-                                 title='Unsubscribe' onPress={() => {
+                                 title={vocabulary["unsubscribe"][language]} onPress={() => {
                 }}/>}
                 {isMy &&
                 <ButtonInOverlay style={{borderBottomColor: secondPrimaryFont}} textStyle={{color: secondPrimaryFont}}
-                                 title='Hidden' onPress={() => {
+                                 title={vocabulary["hidden"][language]} onPress={() => {
                 }}/>}
                 {!isMy &&
                 <ButtonInOverlay style={{borderBottomColor: secondPrimaryFont}} textStyle={{color: secondPrimaryFont}}
-                                 title='Add yourself' onPress={() => {
+                                 title={vocabulary["add yourself"][language]} onPress={() => {
                 }}/>}
 
                 <ButtonInOverlay style={{borderBottomColor: secondPrimaryFont}} textStyle={{color: secondPrimaryFont}}
-                                 title='Leave a comment' onPress={() => { toggleOverlay(); navigation.navigate('Comments')}}/>
+                                 title={vocabulary["leave comment"][language]} onPress={() => { toggleOverlay(); navigation.navigate('Comments')}}/>
             </View>
         </Overlay>
 

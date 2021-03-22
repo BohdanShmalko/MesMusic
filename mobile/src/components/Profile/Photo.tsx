@@ -4,12 +4,14 @@ import {Overlay} from "../Common/Overlay";
 import {Icon} from "native-base";
 import {ButtonInOverlay} from "../Common/ButtonInOverlay";
 import {useSelector} from "react-redux";
-import {getTheme} from "../../BLL/selectors/settingsSelector";
+import {getLanguage, getTheme} from "../../BLL/selectors/settingsSelector";
+import vocabulary from "../../vocabulary/vocabulary";
 
 export const Photo: FC<{ uri: string }> = ({uri}) => {
     const screenHeight = Dimensions.get('window').height
     const screenWidth = Dimensions.get('window').width
     const [visible, setVisible] = useState(false);
+    const language = useSelector(getLanguage)
     const toggleOverlay = () => setVisible(!visible)
 
     const [insideVisible, setInsideVisible] = useState(false);
@@ -50,12 +52,12 @@ export const Photo: FC<{ uri: string }> = ({uri}) => {
             </View>
             <Overlay setVisible={toggleInsideOverlay} visible={insideVisible} transparent>
                 <View style={{alignItems: 'center'}}>
-                    <ButtonInOverlay textStyle={{color : secondPrimaryFont}} title='Change main photo' onPress={() => {
+                    <ButtonInOverlay textStyle={{color : secondPrimaryFont}} title={vocabulary['change main photo'][language]} onPress={() => {
                         //TODO change photo
                         toggleInsideOverlay()
                         toggleOverlay()
                     }}/>
-                    <ButtonInOverlay textStyle={{color : secondPrimaryFont}} title='Delete this photo' onPress={() => {
+                    <ButtonInOverlay textStyle={{color : secondPrimaryFont}} title={vocabulary['delete photo'][language]} onPress={() => {
                         //TODO delete photo
                         toggleInsideOverlay()
                         toggleOverlay()

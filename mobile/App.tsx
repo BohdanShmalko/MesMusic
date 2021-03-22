@@ -13,6 +13,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {authAPI} from "./src/DAL/API";
 import {AuthType, SimpleUserInfType} from "./src/DAL/apiTypes";
 
+
 const HomeScreen = React.lazy(() => import('./src/screens/Home'))
 const ForgetPasswordScreen = React.lazy(() => import('./src/screens/ForgetPassword'))
 const DialogsScreen = React.lazy(() => import('./src/screens/Dialogs'))
@@ -65,12 +66,13 @@ const App: FC<{ navigation: navigationType }> = ({navigation}) => {
         {
             isLoading: true,
             isSignout: false,
-            userToken: null,
+            userToken: null
         }
     );
 
     useEffect(() => {
         (async () => {
+            // load font
             await Font.loadAsync({
                 Roboto: require('native-base/Fonts/Roboto.ttf'),
                 Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
@@ -78,15 +80,16 @@ const App: FC<{ navigation: navigationType }> = ({navigation}) => {
             })
             setIsReady(true)
 
+            // check token
             let userToken;
-
             try {
+                //await AsyncStorage.setItem('token', '');
                 userToken = await AsyncStorage.getItem('token');
             } catch (e) {
                 console.log(e)
             }
-
             dispatch({type: 'RESTORE_TOKEN', token: userToken});
+
         })()
     }, [])
 

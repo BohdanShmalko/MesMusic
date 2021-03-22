@@ -4,7 +4,8 @@ import {Button, Thumbnail} from "native-base";
 import {cutText} from "../../helpers/cutText";
 import {useSelector} from "react-redux";
 import {getIsMyProfile, getUserInf} from "../../BLL/selectors/profileSelector";
-import {getTheme} from "../../BLL/selectors/settingsSelector";
+import {getLanguage, getTheme} from "../../BLL/selectors/settingsSelector";
+import vocabulary from "../../vocabulary/vocabulary";
 
 const TextWithBold: FC<{ bold: string, title: string, color : string }> = ({bold, title, color}) => {
     return <Text style={{color, fontSize: 15}}>
@@ -14,6 +15,7 @@ const TextWithBold: FC<{ bold: string, title: string, color : string }> = ({bold
 type PropType = {}
 
 export const UserInf: FC<PropType> = (props) => {
+    const language = useSelector(getLanguage)
     const screenWidth = Dimensions.get('window').width
     const [isAllAbout, setIsAllAbout] = useState(false);
 
@@ -27,10 +29,10 @@ export const UserInf: FC<PropType> = (props) => {
     //TODO set onSubscribe function
     let subscribeText, onSubscribe
     if(isFriend){
-        subscribeText = 'Unsubscribe'
+        subscribeText = vocabulary['unsubscribe'][language]
         onSubscribe = () => {}
     }else {
-        subscribeText = 'Subscribe'
+        subscribeText = vocabulary['subscribe'][language]
         onSubscribe = () => {}
     }
 
@@ -42,7 +44,7 @@ export const UserInf: FC<PropType> = (props) => {
             <View style={{justifyContent: 'center', flexDirection: 'row', padding: 5}}>
                 {isMyProfile ?
                     <Button style={{backgroundColor: firstMainColor}}><Text
-                        style={{padding: 5, color: firstPrimaryFont}}>Change photo</Text></Button>:
+                        style={{padding: 5, color: firstPrimaryFont}}>{vocabulary['change main photo'][language]}</Text></Button>:
 
                     <Button style={{backgroundColor: firstMainColor}} onPress={onSubscribe}><Text
                         style={{padding: 5, color: firstPrimaryFont}}>{subscribeText}</Text></Button>}
@@ -57,11 +59,11 @@ export const UserInf: FC<PropType> = (props) => {
             width: screenWidth / 2.5
         }}>
             <TouchableOpacity style={{flexDirection : 'column'}} onPress={toggleAbout}>
-                <TextWithBold bold='Name : ' title={name} color={firstPrimaryFont}/>
-                <TextWithBold bold='Lastname : ' title={lastName} color={firstPrimaryFont}/>
+                <TextWithBold bold={`${vocabulary['name'][language]} : `} title={name} color={firstPrimaryFont}/>
+                <TextWithBold bold={`${vocabulary['lastname'][language]} : `} title={lastName} color={firstPrimaryFont}/>
                 {isAllAbout ?
-                    <TextWithBold bold='About : ' title={about} color={firstPrimaryFont}/> :
-                    <TextWithBold bold='About : ' title={cut100Symbols(about)} color={firstPrimaryFont}/>}
+                    <TextWithBold bold={`${vocabulary['about me'][language]} : `} title={about} color={firstPrimaryFont}/> :
+                    <TextWithBold bold={`${vocabulary['about me'][language]} : `} title={cut100Symbols(about)} color={firstPrimaryFont}/>}
             </TouchableOpacity>
         </View>
     </View>

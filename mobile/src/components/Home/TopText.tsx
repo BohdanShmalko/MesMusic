@@ -1,9 +1,13 @@
 import React, {FC} from "react";
 import {Text} from "react-native";
+import vocabulary from "../../vocabulary/vocabulary";
+import {useSelector} from "react-redux";
+import {getLanguage} from "../../BLL/selectors/settingsSelector";
 
 type PropType = {}
 
 export const TopText: FC<PropType> = (props) => {
+    const language = useSelector(getLanguage)
     return <Text style={{
         textAlign: 'center',
         fontStyle: 'italic',
@@ -11,6 +15,6 @@ export const TopText: FC<PropType> = (props) => {
         color: 'white',
         marginTop: '-30%'
     }}>
-        Let's help to learn to feel music and find people with common interests
+        {vocabulary['home top text'][language]}
     </Text>
 }

@@ -55,7 +55,7 @@ const setFromReq = async (req, newData) => {
     })
 }
 
-const getFromReq = async (req, newData) => {
+const getFromReq = async (req) => {
     const token = req.headers['x-access-token']
     const data = await get(token)
     return data

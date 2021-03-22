@@ -9,20 +9,22 @@ import {SearchBar} from "../components/Common/SearchBar";
 import {UsersList} from "../components/Users/UsersList";
 import {useSelector} from "react-redux";
 import {getUsers} from "../BLL/selectors/usersSelector";
-import {getBackgroundObject, getTheme} from "../BLL/selectors/settingsSelector";
+import {getBackgroundObject, getLanguage, getTheme} from "../BLL/selectors/settingsSelector";
+import vocabulary from "../vocabulary/vocabulary";
 
 const UsersScreen: FC<{ navigation: StackNavigationProp<RootStackParamList, 'Users'> }> = ({navigation}) => {
+    const language = useSelector(getLanguage)
     const testChoices: Array<ChoiceType> = [{
-        title : 'All',
+        title : vocabulary['all'][language],
         callback : () => {}
     },{
-        title : 'Subscribes',
+        title : vocabulary['subscribers'][language],
         callback : () => {}
     },{
-        title : 'Signed',
+        title : vocabulary['signed'][language],
         callback : () => {}
     },{
-        title : 'Recommendations',
+        title : vocabulary['recommendation'][language],
         callback : () => {}
     },]
     const users = useSelector(getUsers)
@@ -31,7 +33,7 @@ const UsersScreen: FC<{ navigation: StackNavigationProp<RootStackParamList, 'Use
     return (
         <Container>
             <MainContainer {...background} useFooter>
-                <MMHader title='Users' useLeftBack leftPress={() => navigation.navigate('News')} useRightMessage
+                <MMHader title={vocabulary['users'][language]} useLeftBack leftPress={() => navigation.navigate('News')} useRightMessage
                          rightPress={() => navigation.navigate('Dialogs')} color={firstMainColor}/>
                 <SearchBar useChoice={testChoices}/>
                 <UsersList navigation={navigation} data = {users}/>

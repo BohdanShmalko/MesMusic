@@ -6,6 +6,9 @@ import {BlueLink} from "../Common/BlueLink";
 import {StackNavigationProp} from "@react-navigation/stack";
 import {RootStackParamList} from "../../types/types";
 import {AuthType} from "../../DAL/apiTypes";
+import vocabulary from "../../vocabulary/vocabulary";
+import {useSelector} from "react-redux";
+import {getLanguage} from "../../BLL/selectors/settingsSelector";
 
 type PropType = {
     navigation: StackNavigationProp<RootStackParamList, 'Home'>
@@ -18,6 +21,7 @@ type ErrorType = {
 //TODO norm validate
 export const LoginForm: FC<PropType> = ({navigation, singIn}) => {
     const [networkError, setNetworkError] = useState<string>("")
+    const language = useSelector(getLanguage)
     return <View><Formik
         initialValues={{email: '', password: ''}}
         onSubmit={async values => {
@@ -26,8 +30,8 @@ export const LoginForm: FC<PropType> = ({navigation, singIn}) => {
         validate={values => {
 
             const errors: ErrorType = {};
-            if (!values.email) errors.email = 'Enter some email'
-            if (!values.password) errors.password = 'Enter some password'
+            if (!values.email) errors.email = vocabulary["error enter email"][language]
+            if (!values.password) errors.password = vocabulary["error enter password"][language]
 
             return errors
         }}
@@ -39,7 +43,7 @@ export const LoginForm: FC<PropType> = ({navigation, singIn}) => {
                         onChangeText={handleChange('email')}
                         onBlur={handleBlur('email')}
                         value={values.email}
-                        placeholder='Email'
+                        placeholder={vocabulary["email"][language]}
                         style={{fontSize: 20, color: 'white'}}
                     />
                 </Item>
@@ -49,7 +53,7 @@ export const LoginForm: FC<PropType> = ({navigation, singIn}) => {
                         onChangeText={handleChange('password')}
                         onBlur={handleBlur('password')}
                         value={values.password}
-                        placeholder='Password'
+                        placeholder={vocabulary["password"][language]}
                         style={{fontSize: 20, color: 'white'}}
                         secureTextEntry
                     />
@@ -63,15 +67,15 @@ export const LoginForm: FC<PropType> = ({navigation, singIn}) => {
                 <Text>
                     <Button onPress={handleSubmit} style={{backgroundColor: '#d98c27', borderRadius : 10}}>
                         <Text style={{padding: 10, textTransform: 'uppercase', fontWeight: 'bold', color: 'white'}}>
-                            Submit
+                            {vocabulary["submit"][language]}
                         </Text>
                     </Button>
                 </Text>
             </View>
         )}
     </Formik>
-        <BlueLink to='ForgetPassword' title='Forget password' navigation={navigation}/>
-        <BlueLink to='Registration' title='Registration' navigation={navigation}/>
+        <BlueLink to='ForgetPassword' title={vocabulary["forget password"][language]} navigation={navigation}/>
+        <BlueLink to='Registration' title={vocabulary["registration"][language]} navigation={navigation}/>
         {/*<BlueLink to='News' title='Test to News' navigation={navigation}/>*/}
         {/*<BlueLink to='Test' title='Labs screen' navigation={navigation}/>*/}
     </View>

@@ -8,16 +8,18 @@ import {FooterBadge} from "../components/Common/FooterBadge";
 import {LikeList} from "../components/Likes/LikeList";
 import {useSelector} from "react-redux";
 import {getLikes} from "../BLL/selectors/likeSelector";
-import {getBackgroundObject, getTheme} from "../BLL/selectors/settingsSelector";
+import {getBackgroundObject, getLanguage, getTheme} from "../BLL/selectors/settingsSelector";
+import vocabulary from "../vocabulary/vocabulary";
 
 const LikesScreen: FC<{ navigation: StackNavigationProp<RootStackParamList, 'Likes'> }> = ({navigation}) => {
     const data = useSelector(getLikes)
     const background = useSelector(getBackgroundObject('likePicture'))
     const {firstMainColor, secondMainColor} = useSelector(getTheme)
+    const language = useSelector(getLanguage)
     return (
         <Container>
             <MainContainer {...background} useFooter>
-                <MMHader title='Likes' useLeftBack leftPress={() => navigation.navigate('News')} useRightMessage
+                <MMHader title={vocabulary['like'][language]} useLeftBack leftPress={() => navigation.navigate('News')} useRightMessage
                          rightPress={() => navigation.navigate('Dialogs')} color={firstMainColor}/>
                 <LikeList data={data} navigation={navigation}/>
             </MainContainer>

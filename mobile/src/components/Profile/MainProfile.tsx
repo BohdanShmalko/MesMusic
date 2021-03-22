@@ -8,16 +8,19 @@ import {PostList} from "../Common/PostList";
 import {navigationType} from "../../types/types";
 import {useSelector} from "react-redux";
 import {getProfilePosts} from "../../BLL/selectors/profileSelector";
+import {getLanguage} from "../../BLL/selectors/settingsSelector";
+import vocabulary from "../../vocabulary/vocabulary";
 
 type PropType = { navigation: navigationType }
 
 const ProfileHead: FC<PropType> = ({navigation}) => {
+    const language = useSelector(getLanguage)
     return <View>
         <UserInf/>
         <UserPhotos/>
         <UsersButtons navigation={navigation}/>
         <PostCreator/>
-        <View><Text style={{color: 'white', fontSize: 20, textAlign: "center"}}>Posts :</Text></View>
+        <View><Text style={{color: 'white', fontSize: 20, textAlign: "center"}}>{`${vocabulary['posts'][language]} :`}</Text></View>
     </View>
 }
 

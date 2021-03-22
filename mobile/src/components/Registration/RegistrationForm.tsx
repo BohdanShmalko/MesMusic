@@ -3,6 +3,9 @@ import {ScrollView, Text, View} from "react-native";
 import {Button, Input, Item} from "native-base";
 import {Formik} from "formik";
 import {SimpleUserInfType} from "../../DAL/apiTypes";
+import vocabulary from "../../vocabulary/vocabulary";
+import {useSelector} from "react-redux";
+import {getLanguage} from "../../BLL/selectors/settingsSelector";
 
 type PropType = {
     signUp: (data: SimpleUserInfType, setUser: React.Dispatch<React.SetStateAction<string>>) => Promise<void>
@@ -29,6 +32,7 @@ const initialData: SimpleUserInfType = {
 //TODO norm validate
 export const RegistrationForm: FC<PropType> = ({signUp}) => {
     const [networkError, setNetworkError] = useState<string>("")
+    const language = useSelector(getLanguage)
     return <ScrollView>
         <Formik
             initialValues={initialData}
@@ -36,16 +40,15 @@ export const RegistrationForm: FC<PropType> = ({signUp}) => {
                 signUp(values, setNetworkError)
             }}
             validate={values => {
-
                 const errors: ErrorType = {};
-                if (!values.name) errors.name = 'Enter some login'
-                if (!values.lastName) errors.lastName = 'Enter some last name'
-                if (!values.nickname) errors.nickname = 'Enter some last name'
-                if (!values.email) errors.email = 'Enter some email'
-                if (!values.password) errors.password = 'Enter some password'
-                if (!values.repeatPassword) errors.repeatPassword = 'Enter some password'
+                if (!values.name) errors.name = vocabulary["error enter name"][language]
+                if (!values.lastName) errors.lastName = vocabulary["error enter lastname"][language]
+                if (!values.nickname) errors.nickname = vocabulary["error enter nick"][language]
+                if (!values.email) errors.email = vocabulary["error enter email"][language]
+                if (!values.password) errors.password = vocabulary["error enter password"][language]
+                if (!values.repeatPassword) errors.repeatPassword = vocabulary[""][language]
                 if (values.password !== values.repeatPassword && values.password && values.repeatPassword)
-                    errors.repeatPassword = 'The re-entered password is incorrect'
+                    errors.repeatPassword = vocabulary["error repeat password"][language]
 
                 return errors
             }}
@@ -57,7 +60,7 @@ export const RegistrationForm: FC<PropType> = ({signUp}) => {
                             onChangeText={handleChange('name')}
                             onBlur={handleBlur('name')}
                             value={values.name}
-                            placeholder='Name'
+                            placeholder={vocabulary["name"][language]}
                             style={{fontSize: 20, color: 'white'}}
                         />
                     </Item>
@@ -67,7 +70,7 @@ export const RegistrationForm: FC<PropType> = ({signUp}) => {
                             onChangeText={handleChange('lastName')}
                             onBlur={handleBlur('lastName')}
                             value={values.lastName}
-                            placeholder='Lastname'
+                            placeholder={vocabulary["lastname"][language]}
                             style={{fontSize: 20, color: 'white'}}
                         />
                     </Item>
@@ -77,7 +80,7 @@ export const RegistrationForm: FC<PropType> = ({signUp}) => {
                             onChangeText={handleChange('nickname')}
                             onBlur={handleBlur('nickname')}
                             value={values.nickname}
-                            placeholder='Nickname'
+                            placeholder={vocabulary["nickname"][language]}
                             style={{fontSize: 20, color: 'white'}}
                         />
                     </Item>
@@ -87,7 +90,7 @@ export const RegistrationForm: FC<PropType> = ({signUp}) => {
                             onChangeText={handleChange('email')}
                             onBlur={handleBlur('email')}
                             value={values.email}
-                            placeholder='Email'
+                            placeholder={vocabulary["email"][language]}
                             style={{fontSize: 20, color: 'white'}}
                         />
                     </Item>
@@ -97,7 +100,7 @@ export const RegistrationForm: FC<PropType> = ({signUp}) => {
                             onChangeText={handleChange('password')}
                             onBlur={handleBlur('password')}
                             value={values.password}
-                            placeholder='Password'
+                            placeholder={vocabulary["password"][language]}
                             style={{fontSize: 20, color: 'white'}}
                             autoCompleteType='password'
                             secureTextEntry
@@ -109,7 +112,7 @@ export const RegistrationForm: FC<PropType> = ({signUp}) => {
                             onChangeText={handleChange('repeatPassword')}
                             onBlur={handleBlur('repeatPassword')}
                             value={values.repeatPassword}
-                            placeholder='Repeat password'
+                            placeholder={vocabulary["repeat password"][language]}
                             style={{fontSize: 20, color: 'white'}}
                             secureTextEntry
                         />
@@ -119,7 +122,7 @@ export const RegistrationForm: FC<PropType> = ({signUp}) => {
                     <Text>
                         <Button onPress={handleSubmit} style={{backgroundColor: '#d98c27'}}>
                             <Text style={{padding: 10, textTransform: 'uppercase', fontWeight: 'bold', color: 'white'}}>
-                                Create account
+                                {vocabulary["create account"][language]}
                             </Text>
                         </Button>
                     </Text>

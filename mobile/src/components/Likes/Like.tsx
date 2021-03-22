@@ -5,7 +5,8 @@ import {Text, Thumbnail} from "native-base";
 import {Overlay} from "../Common/Overlay";
 import {Post} from "../Common/Post";
 import {useSelector} from "react-redux";
-import {getTheme} from "../../BLL/selectors/settingsSelector";
+import {getLanguage, getTheme} from "../../BLL/selectors/settingsSelector";
+import vocabulary from "../../vocabulary/vocabulary";
 
 type PropType = {
     navigation: navigationType
@@ -16,6 +17,7 @@ const screenHeight = Dimensions.get('window').height
 export const Like: FC<PropType> = ({data, navigation}) => {
     const {date, id, whatLiked, whoLiked, type} = data
     const {id: whoLikeId, name: whoLikeName, photo: whoLikePhoto} = whoLiked
+    const language = useSelector(getLanguage)
 
     const [visible, setVisible] = useState(false);
 
@@ -44,22 +46,18 @@ export const Like: FC<PropType> = ({data, navigation}) => {
             {type === 'like' &&
             <TouchableOpacity onPress={toggleOverlay}>
                 <Text style={{color: secondPrimaryFont}}><Text
-                    style={{fontWeight: 'bold', color: secondPrimaryFont}}>{whoLikeName} </Text>liked your
-                    post</Text>
+                    style={{fontWeight: 'bold', color: secondPrimaryFont}}>{whoLikeName} </Text>{vocabulary['like post'][language]}</Text>
             </TouchableOpacity>}
             {type === 'comment' &&
             <TouchableOpacity onPress={() => navigation.navigate('Comments')}>
                 <Text style={{color: secondPrimaryFont}}><Text
-                    style={{fontWeight: 'bold', color: secondPrimaryFont}}>{whoLikeName} </Text>has commented on
-                    your
-                    post</Text>
+                    style={{fontWeight: 'bold', color: secondPrimaryFont}}>{whoLikeName} </Text>{vocabulary['commented post'][language]}</Text>
             </TouchableOpacity>}
             {type === 'complain' &&
             <TouchableOpacity onPress={() => navigation.navigate('Comments')}
                               style={{backgroundColor: secondMainColor, padding: 5, borderRadius: 5}}>
                 <Text style={{color: secondPrimaryFont}}><Text
-                    style={{fontWeight: 'bold', color: secondPrimaryFont}}>{whoLikeName} </Text>Complained about one of
-                    the comments</Text>
+                    style={{fontWeight: 'bold', color: secondPrimaryFont}}>{whoLikeName} </Text>{vocabulary['Complained comments'][language]}</Text>
             </TouchableOpacity>}
         </View>
         <View style={{paddingLeft: 5, alignItems: 'center', flex: 1}}>

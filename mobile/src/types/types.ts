@@ -155,6 +155,7 @@ export type SettingsConfidentialityType = {
 }
 
 export type SettingsType = {
+    language : 'en' | 'ua'
     theme: SettingsThemeType
     confidentiality: SettingsConfidentialityType
 }

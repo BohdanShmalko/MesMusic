@@ -12,10 +12,12 @@ import {Overlay} from "../components/Common/Overlay";
 import {RightDownButton} from "../components/Common/RightDownButton";
 import {useSelector} from "react-redux";
 import {getDialogs} from "../BLL/selectors/dialogsSelector";
-import {getBackgroundObject, getTheme} from "../BLL/selectors/settingsSelector";
+import {getBackgroundObject, getLanguage, getTheme} from "../BLL/selectors/settingsSelector";
+import vocabulary from "../vocabulary/vocabulary";
 
 const DialogsScreen: FC<{ navigation: StackNavigationProp<RootStackParamList, 'Dialogs'> }> = ({navigation}) => {
     const [visible, setVisible] = useState(false);
+    const language = useSelector(getLanguage)
 
     const toggleOverlay: () => void = () => {
         setVisible(!visible);
@@ -27,7 +29,7 @@ const DialogsScreen: FC<{ navigation: StackNavigationProp<RootStackParamList, 'D
     return (
         <Container>
             <MainContainer useFooter {...background}>
-                <MMHader title='Dialogs' useLeftBack leftPress={() => navigation.navigate('News')}
+                <MMHader title={vocabulary['dialogs'][language]} useLeftBack leftPress={() => navigation.navigate('News')}
                          color={firstMainColor}/>
                 <SearchBar/>
                 <AllMessages navigation={navigation} data={dialogs}/>

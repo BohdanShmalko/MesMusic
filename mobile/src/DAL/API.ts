@@ -3,7 +3,7 @@ import {AuthType, SimpleUserInfType} from "./apiTypes";
 import authFetch from "./authFetch";
 
 const instance = axios.create({
-    baseURL : 'http://192.168.0.105:3001/mobile/',
+    baseURL : 'http://192.168.0.103:3001/mobile/',
     // headers : {
     //     "X-Access-Token" : "sometest"
     // }
@@ -17,6 +17,7 @@ export const authAPI = {
             body : resData,
             method : 'post'
         }).then((res : any) => res.data).catch(err => {
+            console.log(err)
             setError(err.response.data.error)
         })
     },

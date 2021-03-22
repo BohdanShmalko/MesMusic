@@ -1,14 +1,8 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 
-const instance = axios.create({
-    baseURL : 'http://192.168.0.105:3001/mobile/',
-    // headers : {
-    //     "X-Access-Token" : "sometest"
-    // }
-})
 
-const baseURL = 'http://192.168.0.105:3001/mobile/'
+const baseURL = 'http://192.168.0.103:3001/mobile/'
 
 export default async function authFetch(url : string, config : any = undefined) {
     let token

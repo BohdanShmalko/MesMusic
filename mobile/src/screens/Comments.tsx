@@ -9,12 +9,13 @@ import {MessageTextArea} from "../components/Message/MessageTextArea";
 import {CommentsList} from "../components/Comments/CommentsList";
 import {useSelector} from "react-redux";
 import {getComments} from "../BLL/selectors/commentSelector";
-import {getBackgroundObject, getTheme} from "../BLL/selectors/settingsSelector";
+import {getBackgroundObject, getLanguage, getTheme} from "../BLL/selectors/settingsSelector";
 
 const CommentsScreen: FC<{ navigation: StackNavigationProp<RootStackParamList, 'Dialogs'> }> = ({navigation}) => {
     const data = useSelector(getComments)
     const background = useSelector(getBackgroundObject('commentsPicture'))
     const {firstMainColor} = useSelector(getTheme)
+    const language = useSelector(getLanguage)
     return (
         <Container>
             <MMHader color={firstMainColor} title='Comments' useLeftBack leftPress={() => navigation.navigate('News')} />

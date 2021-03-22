@@ -18,3 +18,5 @@ export const getBackgroundObject: GetBackgroundObjectType = (screen) => (state) 
     }
     return {color1: firstMainColor, color2: secondMainColor}
 }
+
+export const getLanguage = (state: StateType) => state.settingsScreen.language
