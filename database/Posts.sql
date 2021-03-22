@@ -1,7 +1,9 @@
-CREATE TABLE Posts (
-	id SERIAL NOT NULL PRIMARY KEY,
-	postHeader VARCHAR(100) NOT NULL,
-	postFit TEXT NOT NULL,
-	addTime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	users_id INT NOT NULL REFERENCES users(id)
+Create table Posts
+(
+    id              SERIAL    NOT NULL PRIMARY KEY,
+    user_id         INT       NOT NULL REFERENCES users (id) ON DELETE CASCADE,
+    name            text,
+    likeCont        int       not null default 0,
+    description     text,
+    publicationTime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );

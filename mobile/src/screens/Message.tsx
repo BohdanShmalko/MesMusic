@@ -8,7 +8,12 @@ import {MessageTextArea} from "../components/Message/MessageTextArea";
 import {MessageList} from "../components/Message/MessageList";
 import {KeyboardAvoidingView, Platform, TextInput, View} from "react-native";
 import {useSelector} from "react-redux";
-import {getMessageData, getMessageStatus, getMessageTitle, getMessageUri} from "../BLL/selectors/messageSelector";
+import {
+    getLastAction,
+    getMessageData,
+    getMessageTitle,
+    getMessageUri
+} from "../BLL/selectors/messageSelector";
 import {getBackgroundObject, getTheme} from "../BLL/selectors/settingsSelector";
 import {ButtonInOverlay} from "../components/Common/ButtonInOverlay";
 import {Overlay} from "../components/Common/Overlay";
@@ -16,7 +21,7 @@ import {Overlay} from "../components/Common/Overlay";
 const MessageScreen: FC<{ navigation: StackNavigationProp<RootStackParamList, 'Likes'> }> = ({navigation}) => {
     const messageUri = useSelector(getMessageUri)
     const messageTitle = useSelector(getMessageTitle)
-    const messageStatus = useSelector(getMessageStatus)
+    const messageStatus = useSelector(getLastAction)
     const data = useSelector(getMessageData)
     const background = useSelector(getBackgroundObject('messagePicture'))
     const {firstMainColor, secondPrimaryFont} = useSelector(getTheme)
@@ -30,7 +35,7 @@ const MessageScreen: FC<{ navigation: StackNavigationProp<RootStackParamList, 'L
                 title: messageTitle
             }}
                      useLeftBack leftPress={() => navigation.navigate('Dialogs')}
-                     rightTitle={`status : ${messageStatus}`} useRightMenu
+                     rightTitle={`last action : ${messageStatus}`} useRightMenu
                      rightPress={toggleOverlay} color={firstMainColor}/>
             <MainContainer style={{flex: 1}} image={require('../../assets/background.jpg')} {...background}>
                 <KeyboardAvoidingView behavior={Platform.OS ? 'padding' : undefined}>

@@ -18,11 +18,9 @@ module.exports = (db) => ({
   ).then(data => data.rows),
 
 
-  addUser: async ({name, lastName, nickname, password, defaultPath = '/', email}) => {
-    await db.query(
+  addUser: ({name, lastName, nickname, password, defaultPath = '/', email}) =>  db.query(
       `INSERT INTO Users (name, lastName, defaultPath, email, password, nickname) 
       VALUES ($1::varchar(50), $2::varchar(50), $3::varchar(255), $4::varchar(50), $5::varchar(50), $6::varchar(50)) RETURNING id`,
       [name, lastName, defaultPath, email, password, nickname],
-    ).then(data => data.rows);
-  },
+    ).then(data => data.rows)
 });

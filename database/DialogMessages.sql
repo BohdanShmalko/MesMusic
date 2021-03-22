@@ -1,7 +1,0 @@
-CREATE TABLE DialogMessages (
-	id SERIAL NOT NULL PRIMARY KEY,
-	messageContent TEXT NOT NULL,
-	createDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	users_id INT NOT NULL REFERENCES users(id),
-	dialogs_id INT NOT NULL REFERENCES dialogs(id)
-);

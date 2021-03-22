@@ -1,8 +1,0 @@
-CREATE TABLE Groups (
-	id SERIAL NOT NULL PRIMARY KEY,
-	groupName VARCHAR(100) NOT NULL,
-	mainPhoto VARCHAR(100),
-	status VARCHAR(100),
-	groupInfo TEXT,
-	isPrivate BOOLEAN NOT NULL DEFAULT 'false'
-);

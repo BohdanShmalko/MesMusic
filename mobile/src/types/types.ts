@@ -101,6 +101,7 @@ export type ProfileType = {
     photos: Array<{ id: string, uri: string }>
     isShowMusic?: boolean
     isShowTrainings?: boolean
+    isShowPosts?: boolean
     posts: Array<PostType>
 }
 
