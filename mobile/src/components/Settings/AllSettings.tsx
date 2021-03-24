@@ -1,7 +1,5 @@
-import React, {FC, useState} from "react";
-import {ColorValue, ScrollView, Text, TouchableOpacity, View} from "react-native";
-import {Button, Icon, Switch} from "native-base";
-import {SettingsItem} from "./SettingsItem";
+import React, {FC} from "react";
+import {ScrollView} from "react-native";
 import {Theme} from "./Theme";
 import {Confidentiality} from "./Confidentiality";
 import {Account} from "./Account";
@@ -9,7 +7,7 @@ import {LogOut} from "./LogOut";
 
 
 type PropType = {
-    signOut : () => Promise<void>
+    signOut: () => Promise<void>
 }
 
 export const AllSettings: FC<PropType> = ({signOut}) => {

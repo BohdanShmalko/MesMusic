@@ -1,3 +1,3 @@
-import {StateType} from "../storeRedux";
+import { StateType } from "../storeRedux";
 
-export const getUsers = (state : StateType) => state.usersScreen.users
+export const getUsers = (state: StateType) => state.usersScreen.users;

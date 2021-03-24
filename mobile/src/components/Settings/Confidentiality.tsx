@@ -17,19 +17,28 @@ export const Confidentiality: FC<PropType> = (props) => {
     return <View>
         <View style={{flexDirection: 'row', justifyContent: 'center'}}>
             <Icon name='md-glasses' style={{color: firstPrimaryFont}}/>
-            <Text style={{color: firstPrimaryFont, textTransform: 'uppercase', fontSize: 20}}>{vocabulary['confidentiality'][language]}</Text>
+            <Text style={{
+                color: firstPrimaryFont,
+                textTransform: 'uppercase',
+                fontSize: 20
+            }}>{vocabulary['confidentiality'][language]}</Text>
         </View>
         <View style={{backgroundColor: 'rgba(255,255,255,0.2)'}}>
-            <SettingsItem icon='md-glasses' title={vocabulary['block for unsigned'][language]} colorWord={firstPrimaryFont}
+            <SettingsItem icon='md-glasses' title={vocabulary['block for unsigned'][language]}
+                          colorWord={firstPrimaryFont}
                           colorButton={firstMainColor} useSwitch
                           switchValue={switchClose} onPress={changeSwitchClose}/>
-            <SettingsItem icon='chatbubbles' title={vocabulary['prohibit comments'][language]} colorWord={firstPrimaryFont}
+            <SettingsItem icon='chatbubbles' title={vocabulary['prohibit comments'][language]}
+                          colorWord={firstPrimaryFont}
                           colorButton={'rgba(0,0,0,0)'} useButton buttonTitle={vocabulary['choose'][language]}/>
             <SettingsItem icon='md-headset' title={vocabulary['prohibit music'][language]}
-                          colorWord={firstPrimaryFont} colorButton={'rgba(0,0,0,0)'} useButton buttonTitle={vocabulary['choose'][language]}/>
+                          colorWord={firstPrimaryFont} colorButton={'rgba(0,0,0,0)'} useButton
+                          buttonTitle={vocabulary['choose'][language]}/>
             <SettingsItem icon='book' title={vocabulary['prohibit trainings'][language]}
-                          colorWord={firstPrimaryFont} colorButton={'rgba(0,0,0,0)'} useButton buttonTitle={vocabulary['choose'][language]}/>
-            <SettingsItem icon='md-close-circle' title={vocabulary['block users'][language]} colorWord={firstPrimaryFont}
+                          colorWord={firstPrimaryFont} colorButton={'rgba(0,0,0,0)'} useButton
+                          buttonTitle={vocabulary['choose'][language]}/>
+            <SettingsItem icon='md-close-circle' title={vocabulary['block users'][language]}
+                          colorWord={firstPrimaryFont}
                           colorButton={'rgba(0,0,0,0)'} useButton buttonTitle={vocabulary['choose'][language]}/>
 
         </View>

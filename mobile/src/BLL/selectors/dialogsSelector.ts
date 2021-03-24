@@ -1,3 +1,3 @@
-import {StateType} from "../storeRedux";
+import { StateType } from "../storeRedux";
 
- export const getDialogs = (state : StateType) => state.dialogsScreen.dialogs
+export const getDialogs = (state: StateType) => state.dialogsScreen.dialogs;

@@ -1,3 +1,3 @@
-import {StateType} from "../storeRedux";
+import { StateType } from "../storeRedux";
 
 // export const getAuth = (state : StateType) => state.authScreen

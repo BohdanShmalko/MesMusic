@@ -4,7 +4,7 @@ import {UserInf} from "./UserInf";
 import {UserPhotos} from "./UserPhotos";
 import {PostCreator} from "./PostCreator";
 import {UsersButtons} from "./UsersButtons";
-import {PostList} from "../Common/PostList";
+import {PostList} from "../Common/Post/PostList";
 import {navigationType} from "../../types/types";
 import {useSelector} from "react-redux";
 import {getProfilePosts} from "../../BLL/selectors/profileSelector";

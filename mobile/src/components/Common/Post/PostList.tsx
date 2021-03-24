@@ -1,7 +1,7 @@
 import React, {FC} from "react";
 import {FlatList, Text} from "react-native";
 import {Post} from "./Post";
-import {navigationType, PostType} from "../../types/types";
+import {navigationType, PostType} from "../../../types/types";
 
 type PropType = {
     navigation : navigationType

@@ -1,14 +1,21 @@
 import React, {FC, useState} from "react";
-import {Text, View} from "react-native";
+import {Dimensions, Text, TouchableOpacity, View} from "react-native";
 import {Icon} from "native-base";
 import {SettingsItem} from "./SettingsItem";
 import {useSelector} from "react-redux";
 import {getLanguage, getTheme} from "../../BLL/selectors/settingsSelector";
 import vocabulary from "../../vocabulary/vocabulary";
+import {Overlay} from "../Common/Overlay";
+import {ColorPicker, fromHsv, toHsv} from 'react-native-color-picker'
+import {ModalColorPicker} from "../Common/ModalColorPicker";
 
 type PropType = {}
 
+
 export const Theme: FC<PropType> = (props) => {
+    const [isFirstColor, setIsFirstColor] = useState(false)
+    const changeIsFirstColor = () => setIsFirstColor(!isFirstColor)
+
     const [switchTheme, setSwitchTheme] = useState(false)
     const changeSwitchTheme = () => setSwitchTheme(!switchTheme)
 
@@ -29,7 +36,7 @@ export const Theme: FC<PropType> = (props) => {
         </View>
         <View style={{backgroundColor: 'rgba(255,255,255,0.2)'}}>
             <SettingsItem icon='md-color-fill' title={vocabulary['change first color'][language]}
-                          colorWord={firstPrimaryFont}
+                          colorWord={firstPrimaryFont} onPress={changeIsFirstColor}
                           colorButton={firstMainColor} useButton buttonTitle={vocabulary['change'][language]}/>
             <SettingsItem icon='md-color-fill' title={vocabulary['change second color'][language]}
                           colorWord={firstPrimaryFont}
@@ -79,6 +86,11 @@ export const Theme: FC<PropType> = (props) => {
                               colorButton={firstMainColor} useButton buttonTitle={vocabulary['set'][language]}/>
             </View>}
         </View>
+
+        <ModalColorPicker setVisible={changeIsFirstColor} visible={isFirstColor} defaultColor={firstMainColor}
+                          buttonBackground={firstMainColor} buttonFont={firstPrimaryFont} onChoose={(color) => {
+            console.log(color)
+        }}/>
 
     </View>
 }

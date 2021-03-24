@@ -1,3 +1,3 @@
-import {StateType} from "../storeRedux";
+import { StateType } from "../storeRedux";
 
-export const getComments = (state : StateType) => state.commentScreen.comments
+export const getComments = (state: StateType) => state.commentScreen.comments;

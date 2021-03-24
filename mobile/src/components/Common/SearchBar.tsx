@@ -1,33 +1,56 @@
 import React, {FC} from "react";
 import {Form, Icon, Input, Item, Picker, Text} from 'native-base';
-import {TouchableOpacity, View} from "react-native";
-import {ChoiceType} from "../../types/types";
+import {TextStyle, TouchableOpacity, View, ViewStyle, StyleSheet} from "react-native";
+import {TitleCallbackType} from "../../types/types";
 import {useSelector} from "react-redux";
 import {getLanguage, getTheme} from "../../BLL/selectors/settingsSelector";
 import vocabulary from "../../vocabulary/vocabulary";
 
 type PropType = {
-    useChoice?: Array<ChoiceType>
+    useChoice?: Array<TitleCallbackType>
+}
+
+interface Styles {
+    mainContainer : ViewStyle
+    item : ViewStyle
+    icon : TextStyle
+    input : ViewStyle
+    button : ViewStyle
+    text : TextStyle
+    form : ViewStyle
+    picker : ViewStyle
 }
 
 export const SearchBar: FC<PropType> = ({useChoice}) => {
     const language = useSelector(getLanguage)
     const {firstPrimaryFont, secondPrimaryFont} = useSelector(getTheme)
-    return <View style={{flexDirection: 'row', marginBottom: 5}}>
-        <Item style={{flex: 4, backgroundColor: 'rgba(255, 255, 255, 0.5)', borderRadius: 20}}>
-            <Icon name="ios-search" style={{color : secondPrimaryFont}}/>
-            <Input placeholder={vocabulary['search'][language]} style={{color : secondPrimaryFont}}/>
-            <Icon name="ios-people" style={{color : secondPrimaryFont}}/>
+
+    const stl = StyleSheet.create<Styles>({
+        mainContainer : {flexDirection: 'row', marginBottom: 5},
+        item : {flex: 4, backgroundColor: 'rgba(255, 255, 255, 0.5)', borderRadius: 20},
+        icon : {color : secondPrimaryFont},
+        input : {color : secondPrimaryFont},
+        button : {flex: 1, padding: 5, justifyContent: 'center'},
+        text : {color: firstPrimaryFont, textTransform: 'uppercase'},
+        form : {flex: 1},
+        picker : {width: 120}
+    })
+
+    return <View style={stl.mainContainer}>
+        <Item style={stl.item}>
+            <Icon name="ios-search" style={stl.icon}/>
+            <Input placeholder={vocabulary['search'][language]} style={stl.input}/>
+            <Icon name="ios-people" style={stl.icon}/>
         </Item>
-        <TouchableOpacity style={{flex: 1, padding: 5, justifyContent: 'center'}}>
-            <Text style={{color: firstPrimaryFont, textTransform: 'uppercase'}}>{vocabulary['search'][language]}</Text>
+        <TouchableOpacity style={stl.button}>
+            <Text style={stl.text}>{vocabulary['search'][language]}</Text>
         </TouchableOpacity>
         {useChoice?.length &&
-        <Form style={{flex: 1}}>
+        <Form style={stl.form}>
             <Picker
                 note
                 mode="dropdown"
-                style={{width: 120}}
+                style={stl.picker}
                 selectedValue={true}
                 onValueChange={(e) => {
 
