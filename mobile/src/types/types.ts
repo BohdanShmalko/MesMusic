@@ -1,4 +1,5 @@
 import { StackNavigationProp } from "@react-navigation/stack";
+import {ColorValue} from "react-native";
 
 export type RootStackParamList = {
   Home: undefined;
@@ -186,4 +187,15 @@ export type FooterButtonType = {
   icon : string
   currentActive : FooterType
   moveTo : PagesType
+}
+
+export type SettingsItemType = {
+  icon : string
+  title : string
+  colorButton : ColorValue
+  useSwitch ?: boolean
+  useButton ?: boolean
+  value ?: boolean | string
+  onPress : () => void
+  colorWord ?: string
 }

@@ -17,6 +17,7 @@ type PropType = {
   LikeCount: number;
   urisLength: number;
   description: string;
+  name: string;
 };
 
 interface Styles {
@@ -32,6 +33,7 @@ export const PostDescription: FC<PropType> = ({
   description,
   LikeCount,
   urisLength,
+  name,
 }) => {
   const language = useSelector(getLanguage);
   const { secondPrimaryFont } = useSelector(getTheme);

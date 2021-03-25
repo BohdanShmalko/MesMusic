@@ -19,6 +19,7 @@ type PropType = {
   publicationTime: string;
   useMenu: boolean;
   toggleOverlay: () => void;
+  name: string;
   navigation: navigationType;
 };
 
@@ -39,6 +40,7 @@ export const PostHeader: FC<PropType> = ({
   userUri,
   publicationTime,
   useMenu,
+  name,
   navigation,
 }) => {
   const { secondPrimaryFont } = useSelector(getTheme);

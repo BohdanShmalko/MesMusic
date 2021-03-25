@@ -1,96 +1,242 @@
-import React, {FC, useState} from "react";
-import {Dimensions, Text, TouchableOpacity, View} from "react-native";
-import {Icon} from "native-base";
-import {SettingsItem} from "./SettingsItem";
-import {useSelector} from "react-redux";
-import {getLanguage, getTheme} from "../../BLL/selectors/settingsSelector";
+import React, { FC, useState } from "react";
+import { StyleSheet, Text, TextStyle, View, ViewStyle } from "react-native";
+import { Icon } from "native-base";
+import { SettingsItem } from "./SettingsItem";
+import { useSelector } from "react-redux";
+import { getLanguage, getTheme } from "../../BLL/selectors/settingsSelector";
 import vocabulary from "../../vocabulary/vocabulary";
-import {Overlay} from "../Common/Overlay";
-import {ColorPicker, fromHsv, toHsv} from 'react-native-color-picker'
-import {ModalColorPicker} from "../Common/ModalColorPicker";
+import { ModalColorPicker } from "../Common/ModalColorPicker";
+import { SettingsItemType } from "../../types/types";
 
-type PropType = {}
+type PropType = {};
 
+interface Styles {
+  headContainer: ViewStyle;
+  icon: TextStyle;
+  text: TextStyle;
+  themeContainer: ViewStyle;
+  pictures: ViewStyle;
+}
 
 export const Theme: FC<PropType> = (props) => {
-    const [isFirstColor, setIsFirstColor] = useState(false)
-    const changeIsFirstColor = () => setIsFirstColor(!isFirstColor)
+  const [isFirstColor, setIsFirstColor] = useState(false);
+  const changeIsFirstColor = () => setIsFirstColor(!isFirstColor);
 
-    const [switchTheme, setSwitchTheme] = useState(false)
-    const changeSwitchTheme = () => setSwitchTheme(!switchTheme)
+  const [switchTheme, setSwitchTheme] = useState(false);
+  const changeSwitchTheme = () => setSwitchTheme(!switchTheme);
 
-    const [switchOnlyImage, setSwitchOnlyImage] = useState(false)
-    const changeSwitchOnlyImage = () => setSwitchOnlyImage(!switchOnlyImage)
+  const [switchOnlyImage, setSwitchOnlyImage] = useState(false);
+  const changeSwitchOnlyImage = () => setSwitchOnlyImage(!switchOnlyImage);
 
-    const {firstMainColor, secondMainColor, firstPrimaryFont, secondPrimaryFont} = useSelector(getTheme)
-    const language = useSelector(getLanguage)
+  const {
+    firstMainColor,
+    secondMainColor,
+    firstPrimaryFont,
+    secondPrimaryFont,
+  } = useSelector(getTheme);
+  const language = useSelector(getLanguage);
 
-    return <View>
-        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-            <Icon name='md-color-palette' style={{color: firstPrimaryFont}}/>
-            <Text style={{
-                color: firstPrimaryFont,
-                textTransform: 'uppercase',
-                fontSize: 20
-            }}>{vocabulary['theme'][language]}</Text>
-        </View>
-        <View style={{backgroundColor: 'rgba(255,255,255,0.2)'}}>
-            <SettingsItem icon='md-color-fill' title={vocabulary['change first color'][language]}
-                          colorWord={firstPrimaryFont} onPress={changeIsFirstColor}
-                          colorButton={firstMainColor} useButton buttonTitle={vocabulary['change'][language]}/>
-            <SettingsItem icon='md-color-fill' title={vocabulary['change second color'][language]}
-                          colorWord={firstPrimaryFont}
-                          colorButton={secondMainColor} useButton buttonTitle={vocabulary['change'][language]}/>
-            <SettingsItem icon='md-create' title={vocabulary['change first font'][language]}
-                          colorWord={firstPrimaryFont}
-                          colorButton={'rgba(0,0,0,0)'} useButton buttonTitle={vocabulary['change'][language]}/>
-            <SettingsItem icon='md-create' title={vocabulary['change second font'][language]}
-                          colorWord={secondPrimaryFont}
-                          colorButton={'rgba(0,0,0,0)'} useButton buttonTitle={vocabulary['change'][language]}/>
-            <SettingsItem icon='md-images' title={vocabulary['picture background'][language]}
-                          colorWord={firstPrimaryFont}
-                          colorButton={secondMainColor} useSwitch switchValue={switchTheme}
-                          onPress={changeSwitchTheme}/>
-            {switchTheme && <View style={{paddingHorizontal: 20}}>
-                {/*TODO to map in the end*/}
-                <SettingsItem icon='md-images' title={vocabulary['single picture'][language]}
-                              colorWord={firstPrimaryFont}
-                              colorButton={secondMainColor} useSwitch switchValue={switchOnlyImage} onPress={() => {
-                    changeSwitchOnlyImage()
-                }}/>
-                <SettingsItem icon='md-image' title={vocabulary['comments screen'][language]}
-                              colorWord={firstPrimaryFont}
-                              colorButton={firstMainColor} useButton buttonTitle={vocabulary['set'][language]}/>
-                <SettingsItem icon='md-image' title={vocabulary['dialogs screen'][language]}
-                              colorWord={firstPrimaryFont}
-                              colorButton={firstMainColor} useButton buttonTitle={vocabulary['set'][language]}/>
-                <SettingsItem icon='md-image' title={vocabulary['like screen'][language]} colorWord={firstPrimaryFont}
-                              colorButton={firstMainColor} useButton buttonTitle={vocabulary['set'][language]}/>
-                <SettingsItem icon='md-image' title={vocabulary['message screen'][language]}
-                              colorWord={firstPrimaryFont}
-                              colorButton={firstMainColor} useButton buttonTitle={vocabulary['set'][language]}/>
-                <SettingsItem icon='md-image' title={vocabulary['music screen'][language]} colorWord={firstPrimaryFont}
-                              colorButton={firstMainColor} useButton buttonTitle={vocabulary['set'][language]}/>
-                <SettingsItem icon='md-image' title={vocabulary['news screen'][language]} colorWord={firstPrimaryFont}
-                              colorButton={firstMainColor} useButton buttonTitle={vocabulary['set'][language]}/>
-                <SettingsItem icon='md-image' title={vocabulary['profile screen'][language]}
-                              colorWord={firstPrimaryFont}
-                              colorButton={firstMainColor} useButton buttonTitle={vocabulary['set'][language]}/>
-                <SettingsItem icon='md-image' title={vocabulary['settings screen'][language]}
-                              colorWord={firstPrimaryFont}
-                              colorButton={firstMainColor} useButton buttonTitle={vocabulary['set'][language]}/>
-                <SettingsItem icon='md-image' title={vocabulary['training screen'][language]}
-                              colorWord={firstPrimaryFont}
-                              colorButton={firstMainColor} useButton buttonTitle={vocabulary['set'][language]}/>
-                <SettingsItem icon='md-image' title={vocabulary['user screen'][language]} colorWord={firstPrimaryFont}
-                              colorButton={firstMainColor} useButton buttonTitle={vocabulary['set'][language]}/>
-            </View>}
-        </View>
+  const stl = StyleSheet.create<Styles>({
+    headContainer: { flexDirection: "row", justifyContent: "center" },
+    icon: { color: firstPrimaryFont },
+    text: {
+      color: firstPrimaryFont,
+      textTransform: "uppercase",
+      fontSize: 20,
+    },
+    themeContainer: { backgroundColor: "rgba(255,255,255,0.2)" },
+    pictures: { paddingHorizontal: 20 },
+  });
 
-        <ModalColorPicker setVisible={changeIsFirstColor} visible={isFirstColor} defaultColor={firstMainColor}
-                          buttonBackground={firstMainColor} buttonFont={firstPrimaryFont} onChoose={(color) => {
-            console.log(color)
-        }}/>
+  const themeItems: Array<SettingsItemType> = [
+    {
+      icon: "md-color-fill",
+      title: vocabulary["change first color"][language],
+      colorButton: firstMainColor,
+      useButton: true,
+      value: vocabulary["change"][language],
+      onPress: changeIsFirstColor,
+    },
+    {
+      icon: "md-color-fill",
+      title: vocabulary["change second color"][language],
+      colorButton: secondMainColor,
+      useButton: true,
+      value: vocabulary["change"][language],
+      onPress: () => {},
+    },
+    {
+      icon: "md-create",
+      title: vocabulary["change first font"][language],
+      colorButton: "rgba(0,0,0,0)",
+      useButton: true,
+      value: vocabulary["change"][language],
+      onPress: () => {},
+    },
+    {
+      icon: "md-create",
+      title: vocabulary["change second font"][language],
+      colorButton: "rgba(0,0,0,0)",
+      useButton: true,
+      value: vocabulary["change"][language],
+      onPress: () => {},
+    },
+    {
+      icon: "md-images",
+      title: vocabulary["picture background"][language],
+      colorButton: secondMainColor,
+      useSwitch: true,
+      value: switchTheme,
+      onPress: changeSwitchTheme,
+    },
+  ];
 
+  const backgroundItems: Array<SettingsItemType> = [
+    {
+      icon: "md-images",
+      title: vocabulary["single picture"][language],
+      colorButton: secondMainColor,
+      useSwitch: true,
+      value: switchOnlyImage,
+      onPress: () => {
+        changeSwitchOnlyImage();
+      },
+    },
+    {
+      icon: "md-image",
+      title: vocabulary["comments screen"][language],
+      colorButton: firstMainColor,
+      useButton: true,
+      value: vocabulary["set"][language],
+      onPress: () => {},
+    },
+    {
+      icon: "md-image",
+      title: vocabulary["dialogs screen"][language],
+      colorButton: firstMainColor,
+      useButton: true,
+      value: vocabulary["set"][language],
+      onPress: () => {},
+    },
+    {
+      icon: "md-image",
+      title: vocabulary["like screen"][language],
+      colorButton: firstMainColor,
+      useButton: true,
+      value: vocabulary["set"][language],
+      onPress: () => {},
+    },
+    {
+      icon: "md-image",
+      title: vocabulary["message screen"][language],
+      colorButton: firstMainColor,
+      useButton: true,
+      value: vocabulary["set"][language],
+      onPress: () => {},
+    },
+    {
+      icon: "md-image",
+      title: vocabulary["music screen"][language],
+      colorButton: firstMainColor,
+      useButton: true,
+      value: vocabulary["set"][language],
+      onPress: () => {},
+    },
+    {
+      icon: "md-image",
+      title: vocabulary["news screen"][language],
+      colorButton: firstMainColor,
+      useButton: true,
+      value: vocabulary["set"][language],
+      onPress: () => {},
+    },
+    {
+      icon: "md-image",
+      title: vocabulary["profile screen"][language],
+      colorButton: firstMainColor,
+      useButton: true,
+      value: vocabulary["set"][language],
+      onPress: () => {},
+    },
+    {
+      icon: "md-image",
+      title: vocabulary["settings screen"][language],
+      colorButton: firstMainColor,
+      useButton: true,
+      value: vocabulary["set"][language],
+      onPress: () => {},
+    },
+    {
+      icon: "md-image",
+      title: vocabulary["training screen"][language],
+      colorButton: firstMainColor,
+      useButton: true,
+      value: vocabulary["set"][language],
+      onPress: () => {},
+    },
+    {
+      icon: "md-image",
+      title: vocabulary["user screen"][language],
+      colorButton: firstMainColor,
+      useButton: true,
+      value: vocabulary["set"][language],
+      onPress: () => {},
+    },
+  ];
+
+  return (
+    <View>
+      <View style={stl.headContainer}>
+        <Icon name="md-color-palette" style={stl.icon} />
+        <Text style={stl.text}>{vocabulary["theme"][language]}</Text>
+      </View>
+      <View style={stl.themeContainer}>
+        {themeItems.map((item, index) => (
+          <SettingsItem
+            key={index}
+            icon={item.icon}
+            title={item.title}
+            colorWord={index !== 3 ? firstPrimaryFont : secondPrimaryFont}
+            colorButton={item.colorButton}
+            useSwitch={item.useSwitch}
+            useButton={item.useButton}
+            switchValue={item.value}
+            buttonTitle={item.value}
+            onPress={item.onPress}
+          />
+        ))}
+
+        {switchTheme && (
+          <View style={stl.pictures}>
+            {/*TODO to map in the end*/}
+            {backgroundItems.map((item, index) => (
+              <SettingsItem
+                key={index}
+                icon={item.icon}
+                title={item.title}
+                colorWord={firstPrimaryFont}
+                colorButton={item.colorButton}
+                useSwitch={item.useSwitch}
+                useButton={item.useButton}
+                switchValue={item.value}
+                buttonTitle={item.value}
+                onPress={item.onPress}
+              />
+            ))}
+          </View>
+        )}
+      </View>
+
+      <ModalColorPicker
+        setVisible={changeIsFirstColor}
+        visible={isFirstColor}
+        defaultColor={firstMainColor}
+        buttonBackground={firstMainColor}
+        buttonFont={firstPrimaryFont}
+        onChoose={(color) => {
+          console.log(color);
+        }}
+      />
     </View>
-}
+  );
+};

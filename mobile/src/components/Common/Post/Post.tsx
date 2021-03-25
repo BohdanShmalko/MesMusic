@@ -39,6 +39,7 @@ export const Post: FC<PropType> = ({
     >
       <View>
         <PostHeader
+          name={name}
           userUri={userUri}
           publicationTime={publicationTime}
           useMenu={useMenu}
@@ -53,6 +54,7 @@ export const Post: FC<PropType> = ({
           navigation={navigation}
         />
         <PostDescription
+          name={name}
           LikeCount={likeCount}
           urisLength={uris.length}
           description={description}
