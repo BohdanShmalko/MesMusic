@@ -1,5 +1,5 @@
-import React, { FC } from "react";
-import { Container } from "native-base";
+import React, {FC, useEffect, useState} from "react";
+import {Container, Spinner} from "native-base";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../types/types";
 import { MMHader } from "../components/Common/MMHader";
@@ -7,7 +7,7 @@ import { MainContainer } from "../components/Common/MainContainer";
 import { FooterBadge } from "../components/Common/FooterBadge";
 import { SearchBar } from "../components/Common/SearchBar";
 import { UsersList } from "../components/Users/UsersList";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { getUsers } from "../BLL/selectors/usersSelector";
 import {
   getBackgroundObject,
@@ -16,6 +16,8 @@ import {
 } from "../BLL/selectors/settingsSelector";
 import vocabulary from "../vocabulary/vocabulary";
 import { chooseUsers } from "../helpers/choicers";
+import {usersAPI} from "../DAL/API";
+import {actionCreator} from "../BLL/storeRedux";
 
 const UsersScreen: FC<{
   navigation: StackNavigationProp<RootStackParamList, "Users">;
@@ -25,7 +27,18 @@ const UsersScreen: FC<{
   const users = useSelector(getUsers);
   const background = useSelector(getBackgroundObject("userPicture"));
   const { firstMainColor, secondMainColor } = useSelector(getTheme);
-  return (
+  const dispatch = useDispatch()
+  const [loader, setLoader] = useState(true)
+
+  useEffect(() => {
+      (async() => {
+          const users = await usersAPI.loadAllUsers(0,10)
+          dispatch(actionCreator.usersScreen.loadUsers(users))
+        setLoader(false)
+      })()
+  }, [])
+
+    return (
     <Container>
       <MainContainer {...background} useFooter>
         <MMHader
@@ -38,6 +51,7 @@ const UsersScreen: FC<{
         />
         <SearchBar useChoice={userChoices} />
         <UsersList navigation={navigation} data={users} />
+        {loader && <Spinner color={firstMainColor}/>}
       </MainContainer>
       <FooterBadge
         navigation={navigation}

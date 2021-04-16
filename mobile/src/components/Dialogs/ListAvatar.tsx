@@ -17,10 +17,12 @@ import {
   StyleSheet,
 } from "react-native";
 import { navigationType } from "../../types/types";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { getTheme } from "../../BLL/selectors/settingsSelector";
+import {actionCreator} from "../../BLL/storeRedux";
 
 type PropType = {
+  id : string
   uriAvatar: string;
   name: string;
   lastMessage: string;
@@ -36,6 +38,10 @@ interface Styles {
   notReadContainer: ViewStyle;
   barge: ViewStyle;
   text: TextStyle;
+  mainContainer: ViewStyle;
+  left: ViewStyle;
+  body: ViewStyle;
+  right: ViewStyle;
 }
 
 export const ListAvatar: FC<PropType> = ({
@@ -45,11 +51,13 @@ export const ListAvatar: FC<PropType> = ({
   name,
   lastMessage,
   lastMessageTime,
+    id
 }) => {
   const cut30Symbols = cutText(30);
   const { secondPrimaryFont, firstMainColor, firstPrimaryFont } = useSelector(
     getTheme
   );
+  const dispatch = useDispatch()
 
   const stl = StyleSheet.create<Styles>({
     textName: { color: secondPrimaryFont },
@@ -62,34 +70,42 @@ export const ListAvatar: FC<PropType> = ({
     },
     barge: { backgroundColor: firstMainColor },
     text: { color: firstPrimaryFont },
+    mainContainer: {
+      flexDirection: "row",
+      marginTop: 10,
+      borderBottomColor: firstPrimaryFont,
+      borderBottomWidth: 1,
+      padding: 5,
+    },
+    left: { flex: 3 },
+    body: { flex: 8 },
+    right: { flex: 6 },
   });
 
   return (
-    <ListItem avatar>
-      <Left>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("Profile");
-          }}
-        >
+    <TouchableOpacity
+      style={stl.mainContainer}
+      onPress={() => {
+        dispatch(actionCreator.messageScreen.setDialogId(id))
+        navigation.navigate("Message");
+      }}
+    >
+      <View style={stl.left}>
+        <View>
           <Thumbnail source={{ uri: uriAvatar }} />
-        </TouchableOpacity>
-      </Left>
-      <Body>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("Message");
-          }}
-        >
+        </View>
+      </View>
+      <View style={stl.body}>
+        <View>
           <Text style={stl.textName}>{name}</Text>
           <Text note style={stl.cutText}>
             {cut30Symbols(lastMessage)}
           </Text>
-        </TouchableOpacity>
-      </Body>
-      <Right>
+        </View>
+      </View>
+      <View style={stl.right}>
         <Text style={stl.lastMessage} note>
-          {lastMessageTime}
+          {lastMessageTime.substr(0,10)}
         </Text>
         <View style={stl.notReadContainer}>
           {howManyNotRead ? (
@@ -100,7 +116,7 @@ export const ListAvatar: FC<PropType> = ({
             <View></View>
           )}
         </View>
-      </Right>
-    </ListItem>
+      </View>
+    </TouchableOpacity>
   );
 };

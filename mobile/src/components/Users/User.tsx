@@ -23,6 +23,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getLanguage, getTheme } from "../../BLL/selectors/settingsSelector";
 import { actionCreator } from "../../BLL/storeRedux";
 import vocabulary from "../../vocabulary/vocabulary";
+import {usersAPI} from "../../DAL/API";
 
 type PropType = {
   id: string;
@@ -70,7 +71,13 @@ export const User: FC<PropType> = ({
   const notFriendsButtons: Array<TitleCallbackType> = [
     {
       title: vocabulary["subscribe"][language],
-      callback: () => {},
+      callback: () => {
+        (async() => {
+          await usersAPI.subscribe(id)
+          dispatch(actionCreator.usersScreen.subscribe(id))
+        })()
+
+      },
     },
   ];
 

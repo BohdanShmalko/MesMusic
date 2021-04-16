@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, {FC, useState} from "react";
 import {
   TouchableOpacity,
   View,
@@ -11,7 +11,9 @@ import { useSelector } from "react-redux";
 import { getLanguage, getTheme } from "../../BLL/selectors/settingsSelector";
 import vocabulary from "../../vocabulary/vocabulary";
 
-type PropType = {};
+type PropType = {
+  onSend ?: (message : string) => void
+};
 
 interface Styles {
   mainContainer: ViewStyle;
@@ -26,8 +28,9 @@ interface Styles {
   widgetText: TextStyle;
 }
 
-export const MessageTextArea: FC<PropType> = (props) => {
+export const MessageTextArea: FC<PropType> = ({onSend}) => {
   const language = useSelector(getLanguage);
+  const [message, setMessage] = useState('')
   const { firstPrimaryFont, secondPrimaryFont, secondMainColor } = useSelector(
     getTheme
   );
@@ -57,15 +60,21 @@ export const MessageTextArea: FC<PropType> = (props) => {
     <View style={stl.mainContainer}>
       <View style={stl.textareaContainer}>
         <Textarea
-          keyboardType={"decimal-pad"}
           rowSpan={3}
           placeholder={vocabulary["enter something"][language]}
           style={stl.textarea}
+          value={message}
+          onChangeText={setMessage}
         />
       </View>
       <View style={stl.sendContainer}>
         <TouchableOpacity style={stl.sendButton}>
-          <Icon name="md-send" style={stl.sendIcon} />
+          <Icon name="md-send" style={stl.sendIcon} onPress={() => {
+            if(message){
+              if(onSend) onSend(message)
+              setMessage('')
+            }
+          }}/>
         </TouchableOpacity>
       </View>
       <View style={stl.widgetsContainer}>

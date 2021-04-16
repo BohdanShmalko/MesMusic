@@ -87,9 +87,9 @@ export const Message: FC<MessageType> = ({
         >
           <Text style={stl.message}>{message}</Text>
 
-          <View style={stl.view}>
-            <View style={stl.loadContainer}></View>
-            <View style={stl.view}>
+          <View style={stl.loadContainer}>
+            <View style={stl.view} />
+            <View style={stl.loadContainer}>
               <Text style={stl.dateText}>mon 22:00</Text>
               {status === "in process" && (
                 // Icon name = 'alert'

@@ -8,7 +8,7 @@ export const changeLanguageTo = (
   dispatch: Dispatch<any>,
   toggleChangeLanguage: () => void
 ) => async () => {
-  await AsyncStorage.setItem("language", "en");
-  dispatch(actionCreator.settingsScreen.changeLanguage("en"));
+  await AsyncStorage.setItem("language", language);
+  dispatch(actionCreator.settingsScreen.changeLanguage(language));
   toggleChangeLanguage();
 };

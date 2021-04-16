@@ -5,6 +5,8 @@ const dbConnection = require('../database/connection');
 const db = dbConnection('127.0.0.1', 5432, 'mesmusic', 'mesuser', '1111');
 
 module.exports = {
+  host : '192.168.0.104',
+  port : 3001,
   db,
   standartHeaders: {
     'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS, PUT',

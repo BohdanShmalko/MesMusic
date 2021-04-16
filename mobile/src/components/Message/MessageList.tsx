@@ -20,10 +20,11 @@ export const MessageList: FC<PropType> = ({ data }) => {
   return (
     <List>
       <FlatList
+        inverted
         data={data}
         renderItem={({ item }) => <Message {...item} />}
         keyExtractor={(item) => item.id}
-        ListFooterComponent={<View style={stl.footer}></View>}
+        ListHeaderComponent={<View style={stl.footer}></View>}
       />
     </List>
   );

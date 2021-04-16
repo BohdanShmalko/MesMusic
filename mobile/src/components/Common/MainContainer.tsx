@@ -13,12 +13,12 @@ import {
 const displayHeight = Dimensions.get("window").height;
 
 type ImageContainerType = {
-  image: ImageSourcePropType;
+  image?: ImageSourcePropType;
 } & CommonType;
 
 type GradientContainerType = {
-  color1: string;
-  color2: string;
+  color1?: string;
+  color2?: string;
 } & CommonType;
 
 type CommonType = {
@@ -39,7 +39,7 @@ interface Styles {
 const ImageContainer: FC<ImageContainerType> = ({
   containerStyle,
   style,
-  image,
+  image= {uri : 'http://192.168.0.104:3001/image/:common/:background'},
   children,
 }) => (
   <ImageBackground style={{ ...containerStyle }} source={image}>
@@ -50,8 +50,8 @@ const ImageContainer: FC<ImageContainerType> = ({
 const GradientContainer: FC<GradientContainerType> = ({
   containerStyle,
   style,
-  color1,
-  color2,
+  color1= "#08003d",
+  color2= "#f55656",
   children,
 }) => (
   <LinearGradient colors={[color1, color2]} style={{ ...containerStyle }}>
@@ -60,8 +60,8 @@ const GradientContainer: FC<GradientContainerType> = ({
 );
 
 export const MainContainer: FC<PropType> = ({
-  color1 = "#08003d",
-  color2 = "#f55656",
+  color1 ,
+  color2 ,
   image,
   containerStyle,
   children,

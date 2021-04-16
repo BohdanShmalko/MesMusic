@@ -75,7 +75,7 @@ export const Account: FC<PropType> = (props) => {
       title: "English",
     },
     {
-      callback: changeLanguageTo("en", dispatch, toggleChangeLanguage),
+      callback: changeLanguageTo("ua", dispatch, toggleChangeLanguage),
       title: "Українська",
     },
   ];

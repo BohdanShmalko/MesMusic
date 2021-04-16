@@ -9,7 +9,7 @@
     "redis": "^3.0.2",
     "shvidko": "^2.1.2",
     "shvidko-redis": "^1.0.0",
-    "websocket": "^1.0.33"
+    "socket.io": "^4.0.1"
   },
   "scripts": {
     "start": "nodemon ./src/server/cluster.js"

@@ -31,6 +31,7 @@ type PropType = {
   rightTitle?: string;
 
   color?: string;
+  bodyAvatarStyle?: ViewStyle;
 };
 
 interface Styles {
@@ -58,6 +59,7 @@ export const MMHader: FC<PropType> = ({
   rightPress,
   useBodyAvatar,
   useRightMenu,
+  bodyAvatarStyle,
 }) => {
   const { firstPrimaryFont } = useSelector(getTheme);
 
@@ -68,7 +70,12 @@ export const MMHader: FC<PropType> = ({
     image: { width: 64, height: 64 },
     logo: { fontStyle: "italic", marginTop: "15%", color: firstPrimaryFont },
     title: { color: firstPrimaryFont, fontSize: 20 },
-    bodyAvatarContainer: { flexDirection: "row" },
+    bodyAvatarContainer: {
+      ...bodyAvatarStyle,
+      justifyContent: "center",
+      alignItems: "center",
+      flexDirection: "row",
+    },
     thumbnail: { width: 40, height: 40 },
     thumbnailText: { padding: "5%", fontSize: 20, color: firstPrimaryFont },
     rightTitle: {

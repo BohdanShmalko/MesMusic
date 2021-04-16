@@ -26,4 +26,32 @@ module.exports = (db) => ({
         `DELETE FROM UsersFollows WHERE follower_id = $1::int AND followed_id = $2::int`,
         [myId, disFollowedId],
     ).then(data => data.rows),
+
+
+
+
+    getAllowsUsers: (start, end, myId) => db.query(
+        `SELECT users.id, users.nickname as "name", users.defaultpath, users.mainphoto, users.aboutme as "about", subscribers.id as "isFriend"
+        FROM users
+        INNER JOIN subscribers ON users.id = subscribers.whose_subscribe
+         WHERE subscribers.who_subscribe = $1 LIMIT $2 OFFSET $3;`,
+        [myId, end-start, start]
+    ).then(data => data.rows),
+
+    getAllUsers: (start, end, myId) => db.query(
+        `SELECT id, nickname as "name", defaultpath, mainphoto, aboutme as "about"
+        FROM users
+        WHERE users.id != $1 LIMIT $2 OFFSET $3;`,
+        [myId, end-start, start]
+    ).then(data => data.rows),
+
+    isFriend: (myId, userId) => db.query(
+        `SELECT id FROM subscribers WHERE who_subscribe = $1 AND whose_subscribe = $2`,
+        [myId, userId]
+    ).then(data => data.rows),
+
+    subscribe: (myId, userId) => db.query(
+        `INSERT INTO subscribers (who_subscribe, whose_subscribe ) VALUES ($1, $2)`,
+        [myId, userId]
+    )
 });

@@ -21,7 +21,7 @@ const SettingsScreen = React.lazy(() => import('./src/screens/Settings'))
 const TrainingScreen = React.lazy(() => import('./src/screens/Trainings'))
 const UsersScreen = React.lazy(() => import('./src/screens/Users'))
 const LikesScreen = React.lazy(() => import('./src/screens/Likes'))
-const MessageScreen = React.lazy(() => import('./src/screens/Message'))
+const MessageScreen = React.lazy(() => import('./src/HOC/MessageContainer'))
 const CommentsScreen = React.lazy(() => import('./src/screens/Comments'))
 
 const Stack = createStackNavigator<RootStackParamList>()

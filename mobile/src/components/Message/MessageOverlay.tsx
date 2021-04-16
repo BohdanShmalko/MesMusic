@@ -1,15 +1,21 @@
-import React, { FC } from "react";
-import { StyleSheet, TextStyle, View, ViewStyle } from "react-native";
+import React, {FC, useEffect, useState} from "react";
+import {Platform, StyleSheet, TextStyle, View, ViewStyle} from "react-native";
 import vocabulary from "../../vocabulary/vocabulary";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { getLanguage, getTheme } from "../../BLL/selectors/settingsSelector";
 import { ButtonInOverlay } from "../Common/ButtonInOverlay";
 import { Overlay } from "../Common/Overlay";
 import { TitleCallbackType } from "../../types/types";
+import * as ImagePicker from "expo-image-picker";
+import {actionCreator} from "../../BLL/storeRedux";
+import {checkAccess, PickImage} from "../../helpers/imagePicker";
+import {messageAPI} from "../../DAL/API";
+
 
 type PropType = {
   toggleOverlay: () => void;
   visible: boolean;
+  dialogId : string
 };
 
 interface Styles {
@@ -18,9 +24,16 @@ interface Styles {
   buttonOverlayStyle: ViewStyle;
 }
 
-export const MessageOverlay: FC<PropType> = ({ toggleOverlay, visible }) => {
+export const MessageOverlay: FC<PropType> = ({ toggleOverlay, visible , dialogId}) => {
   const language = useSelector(getLanguage);
   const { secondPrimaryFont } = useSelector(getTheme);
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    checkAccess()
+  }, [])
+
+
 
   const stl = StyleSheet.create<Styles>({
     overlayContainer: { alignItems: "center" },
@@ -35,7 +48,13 @@ export const MessageOverlay: FC<PropType> = ({ toggleOverlay, visible }) => {
     },
     {
       title: vocabulary["change photo"][language],
-      callback: () => {},
+      callback: async () => {
+        const result = await PickImage()
+        if (result){
+          const {uriAvatar} = await messageAPI.changePhoto(result.base64, dialogId)
+          dispatch(actionCreator.messageScreen.changeGroupPhoto(uriAvatar))
+        }
+      },
     },
     {
       title: vocabulary["leave chat"][language],

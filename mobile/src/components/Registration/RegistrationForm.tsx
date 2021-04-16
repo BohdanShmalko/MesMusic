@@ -88,7 +88,7 @@ export const RegistrationForm: FC<PropType> = ({ signUp }) => {
           if (!values.password)
             errors.password = vocabulary["error enter password"][language];
           if (!values.repeatPassword)
-            errors.repeatPassword = vocabulary[""][language];
+            errors.repeatPassword = vocabulary["repeat password"][language];
           if (
             values.password !== values.repeatPassword &&
             values.password &&

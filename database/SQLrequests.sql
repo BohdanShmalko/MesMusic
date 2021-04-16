@@ -49,7 +49,7 @@ INSERT INTO Forbid_Trainings (who_block, whos_block) VALUES (1,2);
 INSERT INTO Prohibit_Comments (who_block, whos_block) VALUES (1,2);
 
 -- CREATE ROOM
-INSERT INTO Rooms (uriAvatar,members_count,name) VALUES ('/testUri', 2, 'testchat');
+INSERT INTO Rooms (uriAvatar,members_count,name) VALUES ('https://iso.500px.com/wp-content/uploads/2016/03/stock-photo-142984111.jpg', 2, 'testchat');
 
 -- ADD USERS TO ROOM
 INSERT INTO RoomMembers (user_id,room_id) VALUES (1,1);
